@@ -1,5 +1,16 @@
 import { createStitches } from '@stitches/react'
-
+import {
+  mint,
+  mintA,
+  mintDark,
+  sage,
+  sageA,
+  sageDark,
+  sky,
+  skyA,
+  violet,
+  violetA,
+} from '@radix-ui/colors';
 export const {
   config,
   createTheme,
@@ -11,22 +22,14 @@ export const {
 } = createStitches({
   theme: {
     colors: {
-      hiContrast: 'hsl(206,10%,5%)',
-      loContrast: 'white',
-
-      gray100: 'hsl(206,22%,99%)',
-      gray200: 'hsl(206,12%,97%)',
-      gray300: 'hsl(206,11%,92%)',
-      gray400: 'hsl(206,10%,84%)',
-      gray500: 'hsl(206,10%,76%)',
-      gray600: 'hsl(206,10%,44%)',
-
-      purple100: 'hsl(252,100%,99%)',
-      purple200: 'hsl(252,100%,98%)',
-      purple300: 'hsl(252,100%,94%)',
-      purple400: 'hsl(252,75%,84%)',
-      purple500: 'hsl(252,78%,60%)',
-      purple600: 'hsl(252,80%,53%)',
+      ...mint,
+      ...mintA,
+      ...sage,
+      ...sageA,
+      ...sky,
+      ...skyA,
+      ...violet,
+      ...violetA,
     },
     space: {
       1: '5px',
@@ -45,15 +48,23 @@ export const {
       6: '35px',
     },
     fontSizes: {
-      1: '12px',
-      2: '13px',
-      3: '15px',
-      4: '17px',
-      5: '19px',
-      6: '21px',
+      'xs': '12px',
+      'sm': '14px',
+      'md': '16px',
+      'lg': '18px',
+      'xl': '20px',
+      '2xl': '24px',
+      '3xl': '30px',
+      '4xl': '36px',
+      '5xl': '48px',
+      '6xl': '60px',
+      '7xl': '72px',
+      '8xl': '84px',
+      '9xl': '96px',
     },
     fonts: {
       system: 'system-ui',
+      inter: 'Inter, sans-serif',
     },
   },
   utils: {
@@ -75,7 +86,16 @@ export const {
     }),
   },
   media: {
-    bp1: '(min-width: 520px)',
-    bp2: '(min-width: 900px)',
+    sm: '(min-width: 576px)',
+    md: '(min-width: 768px)',
+    lg: '(min-width: 992px)',
+    xl: '(min-width: 1200px)',
   },
 })
+
+const darkTheme = createTheme({
+  colors: {
+    ...mintDark,
+    ...sageDark,
+  },
+});
