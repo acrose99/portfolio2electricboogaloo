@@ -5,60 +5,41 @@ import Navigation from "../components/Navigation";
 import { mint } from "@radix-ui/colors";
 import Bio from "../components/Bio";
 import { StyledText } from "../components/Text";
-const Box = styled("div", {
-  backgroundColor: "$mint1",
-  display: "flex",
-});
-
-const Container = styled("section", {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
-  width: "100%",
-  minHeight: "100vh",
-  variants: {
-    size: {
-      1: {
-        maxWidth: "40vw",
-      },
-      2: {
-        maxWidth: "60vw",
-      },
-      3: {
-        maxWidth: "80vw",
-      },
-      max: {
-        maxWidth: "100vw",
-      },
-    },
-  },
-});
-
+import Flex from "../components/Flex";
+import EditableText from "../components/editableComponents/EditableText";
 export default function Contact() {
   return (
-    <Box>
+    <>
       <Head>
         <title>Alex Rose: Contact</title>
       </Head>
-      <Container aria-label="Page Start" size={"max"}>
+      <Flex
+        gap={20}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        // @ts-ignore
+        marginTop="5rem"
+      >
         <Navigation defaultValue="Contact" />
         <section
           style={{
             maxWidth: "60%",
+            textAlign: "center",
           }}
         >
-          <StyledText>
-            I am always open to new opportunities. Contact me if you think I may
+          <EditableText
+            defaultFontSize="16px"
+            defaultText="I am always open to new opportunities. Contact me if you think I may
             be a good fit for your team. Additionally, if you are interested in
             the digital humanities, I would really love to work with you on a
-            project. Please reach out!
-          </StyledText>
-          <StyledText>
-            <a href="mailto:acrosmail@gmail.com">Shoot me an email</a>
-          </StyledText>
+            project. Please reach out!"
+          ></EditableText>
+          <EditableText defaultFontSize="16px">
+            <a href="mailto:acrosmail@gmail.com">Shoot me an email!</a>
+          </EditableText>
         </section>
-      </Container>
-    </Box>
+      </Flex>
+    </>
   );
 }

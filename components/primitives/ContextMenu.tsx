@@ -20,7 +20,22 @@ import {
 import Flex from "../Flex";
 import Link from "next/link";
 
+const slideDown = keyframes({
+  "0%": { opacity: 0, transform: "translateY(-10px)" },
+  "100%": { opacity: 1, transform: "translateY(0)" },
+});
+
+const slideUp = keyframes({
+  "0%": { opacity: 0, transform: "translateY(10px)" },
+  "100%": { opacity: 1, transform: "translateY(0)" },
+});
+
 const ContextMenuContent = styled(ContextMenuPrimitive.Content, {
+  animationDuration: "0.6s",
+  animationTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+  animationFillMode: "forwards",
+  '&[data-side="top"]': { animationName: slideUp },
+  '&[data-side="bottom"]': { animationName: slideDown },
   minWidth: 220,
   backgroundColor: "$sage1",
   borderRadius: 6,

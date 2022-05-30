@@ -49,14 +49,28 @@ function Navigation({ defaultValue }: NavigationProps) {
           onChange: (value) => setFontSize(value),
         },
       ]}
+      source="components/Navigation.tsx"
+      callableFunctions={[
+        {
+          label: "Reset Props",
+          icon: "ResetIcon",
+          onClick: () => {
+            setBackground("$mint5");
+            setColor("$mint11");
+            setFontSize("16px");
+          },
+          toastLabel: "Reset Navigation Props",
+        },
+      ]}
     >
-      <StyledRoot 
+      <StyledRoot
         onValueChange={(value) => {
+          /* clear nested routes */
           router.push(value === "Bio" ? "/" : value.toLowerCase());
         }}
         defaultValue={defaultValue}
       >
-        <Tooltip trigger="Right Click to Edit Navigation">
+        <Tooltip trigger="Edit Navigation">
           <StyledTrigger
             css={{
               background: background,
@@ -81,7 +95,14 @@ function Navigation({ defaultValue }: NavigationProps) {
               <SelectItem value="Bio" />
               <SelectItem value="Resume" />
               <SelectItem value="Contact" />
-              <SelectItem value="Skills" />
+              <StyledLabel>Work</StyledLabel>
+              <StyledSeparator />
+              <SelectItem
+                value="HistoryOfComputing"
+                label="History of Computing"
+              />
+              <StyledLabel>Skills</StyledLabel>
+              <StyledSeparator />
               <SelectItem value="Frameworks" />
               <SelectItem value="Languages" />
             </SelectPrimitive.Group>

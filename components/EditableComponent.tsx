@@ -12,9 +12,10 @@ interface EditableComponentProps extends React.HTMLAttributes<HTMLElement> {
   callableFunctions?: callableFunction[];
   checkableFunctions?: checkableFunction[];
   children: React.ReactNode;
-  tooltip?: string;
   designSystem?: string; // TODO: add type later
   source?: string;
+  tooltip?: string;
+  toolTipColor?: string;
   tooltipOffset?: number;
 }
 
@@ -26,6 +27,7 @@ function EditableComponent({
   tooltip,
   designSystem,
   source,
+  toolTipColor,
   tooltipOffset,
 }: EditableComponentProps) {
   const [open, setOpen] = useState(false);
@@ -76,7 +78,11 @@ function EditableComponent({
         }}
       >
         {tooltip && (
-          <Tooltip sideOffset={tooltipOffset} trigger={tooltip}>
+          <Tooltip
+            toolTipColor={toolTipColor}
+            sideOffset={tooltipOffset}
+            trigger={tooltip}
+          >
             {children}
           </Tooltip>
         )}

@@ -16,7 +16,7 @@ export default function Home() {
         <EditableText
           defaultFontSize="24px"
           defaultFontWeight="bolder"
-          defaultText="Hover over an element to start changing the site"
+          defaultText="Right click an element to start changing the site"
           defaultColor="$mint11"
         />
         <Navigation defaultValue="Bio" />

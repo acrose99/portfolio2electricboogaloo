@@ -2,30 +2,36 @@ import { sageA } from "@radix-ui/colors";
 import { keyframes } from "@stitches/react";
 import { styled } from "../../stitches.config";
 import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
-import { Cross2Icon, RowSpacingIcon } from "@radix-ui/react-icons";
+import { ArrowDownIcon, ArrowUpIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 import Flex from "../Flex";
 import { StyledText } from "../Text";
 import ContextMenu from "./ContextMenu";
 import EditableComponent from "../EditableComponent";
 import EditableText from "../editableComponents/EditableText";
-const open = keyframes({
-  from: { height: 0 },
-  to: { height: "var(--radix-collapsible-content-height)" },
-});
 
-const close = keyframes({
-  from: { height: "var(--radix-collapsible-content-height)" },
-  to: { height: 0 },
-});
 
 export const StyledCollapsible = styled(CollapsiblePrimitive.Root, {
-  width: 400,
-  transition: "background-color 0.2s ease-in-out",
   paddingY: 10,
   paddingX: 46,
   marginY: 36,
   borderRadius: 12,
+  variants: {
+    width: {
+      sm: {
+        width: 300,
+      },
+      md: {
+        width: 400,
+      },
+      lg: {
+        width: 500,
+      },
+      xl: {
+        width: 600,
+      },
+   }
+  },
 });
 
 export const CollapsibleTrigger = styled(CollapsiblePrimitive.Trigger, {
@@ -34,20 +40,6 @@ export const CollapsibleTrigger = styled(CollapsiblePrimitive.Trigger, {
 
 export const CollapsibleContent = styled(CollapsiblePrimitive.Content, {
   overflow: "hidden",
-  variants: {
-    animated: {
-      true: {
-        "@media (prefers-reduced-motion: no-preference)": {
-          '&[data-state="open"]': {
-            animation: `${open} 300ms ease-out forwards`,
-          },
-          '&[data-state="closed"]': {
-            animation: `${close} 300ms ease-out forwards`,
-          },
-        },
-      },
-    },
-  },
 });
 
 export const IconButton = styled("button", {
@@ -61,8 +53,14 @@ export const IconButton = styled("button", {
   justifyContent: "center",
   color: "$mint11",
   boxShadow: `0 2px 10px $sagea7`,
-  '&[data-state="closed"]': { backgroundColor: "white"},
-  '&[data-state="open"]': { backgroundColor: "$mint3" },
+  '&[data-state="open"]': {
+    backgroundColor: "$mint3",
+    transform: "rotate(180deg) !important",
+  },
+  '&[data-state="closed"]': { 
+    backgroundColor: "white"
+  },
+  transition: "transform 300ms cubic-bezier(0.87, 0, 0.13, 1)",
   "&:hover": { backgroundColor: "$mint5" },
   "&:focus": { boxShadow: `0 0 0 2px black` },
 });
@@ -88,7 +86,7 @@ export default function Collapsible({
       // Prevents overlap between EditableText and Collapsible
       tooltip={open ? null : "Right click to edit Collapsible"}
       source="components/primitives/Collapsible.tsx"
-      designSystem="collapsible"
+      // designSystem="collapsible"
       callableFunctions={[
         {
           label: "Reset Props",
@@ -99,7 +97,7 @@ export default function Collapsible({
             setOpen(false);
           },
           toastLabel: "Reset Collapsible Props",
-        }
+        },
       ]}
       changableProps={[
         {
@@ -114,7 +112,14 @@ export default function Collapsible({
         },
       ]}
     >
-      <StyledCollapsible open={open} onOpenChange={setOpen}>
+      <StyledCollapsible 
+      width={{
+        "@initial": "sm",
+        "@md": "md",
+        "@lg": "lg",
+        "@xl": "xl",
+      }}
+      open={open} onOpenChange={setOpen}>
         <Flex alignItems="center" justifyContent="space-between">
           <Flex direction="column">
             <StyledText
@@ -129,24 +134,22 @@ export default function Collapsible({
           </Flex>
           <CollapsibleTrigger asChild>
             <IconButton>
-              {open ? <Cross2Icon /> : <RowSpacingIcon />}
+             <ArrowUpIcon /> 
             </IconButton>
           </CollapsibleTrigger>
         </Flex>
-        <CollapsibleContent css={{
-          textAlign: "center",
-        }} animated={animated}>
+        <CollapsibleContent
+          css={{
+            textAlign: "center",
+          }}
+        >
           <>
             <EditableText
-              // css={{
-              //   color: "$mint10",
-              //   fontWeight: "lighter",
-              // }}
-              // fontSize="xl"
               defaultText={captionValue}
               defaultColor="$mint10"
               defaultFontWeight="lighter"
-              defaultFontSize="24px"/>
+              defaultFontSize="18px"
+            />
             {children}
           </>
         </CollapsibleContent>

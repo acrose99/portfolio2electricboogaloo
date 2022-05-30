@@ -16,13 +16,13 @@ function Navbar({}: NavbarProps) {
   return (
     <EditableComponent
       source="components/Navbar.tsx"
-      tooltip="Right click to edit the Navbar"
+      tooltip="Edit the Navbar"
       callableFunctions={[
         {
           label: "Reset Props",
           icon: "ResetIcon",
           onClick: () => {
-            setHeight("5vh");
+            setHeight("10vh");
             setBorderBottom(`2px solid ${sage.sage7}`);
             setJustifyContent("space-between");
           },

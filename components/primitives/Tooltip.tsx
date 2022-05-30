@@ -28,6 +28,7 @@ const StyledTrigger = styled(TooltipPrimitive.Trigger, {
   backgroundColor: "transparent",
   border: "none",
   padding: "1rem",
+  cursor: "context-menu",
   "&:hover": {
     backgroundColor: "$mint3",
   },
@@ -78,6 +79,7 @@ interface TooltipProps {
   align?: "start" | "center" | "end";
   alignOffset?: number;
   triggerAsChild?: boolean;
+  toolTipColor?: string;
 }
 
 function Tooltip({
@@ -93,6 +95,7 @@ function Tooltip({
   align = "center",
   alignOffset = 0,
   triggerAsChild = true,
+  toolTipColor = "mint3",
 }: TooltipProps) {
   return (
     <TooltipPrimitive.Provider
@@ -104,7 +107,16 @@ function Tooltip({
         open={open ? true : undefined}
         onOpenChange={onOpenChange ? (open) => onOpenChange(open) : undefined}
       >
-        <StyledTrigger asChild={triggerAsChild}>{children}</StyledTrigger>
+        <StyledTrigger
+          css={{
+            "&:hover": {
+              backgroundColor: toolTipColor,
+            },
+          }}
+          asChild={triggerAsChild}
+        >
+          {children}
+        </StyledTrigger>
         <TooltipPrimitive.Content
           side={side}
           sideOffset={sideOffset}

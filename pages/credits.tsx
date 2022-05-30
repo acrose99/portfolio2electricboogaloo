@@ -129,11 +129,7 @@ function Credits() {
           </StyledText>
           <ul>
             <StyledLi>
-              <a
-                target="_blank"
-                rel="noreferrer"
-                href="https://twitter.com/rasmusandersson"
-              >
+              <a target="_blank" rel="noreferrer" href="https://rsms.me/">
                 Rasmus Andersson
               </a>{" "}
               for the Inter font family

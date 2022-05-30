@@ -4,9 +4,22 @@ import EditableComponent from "./EditableComponent";
 import { useState } from "react";
 import { styled } from "../stitches.config";
 import Link from "next/link";
+const StyledFooter = styled("footer", {
+  variants: {
+    flexDirection: {
+      column: {
+        flexDirection: "column",
+      },
+      row: {
+        flexDirection: "row",
+        paddingRight: "10rem",
+      },
+    },
+  },
+});
 
 function Footer() {
-  const [height, setHeight] = useState("10vh");
+  const [verticalPadding, setVerticalPadding] = useState("2vh");
   const [borderTop, setBorderTop] = useState(`2px solid ${sage.sage7}`);
   const [justifyContent, setJustifyContent] = useState("space-between");
   return (
@@ -14,9 +27,9 @@ function Footer() {
       tooltip="Right click to edit the footer"
       changableProps={[
         {
-          label: "Height",
-          value: height,
-          onChange: (value) => setHeight(value),
+          label: "Vertical Padding",
+          value: verticalPadding,
+          onChange: (value) => setVerticalPadding(value),
         },
         {
           label: "Border Top",
@@ -35,20 +48,27 @@ function Footer() {
           toastLabel: "Reset Footer Props",
           icon: "ResetIcon",
           onClick: () => {
-            setHeight("10vh");
+            setVerticalPadding("10vh");
             setBorderTop(`2px solid ${sage.sage7}`);
             setJustifyContent("space-between");
           },
         },
       ]}
     >
-      <footer
+      <StyledFooter
+        flexDirection={{
+          "@initial": "column",
+          "@md": "row",
+        }}
+        css={{
+          paddingY: verticalPadding,
+        }}
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: justifyContent,
           borderTop: borderTop,
-          height: typeof height === "string" ? height : `${height}px`,
+          height: "100%",
           position: "relative",
           zIndex: 10,
         }}
@@ -60,20 +80,9 @@ function Footer() {
               textDecoration: "none",
               color: "inherit",
             }}
-            href=""
+            href="https://github.com/acrose99"
           >
             Github
-          </a>
-        </EditableText>
-        <EditableText>
-          <a
-            style={{
-              textDecoration: "none",
-              color: "inherit",
-            }}
-            href=""
-          >
-            Design System
           </a>
         </EditableText>
         <EditableText>
@@ -88,7 +97,7 @@ function Footer() {
             </a>
           </Link>
         </EditableText>
-      </footer>
+      </StyledFooter>
     </EditableComponent>
   );
 }

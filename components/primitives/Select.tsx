@@ -103,11 +103,14 @@ export const StyledScrollDownButton = styled(
   SelectPrimitive.ScrollDownButton,
   scrollButtonStyles
 );
-
-export function SelectItem({ value }) {
+interface SelectItemProps {
+  value: string;
+  label?: string;
+}
+export function SelectItem({ value, label }: SelectItemProps) {
   return (
     <StyledItem value={value}>
-      <SelectPrimitive.ItemText>{value}</SelectPrimitive.ItemText>
+      <SelectPrimitive.ItemText>{label ? label : value}</SelectPrimitive.ItemText>
       <StyledItemIndicator>
         <CheckIcon />
       </StyledItemIndicator>

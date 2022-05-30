@@ -41,7 +41,8 @@ function BioSlider({ length, setLength }: BioSliderProps) {
   }, [length]);
   return (
     <EditableComponent
-      tooltip="Right Click"
+      source="components/bio/BioSlider.tsx"
+      tooltip="Edit Slider"
       changableProps={[
         {
           label: "Thumb Color",
@@ -68,8 +69,6 @@ function BioSlider({ length, setLength }: BioSliderProps) {
         {
           label: "Reset Props",
           onClick: () => {
-            setLength(0);
-            setLengthLabel("Concise");
             setTrackColor("$sage12");
             setThumbColor("$mint5");
             setActiveThumbColor("$mint10");
@@ -77,7 +76,7 @@ function BioSlider({ length, setLength }: BioSliderProps) {
             setDisabled(false);
           },
           icon: "ResetIcon",
-          toastLabel: "Reset Slider",
+          toastLabel: "Reset Slider Props",
         },
       ]}
       checkableFunctions={[

@@ -9,25 +9,27 @@ interface EditableTextProps {
   defaultColor?: string;
   defaultFontSize?: string;
   defaultFontWeight?: string;
+  defaultLineHeight?: string;
 }
 
 function EditableText({
   children,
   defaultText,
   defaultColor = "$sage12",
-  defaultFontSize = "16px",
+  defaultFontSize = "14px",
   defaultFontWeight = "400",
+  defaultLineHeight = "150%",
 }: EditableTextProps) {
   const [text, setText] = useState(defaultText);
   const [color, setColor] = useState(defaultColor);
   const [fontSize, setFontSize] = useState(defaultFontSize);
   const [fontWeight, setFontWeight] = useState(defaultFontWeight);
   const [fontStyle, setFontStyle] = useState("normal");
-  const [lineHeight, setLineHeight] = useState("24px");
+  const [lineHeight, setLineHeight] = useState(defaultLineHeight);
   return (
     <EditableComponent
-      designSystem="Text"
-      source="components/primitives/EditableText.tsx"
+      // designSystem="Text"
+      source="components/editableComponents/EditableText.tsx"
       callableFunctions={[
         {
           icon: "CopyIcon",
@@ -97,7 +99,7 @@ function EditableText({
         },
       ]}
     >
-      <Tooltip sideOffset={10} triggerAsChild={false} trigger="Right Click to edit Text">
+      <Tooltip sideOffset={10} triggerAsChild={false} trigger="Edit Text">
         {children && (
           <Text
             lineHeight={lineHeight}

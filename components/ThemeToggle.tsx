@@ -24,7 +24,19 @@ export const ThemeToggle = () => {
   const Icon = resolvedTheme === "dark" ? MoonIcon : SunIcon;
   return (
     <EditableComponent
+      source="components/ThemeToggle.tsx"
       tooltip="Edit Theme Toggle"
+      callableFunctions={[
+        {
+          "label": "Reset Props",
+          "icon": "ResetIcon",
+          "onClick": () => {
+            setSize("24px");
+            setColor('$sage12');
+          },
+          "toastLabel": "Reset Theme Toggle",
+        }
+      ]}
       changableProps={[
         {
           label: "Color",

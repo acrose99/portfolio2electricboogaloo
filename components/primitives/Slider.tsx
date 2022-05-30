@@ -30,7 +30,6 @@ export const StyledTrack = styled(SliderPrimitive.Track, {
   position: "relative",
   flexGrow: 1,
   borderRadius: "9999px",
-
   '&[data-orientation="horizontal"]': { height: 3 },
   '&[data-orientation="vertical"]': { width: 3 },
 });
@@ -45,9 +44,10 @@ export const StyledRange = styled(SliderPrimitive.Range, {
 export const StyledThumb = styled(SliderPrimitive.Thumb, {
   all: "unset",
   display: "block",
+  cursor: "default",
   width: 20,
   height: 20,
-  backgroundColor: '$mint9',
+  backgroundColor: "$mint9",
   boxShadow: `0 2px 10px ${sage.sage7}`,
   [`.${darkTheme} &`]: {
     boxShadow: `none`,
@@ -55,7 +55,7 @@ export const StyledThumb = styled(SliderPrimitive.Thumb, {
   borderRadius: 10,
   transition: "background-color 0.2s ease-in-out",
   "&:hover": {
-    backgroundColor: '$mint10',
+    backgroundColor: "$mint10",
   },
   "&:focus": { boxShadow: `0 0 0 5px $sage8}` },
 });
