@@ -31,6 +31,7 @@ function Flex({
   justifyContent = "flex-start",
   alignItems = "flex-start",
   gap = 0,
+  ...props
 }: flexProps) {
   return (
     <StyledDiv
@@ -43,6 +44,7 @@ function Flex({
         justifyContent: justifyContent,
         alignItems: alignItems,
         gap: gap,
+        ...props
       }}
     >
       {children}

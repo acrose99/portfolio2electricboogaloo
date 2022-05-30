@@ -7,8 +7,10 @@ import {
   sageA,
   sageDark,
   sky,
+  skyDark,
   skyA,
   violet,
+  violetDark,
   violetA,
 } from '@radix-ui/colors';
 export const {
@@ -62,8 +64,24 @@ export const {
       '8xl': '84px',
       '9xl': '96px',
     },
+    lineHeights: {
+      'xs': '160%',
+      'sm': '150%',
+      'md': '150%',
+      'lg': '150%',
+      'xl': '150%',
+      '2xl': '150%',
+      '3xl': '110%',
+      '4xl': '110%',
+      '5xl': '110%',
+      '6xl': '110%',
+      '7xl': '110%',
+      '8xl': '110%',
+      '9xl': '110%',
+    },
     fonts: {
       system: 'system-ui',
+      robotoMono: 'Roboto Mono, monospace',
       inter: 'Inter, sans-serif',
     },
   },
@@ -93,9 +111,11 @@ export const {
   },
 })
 
-const darkTheme = createTheme({
+export const darkTheme = createTheme('dark-theme', {
   colors: {
     ...mintDark,
     ...sageDark,
+    ...skyDark,
+    ...violetDark,
   },
 });

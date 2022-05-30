@@ -13,13 +13,17 @@ const StyledInput = styled("input", {
   fontSize: 13,
   lineHeight: 1,
   color: "$mint11",
+  "&::selection": {
+    backgroundColor: "$mint3",
+    color: "$sage12",
+  },
+
   boxShadow: `0 0 0 1px ${mint.mint7}`,
   height: 25,
 
   "&:focus": { boxShadow: `0 0 0 2px ${mint.mint8}` },
 });
 
- 
 function Input(props: React.InputHTMLAttributes<HTMLInputElement>) {
   return <StyledInput {...props} />;
 }

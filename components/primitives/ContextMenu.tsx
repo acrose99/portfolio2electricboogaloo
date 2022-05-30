@@ -57,7 +57,7 @@ const itemStyles = {
 
 const ContextMenuItem = styled(ContextMenuPrimitive.Item, { ...itemStyles });
 const ContextMenuCheckboxItem = styled(ContextMenuPrimitive.CheckboxItem, {
-  paddingLeft: 0,
+  paddingLeft: '10px !important',
   ...itemStyles,
 });
 const ContextMenuRadioItem = styled(ContextMenuPrimitive.RadioItem, {
@@ -74,7 +74,7 @@ const ContextMenuTriggerItem = styled(ContextMenuPrimitive.TriggerItem, {
 
 const ContextMenuItemIndicator = styled(ContextMenuPrimitive.Label, {
   paddingLeft: 0,
-  paddingRight: 12,
+  marginRight: 12,
   fontSize: 12,
   lineHeight: "25px",
   color: "$sage11",
@@ -180,16 +180,20 @@ function ContextMenu({
           checkableFunctions.map((prop, index) => (
             <ContextMenuCheckboxItem
               key={index}
-              checked={prop.checked || false}
-              onCheckedChange={prop.onClick}
+              onCheckedChange={() => prop.onClick()}
+              checked={prop.checked}
             >
               <ContextMenuItemIndicator>
-                <CheckIcon />
+                <CheckIcon
+                  style={{
+                    display: prop.checked ? "inline" : "none",
+                  }}
+                />
               </ContextMenuItemIndicator>
               {prop.label}
             </ContextMenuCheckboxItem>
           ))}
-        <ContextMenuSeparator />
+        {designSystem || source ? <ContextMenuSeparator /> : null}
         {designSystem && (
           <ContextMenuPropItem icon="ComponentInstanceIcon">
             <Link href={"/design/" + designSystem}>View Component Design</Link>
@@ -197,9 +201,17 @@ function ContextMenu({
         )}
         {source && (
           <ContextMenuPropItem icon="GitHubLogoIcon">
-            <a style={{
-              color: "inherit",
-            }} href={source} rel="noreferrer" target="_blank">
+            <a
+              style={{
+                color: "inherit",
+              }}
+              href={
+                "https://github.com/acrose99/portfolio2electricboogaloo/tree/main/" +
+                source
+              }
+              rel="noreferrer"
+              target="_blank"
+            >
               Go to Source
             </a>
           </ContextMenuPropItem>

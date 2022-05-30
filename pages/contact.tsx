@@ -4,7 +4,7 @@ import StitchesLogo from "../components/StitchesLogo";
 import Navigation from "../components/Navigation";
 import { mint } from "@radix-ui/colors";
 import Bio from "../components/Bio";
-import { Text } from "../components/Text";
+import { StyledText } from "../components/Text";
 const Box = styled("div", {
   backgroundColor: "$mint1",
   display: "flex",
@@ -48,15 +48,15 @@ export default function Contact() {
             maxWidth: "60%",
           }}
         >
-          <Text>
+          <StyledText>
             I am always open to new opportunities. Contact me if you think I may
             be a good fit for your team. Additionally, if you are interested in
             the digital humanities, I would really love to work with you on a
             project. Please reach out!
-          </Text>
-          <Text>
+          </StyledText>
+          <StyledText>
             <a href="mailto:acrosmail@gmail.com">Shoot me an email</a>
-          </Text>
+          </StyledText>
         </section>
       </Container>
     </Box>

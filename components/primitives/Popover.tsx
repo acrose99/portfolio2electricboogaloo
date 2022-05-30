@@ -3,7 +3,7 @@ import { styled } from "../../stitches.config";
 import { keyframes } from "@stitches/react";
 import { MixerHorizontalIcon, Cross2Icon } from "@radix-ui/react-icons";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
-import { Text } from "../Text";
+import { StyledText } from "../Text";
 import Label from "./Label";
 import Input from "../Input";
 import Flex from "../Flex";
@@ -33,7 +33,7 @@ const StyledContent = styled(PopoverPrimitive.Content, {
   borderRadius: 4,
   padding: 20,
   minWidth: 260,
-  backgroundColor: "white",
+  backgroundColor: "$sage1",
   boxShadow:
     "hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px",
   "@media (prefers-reduced-motion: no-preference)": {
@@ -125,8 +125,6 @@ interface PopoverProps {
   callableFunctions?: callableFunction[];
 }
 
-
-
 function Popover({
   children,
   defaultOpen,
@@ -157,25 +155,27 @@ function Popover({
         align={align ? align : "start"}
         alignOffset={alignOffset ? alignOffset : 0}
       >
-        <Text
+        <StyledText
           css={{
             fontWeight: "bold",
           }}
           fontSize={"md"}
         >
           Props:
-        </Text>
+        </StyledText>
         <Flex direction="column" gap={10}>
           {changeableProps &&
             changeableProps.map((prop, index) => (
               <Fieldset key={index}>
                 <Label>{prop.label}</Label>
-                <Input
-                  value={prop.value}
-                  type={getInputType(typeof prop.value, prop.value)}
-                  placeholder={prop.placeholder ? prop.placeholder : ""}
-                  onChange={(e) => prop.onChange(e.target.value)}
-                />
+                {prop && (
+                  <Input
+                    value={prop.value}
+                    type={getInputType(typeof prop.value, prop.value)}
+                    placeholder={prop.placeholder ? prop.placeholder : ""}
+                    onChange={(e) => prop.onChange(e.target.value)}
+                  />
+                )}
               </Fieldset>
             ))}
           <StyledSeparator />

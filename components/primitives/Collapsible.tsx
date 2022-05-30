@@ -5,8 +5,10 @@ import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
 import { Cross2Icon, RowSpacingIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 import Flex from "../Flex";
-import { Text } from "../Text";
+import { StyledText } from "../Text";
 import ContextMenu from "./ContextMenu";
+import EditableComponent from "../EditableComponent";
+import EditableText from "../editableComponents/EditableText";
 const open = keyframes({
   from: { height: 0 },
   to: { height: "var(--radix-collapsible-content-height)" },
@@ -19,8 +21,6 @@ const close = keyframes({
 
 export const StyledCollapsible = styled(CollapsiblePrimitive.Root, {
   width: 400,
-  backgroundColor: "$sage3",
-  "&:hover": { backgroundColor: "$sage4" },
   transition: "background-color 0.2s ease-in-out",
   paddingY: 10,
   paddingX: 46,
@@ -60,10 +60,10 @@ export const IconButton = styled("button", {
   alignItems: "center",
   justifyContent: "center",
   color: "$mint11",
-  boxShadow: `0 2px 10px ${sageA.sageA7}`,
-  '&[data-state="closed"]': { backgroundColor: "white" },
+  boxShadow: `0 2px 10px $sagea7`,
+  '&[data-state="closed"]': { backgroundColor: "white"},
   '&[data-state="open"]': { backgroundColor: "$mint3" },
-  "&:hover": { backgroundColor: "$mint3" },
+  "&:hover": { backgroundColor: "$mint5" },
   "&:focus": { boxShadow: `0 0 0 2px black` },
 });
 
@@ -81,30 +81,51 @@ export default function Collapsible({
   animated = true,
 }: CollapsibleProps) {
   const [open, setOpen] = useState(false);
+  const [triggerValue, setTriggerValue] = useState(trigger);
+  const [captionValue, setCaptionValue] = useState(caption);
   return (
-    <ContextMenu changableProps={[]}>
+    <EditableComponent
+      // Prevents overlap between EditableText and Collapsible
+      tooltip={open ? null : "Right click to edit Collapsible"}
+      source="components/primitives/Collapsible.tsx"
+      designSystem="collapsible"
+      callableFunctions={[
+        {
+          label: "Reset Props",
+          icon: "ResetIcon",
+          onClick: () => {
+            setTriggerValue(trigger);
+            setCaptionValue(caption);
+            setOpen(false);
+          },
+          toastLabel: "Reset Collapsible Props",
+        }
+      ]}
+      changableProps={[
+        {
+          label: "Change Title",
+          value: triggerValue,
+          onChange: (value) => setTriggerValue(value),
+        },
+        {
+          label: "Change Caption",
+          value: captionValue,
+          onChange: (value) => setCaptionValue(value),
+        },
+      ]}
+    >
       <StyledCollapsible open={open} onOpenChange={setOpen}>
         <Flex alignItems="center" justifyContent="space-between">
           <Flex direction="column">
-            <Text
+            <StyledText
               css={{
-                color: "$sage12",
+                color: "$mint11",
                 fontWeight: 800,
               }}
               fontSize="2xl"
             >
-              {trigger}
-            </Text>
-            {caption && (
-              <Text
-                css={{
-                  color: "$mint12",
-                  fontWeight: "lighter",
-                }}
-              >
-                {caption}
-              </Text>
-            )}
+              {triggerValue}
+            </StyledText>
           </Flex>
           <CollapsibleTrigger asChild>
             <IconButton>
@@ -112,11 +133,24 @@ export default function Collapsible({
             </IconButton>
           </CollapsibleTrigger>
         </Flex>
-
-        <CollapsibleContent animated={animated}>
-          {children}
+        <CollapsibleContent css={{
+          textAlign: "center",
+        }} animated={animated}>
+          <>
+            <EditableText
+              // css={{
+              //   color: "$mint10",
+              //   fontWeight: "lighter",
+              // }}
+              // fontSize="xl"
+              defaultText={captionValue}
+              defaultColor="$mint10"
+              defaultFontWeight="lighter"
+              defaultFontSize="24px"/>
+            {children}
+          </>
         </CollapsibleContent>
       </StyledCollapsible>
-    </ContextMenu>
+    </EditableComponent>
   );
 }

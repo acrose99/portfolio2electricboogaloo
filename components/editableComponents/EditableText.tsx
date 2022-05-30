@@ -1,52 +1,74 @@
 import { useEffect, useState } from "react";
-import { Text } from "../Text";
+import Text from "../Text";
 import EditableComponent from "../EditableComponent";
-import create from "zustand";
+import Tooltip from "../primitives/Tooltip";
 
 interface EditableTextProps {
-  defaultText: string;
+  children?: React.ReactNode;
+  defaultText?: string;
   defaultColor?: string;
   defaultFontSize?: string;
   defaultFontWeight?: string;
 }
 
-
 function EditableText({
+  children,
   defaultText,
-  defaultColor = "$sage11",
-  defaultFontSize = "24",
+  defaultColor = "$sage12",
+  defaultFontSize = "16px",
   defaultFontWeight = "400",
 }: EditableTextProps) {
   const [text, setText] = useState(defaultText);
   const [color, setColor] = useState(defaultColor);
   const [fontSize, setFontSize] = useState(defaultFontSize);
   const [fontWeight, setFontWeight] = useState(defaultFontWeight);
-  useEffect(() => {
-    setText(defaultText);
-    setColor(defaultColor);
-    setFontSize(defaultFontSize);
-    setFontWeight(defaultFontWeight);
-  }
-  , [defaultText, defaultColor, defaultFontSize, defaultFontWeight]);
+  const [fontStyle, setFontStyle] = useState("normal");
+  const [lineHeight, setLineHeight] = useState("24px");
   return (
     <EditableComponent
+      designSystem="Text"
+      source="components/primitives/EditableText.tsx"
       callableFunctions={[
         {
-          label: "Alert",
-          onClick: () => alert("Alert!"),
-        },
-        {
-          label: "Copy",
+          icon: "CopyIcon",
+          label: "Copy Text",
           /* copies the text to the clipboard */
-          onClick: () => navigator.clipboard.writeText(text),
+          onClick: () => {navigator.clipboard.writeText(text)},
+          toastLabel: "Copied to clipboard",
+        },
+        // {
+        //   icon: "PlusIcon",
+        //   label: "Duplicate",
+        //   /* Duplicates the Component in the DOM */
+        //   onClick: () => {
+        //     const newElement = document.createElement("div");
+        //     newElement.innerHTML = text;
+        //     newElement.style.color = color;
+        //     newElement.style.fontSize = fontSize;
+        //     newElement.style.fontWeight = fontWeight;
+        //     document.getElementById("editable-text").appendChild(newElement);
+        //   },
+        // },
+        {
+          label: "Reset Props",
+          /* resets the text to the default */
+          onClick: () => {
+            setText(defaultText);
+            setColor(defaultColor);
+            setFontSize(defaultFontSize);
+            setFontWeight(defaultFontWeight);
+            setFontStyle("normal");
+            setLineHeight("24px");
+          },
+          icon: "ResetIcon",
+          toastLabel: "Reset Props",
         },
       ]}
-      checkableFunctions={[]}
       changableProps={[
-        {
+        !children && {
           label: "Text",
-          value: text,
-          onChange: (value) => setText(value),
+          value: children ? children : text,
+          onChange: (value: string) => setText(value),
         },
         {
           label: "Color",
@@ -63,18 +85,40 @@ function EditableText({
           value: fontWeight,
           onChange: (value) => setFontWeight(value),
         },
+        {
+          label: "Font Style",
+          value: fontStyle,
+          onChange: (value) => setFontStyle(value),
+        },
+        {
+          label: "Line Height",
+          value: lineHeight,
+          onChange: (value) => setLineHeight(value),
+        },
       ]}
-      tooltip="Right Click"
     >
-      <Text
-        css={{
-          color: color,
-          fontWeight: fontWeight,
-          fontSize: fontSize + "px",
-        }}
-      >
-        {text}
-      </Text>
+      <Tooltip sideOffset={10} triggerAsChild={false} trigger="Right Click to edit Text">
+        {children && (
+          <Text
+            lineHeight={lineHeight}
+            fontStyle={fontStyle}
+            fontSize={fontSize}
+            fontWeight={fontWeight}
+            color={color}
+          >
+            {children}
+          </Text>
+        )}
+        <Text
+          lineHeight={lineHeight}
+          fontStyle={fontStyle}
+          fontSize={fontSize}
+          fontWeight={fontWeight}
+          color={color}
+        >
+          {text}
+        </Text>
+      </Tooltip>
     </EditableComponent>
   );
 }

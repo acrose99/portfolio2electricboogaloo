@@ -21,6 +21,7 @@ function BioSlider({ length, setLength }: BioSliderProps) {
   const [thumbColor, setThumbColor] = useState("$mint5");
   const [activeThumbColor, setActiveThumbColor] = useState("$mint10");
   const [rangeColor, setRangeColor] = useState("$mint5");
+  const [disabled, setDisabled] = useState(false);
   useEffect(() => {
     if (length < 25) {
       setLengthLabel("Only the basics");
@@ -63,11 +64,35 @@ function BioSlider({ length, setLength }: BioSliderProps) {
           onChange: (value) => setRangeColor(value),
         },
       ]}
+      callableFunctions={[
+        {
+          label: "Reset Props",
+          onClick: () => {
+            setLength(0);
+            setLengthLabel("Concise");
+            setTrackColor("$sage12");
+            setThumbColor("$mint5");
+            setActiveThumbColor("$mint10");
+            setRangeColor("$mint5");
+            setDisabled(false);
+          },
+          icon: "ResetIcon",
+          toastLabel: "Reset Slider",
+        },
+      ]}
+      checkableFunctions={[
+        {
+          label: "Disable Slider",
+          checked: disabled,
+          onClick: () => setDisabled(!disabled),
+        },
+      ]}
     >
       <form>
         <Flex direction="row" alignItems="center" justifyContent="center">
           <Label>Bio Length: {lengthLabel}</Label>
           <StyledSlider
+            disabled={disabled}
             defaultValue={[length]}
             max={100}
             orientation="horizontal"
@@ -93,7 +118,7 @@ function BioSlider({ length, setLength }: BioSliderProps) {
             <StyledThumb
               css={{
                 backgroundColor: thumbColor,
-                '&:hover': {
+                "&:hover": {
                   backgroundColor: activeThumbColor,
                 },
               }}

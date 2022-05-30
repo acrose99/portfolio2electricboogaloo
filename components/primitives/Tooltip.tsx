@@ -25,9 +25,11 @@ const slideLeftAndFade = keyframes({
 });
 
 const StyledTrigger = styled(TooltipPrimitive.Trigger, {
+  backgroundColor: "transparent",
+  border: "none",
   padding: "1rem",
   "&:hover": {
-    backgroundColor: "$mint2",
+    backgroundColor: "$mint3",
   },
 });
 
@@ -75,6 +77,7 @@ interface TooltipProps {
   /* The preferred alignment against the trigger. May change when collisions occur. */
   align?: "start" | "center" | "end";
   alignOffset?: number;
+  triggerAsChild?: boolean;
 }
 
 function Tooltip({
@@ -89,6 +92,7 @@ function Tooltip({
   sideOffset = 0,
   align = "center",
   alignOffset = 0,
+  triggerAsChild = true,
 }: TooltipProps) {
   return (
     <TooltipPrimitive.Provider
@@ -100,7 +104,7 @@ function Tooltip({
         open={open ? true : undefined}
         onOpenChange={onOpenChange ? (open) => onOpenChange(open) : undefined}
       >
-        <StyledTrigger asChild>{children}</StyledTrigger>
+        <StyledTrigger asChild={triggerAsChild}>{children}</StyledTrigger>
         <TooltipPrimitive.Content
           side={side}
           sideOffset={sideOffset}

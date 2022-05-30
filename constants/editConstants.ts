@@ -10,10 +10,12 @@ export type callableFunction = {
   label: string;
   onClick: () => void;
   icon?: string;
-}
+  toastLabel: string;
+};
+
 
 export type checkableFunction = {
   label: string;
   onClick: () => void;
-  checked?: boolean;
-}
+  checked: boolean;
+};

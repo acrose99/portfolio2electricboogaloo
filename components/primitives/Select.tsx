@@ -1,5 +1,5 @@
 import React from "react";
-import { styled } from "../../stitches.config";
+import { darkTheme, styled } from "../../stitches.config";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { mint, sage } from "@radix-ui/colors";
 import { CheckIcon } from "@radix-ui/react-icons";
@@ -11,21 +11,24 @@ export const StyledTrigger = styled(SelectPrimitive.SelectTrigger, {
   alignItems: "center",
   justifyContent: "center",
   borderRadius: 4,
-  padding: "0 15px",
+  padding: "10px 15px",
   fontSize: 13,
   lineHeight: 1,
-  height: 35,
+  height: '100%',
   gap: 5,
   backgroundColor: "$mint5",
   color: "$sage12",
   boxShadow: `0 2px 10px ${mint.mint7}`,
-  "&:hover": { backgroundColor: mint.mint3 },
+  [`.${darkTheme} &`]: {
+    boxShadow: `none`,
+  },
+  "&:hover": { backgroundColor: "$mint3" },
   "&:focus": { boxShadow: `0 0 0 2px black` },
 });
 
 export const StyledContent = styled(SelectPrimitive.Content, {
   overflow: "hidden",
-  backgroundColor: "white",
+  backgroundColor: "$sage1",
   borderRadius: 6,
   boxShadow:
     "0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)",
@@ -54,8 +57,8 @@ export const StyledItem = styled(SelectPrimitive.Item, {
   },
 
   "&:focus": {
-    backgroundColor: mint.mint8,
-    color: mint.mint1,
+    backgroundColor: '$mint8',
+    color: "$mint1",
   },
 });
 
@@ -63,12 +66,12 @@ export const StyledLabel = styled(SelectPrimitive.Label, {
   padding: "0 25px",
   fontSize: 16,
   lineHeight: "25px",
-  color: sage.sage12,
+  color: "$sage12",
 });
 
 export const StyledSeparator = styled(SelectPrimitive.Separator, {
   height: 1,
-  backgroundColor: mint.mint6,
+  backgroundColor: "$mint6",
   margin: 5,
 });
 
@@ -87,7 +90,7 @@ export const scrollButtonStyles = {
   justifyContent: "center",
   height: 25,
   backgroundColor: "white",
-  color: mint.mint11,
+  color: "$mint11",
   cursor: "default",
 };
 
