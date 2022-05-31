@@ -17,6 +17,7 @@ const StyledLink = styled("a", {
   alignItems: "center",
   justifyContent: "center",
   width: "min-content",
+  padding: "10px",
   "&::after": {
     content: "",
     position: "absolute",

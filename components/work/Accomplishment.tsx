@@ -5,19 +5,21 @@ import EditableText from "../editableComponents/EditableText";
 
 interface AccomplishmentProps {
   defaultAccomplishment: string;
-    index: number;
+  index: number;
 }
 
-const StyledAccomplishment = styled("li", {
+const StyledAccomplishment = styled("p", {
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
   color: "$sage12",
   fontSize: "14px",
   lineHeight: "150%",
-  marginX: 10,
 });
 
 const StyledAccomplishmentIndex = styled("span", {
-    color: "$mint11",
-    marginRight: "0.5rem",
+  color: "$mint11",
+  marginRight: "0.5rem",
 });
 
 function Tag({ defaultAccomplishment, index }: AccomplishmentProps) {

@@ -6,8 +6,7 @@ interface TagProps {
     defaultTag: string;
 }
  
-const StyledTag = styled("li", {
-  display: "inline-block",
+const StyledTag = styled("p", {
   padding: "0.2rem 0.5rem",
   borderRadius: "0.25rem",
   backgroundColor: "$sage5",
@@ -24,53 +23,55 @@ function Tag({ defaultTag }: TagProps) {
   const [fontSize, setFontSize] = useState("14px");
   const [backgroundColor, setBackgroundColor] = useState("$sage5");
   return (
-    <EditableComponent 
-    tooltipOffset={10}
-    tooltip="Edit Tag"
-    source="component/work/tag.tsx"
-    callableFunctions={[
+    <EditableComponent
+      tooltipOffset={10}
+      tooltip="Edit Tag"
+      source="components/work/Tag.tsx"
+      callableFunctions={[
         {
-            label: "Reset Props",
-            icon: "ResetIcon",
-            onClick: () => {
-                setTag(defaultTag);
-                setColor("$mint11");
-                setFontSize("14px");
-                setBackgroundColor("$sage5");
-            },
-            toastLabel: "Reset Tag",
-        }
-    ]}
-        changableProps={[
-            {
-                label: "tag",
-                value: tag,
-                onChange: (value: string) => setTag(value),
-            },
-            {
-                label: "color",
-                value: color,
-                onChange: (value: string) => setColor(value),
-            },
-            {
-                label: "fontSize",
-                value: fontSize,
-                onChange: (value: string) => setFontSize(value),
-            },
-            {
-                label: "backgroundColor",
-                value: backgroundColor,
-                onChange: (value: string) => setBackgroundColor(value),
-            }
-        ]}
-        >
-      <StyledTag 
-      css={{
-        color: color,
-        fontSize: fontSize,
-        backgroundColor: backgroundColor,
-      }}
-      >{tag}</StyledTag>
+          label: "Reset Props",
+          icon: "ResetIcon",
+          onClick: () => {
+            setTag(defaultTag);
+            setColor("$mint11");
+            setFontSize("14px");
+            setBackgroundColor("$sage5");
+          },
+          toastLabel: "Reset Tag",
+        },
+      ]}
+      changableProps={[
+        {
+          label: "tag",
+          value: tag,
+          onChange: (value: string) => setTag(value),
+        },
+        {
+          label: "color",
+          value: color,
+          onChange: (value: string) => setColor(value),
+        },
+        {
+          label: "fontSize",
+          value: fontSize,
+          onChange: (value: string) => setFontSize(value),
+        },
+        {
+          label: "backgroundColor",
+          value: backgroundColor,
+          onChange: (value: string) => setBackgroundColor(value),
+        },
+      ]}
+    >
+      <StyledTag
+        css={{
+          color: color,
+          fontSize: fontSize,
+          backgroundColor: backgroundColor,
+        }}
+      >
+        {tag}
+      </StyledTag>
     </EditableComponent>
   );
 }

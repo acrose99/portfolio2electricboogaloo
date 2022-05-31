@@ -6,11 +6,9 @@ interface StackProps {
   stack: string[];
 }
 
-const Tags = styled("ul", {
+const Tags = styled("div", {
   display: "flex",
-  listStyle: "none",
-  padding: 0,
-  width: "100%",
+  flexWrap: "wrap",
   justifyContent: "center",
   alignItems: "center",
 });

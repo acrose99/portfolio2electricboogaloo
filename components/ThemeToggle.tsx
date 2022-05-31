@@ -53,6 +53,7 @@ export const ThemeToggle = () => {
       <div
         aria-label="toggle a light and dark color scheme"
         style={{
+          cursor: "default",
           paddingTop: "1rem",
           paddingRight: "1rem",
         }}

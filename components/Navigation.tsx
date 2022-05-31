@@ -101,6 +101,15 @@ function Navigation({ defaultValue }: NavigationProps) {
                 value="HistoryOfComputing"
                 label="History of Computing"
               />
+              <SelectItem
+                value="BlackPantherNarratives"
+                label="Black Panther Narratives"
+              />
+              <SelectItem
+                value="DontPanic"
+                label="Don't Panic"
+              />
+              <SelectItem value="threeJSSnippets" label="ThreeJS Snippets" />
               <StyledLabel>Skills</StyledLabel>
               <StyledSeparator />
               <SelectItem value="Frameworks" />

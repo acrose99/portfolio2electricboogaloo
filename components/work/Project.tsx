@@ -19,6 +19,7 @@ interface ProjectProps {
   stack: string[];
   accomplishments: string[];
   preview: React.ReactNode;
+  link?: string;
 }
 
 const StyledProject = styled("section", {
@@ -54,6 +55,7 @@ function Project({
   stack,
   accomplishments,
   preview,
+  link,
 }: ProjectProps) {
   return (
     <StyledProject
@@ -91,14 +93,12 @@ function Project({
           {
             label: "Accomplishments",
             value: "Accomplishments",
-            content: (
-              <Accomplishments accomplishments={accomplishments} />
-            ),
+            content: <Accomplishments accomplishments={accomplishments} />,
           },
         ]}
       />
       <Stack stack={stack} />
-      <LinkCom href="https://www.google.com" />
+      {link && <LinkCom href={link} />}
     </StyledProject>
   );
 }
