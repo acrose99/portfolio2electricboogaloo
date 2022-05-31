@@ -89,7 +89,7 @@ export const scrollButtonStyles = {
   alignItems: "center",
   justifyContent: "center",
   height: 25,
-  backgroundColor: "white",
+  backgroundColor: "$sage1",
   color: "$mint11",
   cursor: "default",
 };
