@@ -15,13 +15,11 @@ const Container = styled("main", {
   display: "flex",
   flexDirection: "column",
   maxWidth: "100vw",
-  backgroundImage: `
-              radial-gradient(circle 800px at 700px 200px, $violet1, $$transparent),
-              radial-gradient(circle 600px at calc(100% - 300px) 300px, $mintA3, $$transparent),
-              radial-gradient(circle 800px at right center, $sky3, $$transparent),
-              radial-gradient(circle 800px at right bottom, $sky1, $$transparent),
-              radial-gradient(circle 800px at calc(50% - 600px) calc(100% - 100px), $mint2, $sky3, $$transparent)
-            `,
+  backgroundImage: `linear-gradient(to right, $sky1, $$transparent), 
+                    linear-gradient(to top right, $mintA5, $$transparent),
+                    linear-gradient(to top left, $sky2, $$transparent),
+                    linear-gradient(to bottom left, $sky3, $$transparent),
+                    linear-gradient(to top right, $mint1, $sky1, $$transparent)`,
   backgroundSize: "cover",
   // Safari transparency bug workaround
   $$transparent: "#FDFCFD00",
