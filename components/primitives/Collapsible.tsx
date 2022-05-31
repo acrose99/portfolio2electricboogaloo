@@ -84,7 +84,7 @@ export default function Collapsible({
   return (
     <EditableComponent
       // Prevents overlap between EditableText and Collapsible
-      tooltip={open ? null : "Right click to edit Collapsible"}
+      tooltip={open ? null : "Edit Collapsible"}
       source="components/primitives/Collapsible.tsx"
       // designSystem="collapsible"
       callableFunctions={[
