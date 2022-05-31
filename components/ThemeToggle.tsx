@@ -4,11 +4,18 @@ import { useTheme } from "next-themes";
 import { SunIcon, MoonIcon, LaptopIcon } from "@radix-ui/react-icons";
 import EditableComponent from "./EditableComponent";
 import { sage } from "@radix-ui/colors";
+
+const IconButton = styled("button", {
+  border: "none",
+  background: "transparent",
+  outline: "none",
+});
+
 export const ThemeToggle = () => {
   const [mounted, setMounted] = useState(false);
   const [count, setCount] = useState(0);
   const [size, setSize] = useState("24px");
-  const [color, setColor] = useState('$sage12');
+  const [color, setColor] = useState("$sage12");
   const { setTheme, resolvedTheme } = useTheme();
 
   useEffect(() => setMounted(true), []);
@@ -20,7 +27,7 @@ export const ThemeToggle = () => {
 
     setTheme(targetTheme);
     setCount(count + 1);
-  }; 
+  };
   const Icon = resolvedTheme === "dark" ? MoonIcon : SunIcon;
   return (
     <EditableComponent
@@ -28,14 +35,14 @@ export const ThemeToggle = () => {
       tooltip="Edit Theme Toggle"
       callableFunctions={[
         {
-          "label": "Reset Props",
-          "icon": "ResetIcon",
-          "onClick": () => {
+          label: "Reset Props",
+          icon: "ResetIcon",
+          onClick: () => {
             setSize("24px");
-            setColor('$sage12');
+            setColor("$sage12");
           },
-          "toastLabel": "Reset Theme Toggle",
-        }
+          toastLabel: "Reset Theme Toggle",
+        },
       ]}
       changableProps={[
         {
@@ -60,24 +67,27 @@ export const ThemeToggle = () => {
         onClick={toggleTheme}
       >
         {count === 0 && (
-          <LaptopIcon
-            style={{
+          <IconButton
+            css={{
               color: color,
             }}
-            width={size}
-            height={size}
-          />
+          >
+            <LaptopIcon width={size} height={size} />
+          </IconButton>
         )}
         {count > 0 && (
-          <Icon
-            style={{
+          <IconButton
+            css={{
               color: color,
             }}
-            width={size}
-            height={size}
-          />
+          >
+            <Icon
+              width={size}
+              height={size}
+            />
+          </IconButton>
         )}
       </div>
     </EditableComponent>
   );
-}
+};
