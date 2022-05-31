@@ -19,16 +19,16 @@ export const StyledCollapsible = styled(CollapsiblePrimitive.Root, {
   variants: {
     width: {
       sm: {
-        width: 300,
-      },
-      md: {
         width: 400,
       },
-      lg: {
+      md: {
         width: 500,
       },
-      xl: {
+      lg: {
         width: 600,
+      },
+      xl: {
+        width: 700,
       },
    }
   },
@@ -80,7 +80,9 @@ export default function Collapsible({
 }: CollapsibleProps) {
   const [open, setOpen] = useState(false);
   const [triggerValue, setTriggerValue] = useState(trigger);
-  const [captionValue, setCaptionValue] = useState(caption);
+  const [triggerColor, setTriggerColor] = useState('$mint11');
+  const [iconBackgroundColor, setIconBackgroundColor] = useState('white');
+  const [iconColor, setIconColor] = useState('$mint11');
   return (
     <EditableComponent
       // Prevents overlap between EditableText and Collapsible
@@ -93,8 +95,10 @@ export default function Collapsible({
           icon: "ResetIcon",
           onClick: () => {
             setTriggerValue(trigger);
-            setCaptionValue(caption);
             setOpen(false);
+            setTriggerColor('$mint11');
+            setIconBackgroundColor('white');
+            setIconColor('$mint11');
           },
           toastLabel: "Reset Collapsible Props",
         },
@@ -106,25 +110,37 @@ export default function Collapsible({
           onChange: (value) => setTriggerValue(value),
         },
         {
-          label: "Change Caption",
-          value: captionValue,
-          onChange: (value) => setCaptionValue(value),
+          label: "Change Color",
+          value: triggerColor,
+          onChange: (value) => setTriggerColor(value),
+        },
+        {
+          label: "Change Icon Color",
+          value: iconColor,
+          onChange: (value) => setIconColor(value),
+        },
+        {
+          label: "Change Icon Background Color",
+          value: iconBackgroundColor,
+          onChange: (value) => setIconBackgroundColor(value),
         },
       ]}
     >
-      <StyledCollapsible 
-      width={{
-        "@initial": "sm",
-        "@md": "md",
-        "@lg": "lg",
-        "@xl": "xl",
-      }}
-      open={open} onOpenChange={setOpen}>
+      <StyledCollapsible
+        width={{
+          "@initial": "sm",
+          "@md": "md",
+          "@lg": "lg",
+          "@xl": "xl",
+        }}
+        open={open}
+        onOpenChange={setOpen}
+      >
         <Flex alignItems="center" justifyContent="space-between">
           <Flex direction="column">
             <StyledText
               css={{
-                color: "$mint11",
+                color: triggerColor,
                 fontWeight: 800,
               }}
               fontSize="2xl"
@@ -133,8 +149,15 @@ export default function Collapsible({
             </StyledText>
           </Flex>
           <CollapsibleTrigger asChild>
-            <IconButton>
-             <ArrowUpIcon /> 
+            <IconButton
+              css={{
+                '&[data-state="closed"]': {
+                  backgroundColor: iconBackgroundColor,
+                },
+                color: iconColor,
+              }}
+            >
+              <ArrowUpIcon />
             </IconButton>
           </CollapsibleTrigger>
         </Flex>
@@ -145,7 +168,7 @@ export default function Collapsible({
         >
           <>
             <EditableText
-              defaultText={captionValue}
+              defaultText={caption}
               defaultColor="$mint10"
               defaultFontWeight="lighter"
               defaultFontSize="18px"
