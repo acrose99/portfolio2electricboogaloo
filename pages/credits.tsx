@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Flex from "../components/Flex";
+import {Flex} from "../components/Flex";
 import InlideCode from "../components/InlineCode";
 import { StyledText } from "../components/Text";
 import { styled } from "../stitches.config";
@@ -18,8 +18,13 @@ function Credits() {
       <Head>
         <title>Alex Rose: Credits</title>
       </Head>
-      {/* @ts-ignore */}
-      <Flex gap={10} direction="column" marginLeft={50}>
+      <Flex
+        css={{
+          marginLeft: "1.5rem",
+        }}
+        direction="column"
+        gap={4}
+      >
         <StyledText
           as="h1"
           css={{
@@ -54,10 +59,6 @@ function Credits() {
               href="https://www.radix-ui.com/"
             >
               Radix UI
-            </a>
-            , at the company{" "}
-            <a rel="noreferrer" target="_blank" href="https://modulz.app/">
-              Modulz
             </a>
             . Radix UI is a library of unstyled components built with ARIA in
             mind. Most of the interactive components for this site are built

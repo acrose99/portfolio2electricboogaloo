@@ -5,7 +5,7 @@ import Navigation from "../components/Navigation";
 import { mint } from "@radix-ui/colors";
 import Bio from "../components/Bio";
 import { StyledText } from "../components/Text";
-import Flex from "../components/Flex";
+import {Flex} from "../components/Flex";
 import EditableText from "../components/editableComponents/EditableText";
 export default function Contact() {
   return (
@@ -14,12 +14,13 @@ export default function Contact() {
         <title>Alex Rose: Contact</title>
       </Head>
       <Flex
-        gap={20}
+        gap={5}
         direction="column"
-        alignItems="center"
-        justifyContent="center"
-        // @ts-ignore
-        marginTop="5rem"
+        align="center"
+        justify="center"
+        css={{
+          marginTop: "5rem",
+        }}
       >
         <Navigation defaultValue="Contact" />
         <section

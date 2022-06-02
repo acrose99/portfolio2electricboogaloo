@@ -6,7 +6,7 @@ const StyledLabel = styled(LabelPrimitive.Root, {
   fontWeight: 500,
   color: "$mint11",
   userSelect: "none",
-  paddingX: 24
+  paddingLeft: 16
 });
 
 interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {

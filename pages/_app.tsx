@@ -10,7 +10,6 @@ import Navbar from "../components/Navbar";
 import Script from "next/script";
 import { DefaultSeo } from "next-seo";
 import Head from "next/head";
-
 const Container = styled("main", {
   display: "flex",
   flexDirection: "column",

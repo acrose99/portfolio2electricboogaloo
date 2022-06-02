@@ -4,7 +4,7 @@ import { styled } from "../../stitches.config";
 import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
 import { ArrowDownIcon, ArrowUpIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
-import Flex from "../Flex";
+import {Flex} from "../Flex";
 import { StyledText } from "../Text";
 import ContextMenu from "./ContextMenu";
 import EditableComponent from "../EditableComponent";
@@ -181,7 +181,7 @@ export default function Collapsible({
           setOpened(true);
         }}
       >
-        <Flex alignItems="center" justifyContent="space-between">
+        <Flex direction="row" justify="between" align="center">
           <Flex direction="column">
             <StyledText
               css={{

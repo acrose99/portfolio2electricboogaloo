@@ -4,12 +4,11 @@ import { blackA } from "@radix-ui/colors";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import EditableComponent from "../EditableComponent";
 import { keyframes } from "@stitches/react";
-import Flex from "../Flex";
+import {Flex} from "../Flex";
 
 const StyledTabs = styled(TabsPrimitive.Root, {
   display: "flex",
   flexDirection: "column",
-  borderBottom: `1px solid $sage6`,
   width: "100%",
 });
 
@@ -116,7 +115,7 @@ export default function Tabs({
           ))}
         </TabsList>
         {tabs.map(({ value, content }) => (
-          <Flex key={value} direction="column" justifyContent="center" alignItems="center">
+          <Flex key={value} direction="column" justify="center" align="center">
             <TabsContent key={value} id={`tab-${value}`} value={value}>
               {content}
             </TabsContent>

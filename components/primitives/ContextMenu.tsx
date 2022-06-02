@@ -17,7 +17,7 @@ import {
   callableFunction,
   checkableFunction,
 } from "../../constants/editConstants";
-import Flex from "../Flex";
+import {Flex} from "../Flex";
 import Link from "next/link";
 
 const slideDown = keyframes({

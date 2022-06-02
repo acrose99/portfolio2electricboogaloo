@@ -6,7 +6,7 @@ import {
 } from "../primitives/Slider";
 import Label from "../primitives/Label";
 import { Spacer } from "../Spacer";
-import Flex from "../Flex";
+import {Flex} from "../Flex";
 import { useEffect, useState } from "react";
 import EditableComponent from "../EditableComponent";
 
@@ -88,7 +88,7 @@ function BioSlider({ length, setLength }: BioSliderProps) {
       ]}
     >
       <form>
-        <Flex direction="row" alignItems="center" justifyContent="center">
+        <Flex gap={5} direction="row" align="center" justify="center">
           <Label>Bio Length: {lengthLabel}</Label>
           <StyledSlider
             disabled={disabled}

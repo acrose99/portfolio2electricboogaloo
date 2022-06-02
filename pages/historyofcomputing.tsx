@@ -1,5 +1,5 @@
 import Navigation from "../components/Navigation";
-import Flex from "../components/Flex";
+import {Flex} from "../components/Flex";
 import Collapsible from "../components/primitives/Collapsible";
 import Head from "next/head";
 import EditableText from "../components/editableComponents/EditableText";
@@ -32,7 +32,7 @@ function HistoryOfComputing() {
           marginBottom: "100px",
         }}
       >
-        <Flex direction="column" alignItems="center" gap={40}>
+        <Flex direction="column" align="center" gap={5}>
           <Navigation defaultValue="HistoryOfComputing" />
           <Project
             goal="As a Mulachy Fellow, I was tasked to make a front-end website meant to visualize the History of Computing in a unique way."

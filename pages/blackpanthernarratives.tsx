@@ -1,5 +1,5 @@
 import Navigation from "../components/Navigation";
-import Flex from "../components/Flex";
+import {Flex} from "../components/Flex";
 import Collapsible from "../components/primitives/Collapsible";
 import Head from "next/head";
 import EditableText from "../components/editableComponents/EditableText";
@@ -32,7 +32,7 @@ function BlackPantherNarratives() {
           marginBottom: "100px",
         }}
       >
-        <Flex direction="column" alignItems="center" gap={40}>
+        <Flex direction="column" align="center" gap={5}>
           <Navigation defaultValue="BlackPantherNarratives" />
           <Project
             goal="Educate the public and continue the legacy of the Black Panthers"

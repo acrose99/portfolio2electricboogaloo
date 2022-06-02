@@ -1,5 +1,6 @@
 {
   "private": true,
+  "name": "portfolio",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

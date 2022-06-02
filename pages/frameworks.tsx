@@ -6,7 +6,7 @@ import { mint } from "@radix-ui/colors";
 import Bio from "../components/Bio";
 import { StyledText } from "../components/Text";
 import Collapsible from "../components/primitives/Collapsible";
-import Flex from "../components/Flex";
+import {Flex} from "../components/Flex";
 import EditableText from "../components/editableComponents/EditableText";
 
 export default function Frameworks() {
@@ -20,7 +20,7 @@ export default function Frameworks() {
           marginTop: "100px",
         }}
       >
-        <Flex direction="column" alignItems="center" gap={20}>
+        <Flex direction="column" align="center" gap={5}>
           <Navigation defaultValue="Frameworks" />
           <Collapsible
             animated={true}

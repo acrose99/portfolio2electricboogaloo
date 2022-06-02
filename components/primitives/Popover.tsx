@@ -6,9 +6,10 @@ import * as PopoverPrimitive from "@radix-ui/react-popover";
 import { StyledText } from "../Text";
 import Label from "./Label";
 import Input from "../Input";
-import Flex from "../Flex";
+import { Flex } from "../Flex";
 import { changableProp, callableFunction } from "../../constants/editConstants";
 import { StyledSeparator } from "./Select";
+import EditableText from "../editableComponents/EditableText";
 
 const slideUpAndFade = keyframes({
   "0%": { opacity: 0, transform: "translateY(2px)" },
@@ -155,15 +156,13 @@ function Popover({
         align={align ? align : "start"}
         alignOffset={alignOffset ? alignOffset : 0}
       >
-        <StyledText
-          css={{
-            fontWeight: "bold",
-          }}
-          fontSize={"md"}
-        >
-          Props:
-        </StyledText>
-        <Flex direction="column" gap={10}>
+        <Flex direction="column" align="start" gap={2}>
+          <EditableText
+            defaultFontWeight="bold"
+            defaultColor="mint11"
+            defaultText={"Props:"}
+            defaultFontSize={'18px'}
+          />
           {changeableProps &&
             changeableProps.map((prop, index) => (
               <Fieldset key={index}>
@@ -178,24 +177,6 @@ function Popover({
                 )}
               </Fieldset>
             ))}
-          <StyledSeparator />
-
-          {/* <Fieldset>
-            <Label htmlFor="width">Width</Label>
-            <Input id="width" defaultValue="100%" />
-          </Fieldset>
-          <Fieldset>
-            <Label htmlFor="maxWidth">Max. width</Label>
-            <Input id="maxWidth" defaultValue="300px" />
-          </Fieldset>
-          <Fieldset>
-            <Label htmlFor="height">Height</Label>
-            <Input id="height" defaultValue="25px" />
-          </Fieldset>
-          <Fieldset>
-            <Label htmlFor="maxHeight">Max. height</Label>
-            <Input id="maxHeight" defaultValue="none" />
-          </Fieldset> */}
         </Flex>
         <PopoverArrow />
         <PopoverClose aria-label="Close">

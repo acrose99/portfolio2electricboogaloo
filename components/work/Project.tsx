@@ -5,6 +5,7 @@ import Stack from "./Stack";
 import LinkCom from "./LinkCom";
 import Accomplishments from "./Accomplishments";
 import React from "react";
+import { Separator } from "../primitives/Separator";
 
 type Tab = {
   value: string;
@@ -97,6 +98,7 @@ function Project({
           },
         ]}
       />
+      <Separator gradient orientation="horizontal" />
       <Stack stack={stack} />
       {link && <LinkCom href={link} />}
     </StyledProject>

@@ -1,5 +1,5 @@
 import Navigation from "../components/Navigation";
-import Flex from "../components/Flex";
+import {Flex} from "../components/Flex";
 import Collapsible from "../components/primitives/Collapsible";
 import Head from "next/head";
 import EditableText from "../components/editableComponents/EditableText";

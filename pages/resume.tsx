@@ -1,4 +1,4 @@
-import Flex from "../components/Flex";
+import {Flex} from "../components/Flex";
 import Navigation from "../components/Navigation";
 import ResumeCom from "../components/resume";
 
@@ -8,7 +8,7 @@ function Resume() {
         marginTop: "100px",
         marginBottom: "100px",
     }}>
-      <Flex gap={20} direction="column" alignItems="center">
+      <Flex gap={5} direction="column" align="center">
         <Navigation defaultValue="Resume" />
         <ResumeCom />
       </Flex>
