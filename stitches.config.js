@@ -33,6 +33,12 @@ export const {
       ...violet,
       ...violetA,
     },
+    shadows: {
+      ...mint,
+      ...sage,
+      ...sky,
+      ...violet,
+    },
     space: {
       1: '5px',
       2: '10px',
@@ -124,6 +130,12 @@ export const {
 
 export const darkTheme = createTheme('dark-theme', {
   colors: {
+    ...mintDark,
+    ...sageDark,
+    ...skyDark,
+    ...violetDark,
+  },
+  shadows: {
     ...mintDark,
     ...sageDark,
     ...skyDark,

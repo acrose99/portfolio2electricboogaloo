@@ -9,9 +9,14 @@ import { styled } from "../stitches.config";
 import Link from "next/link";
 interface NavbarProps {}
 
+const StyledNavbar = styled("nav", {
+  display: "flex",
+  alignItems: "center",
+});
+
 function Navbar({}: NavbarProps) {
   const [height, setHeight] = useState("10vh");
-  const [borderBottom, setBorderBottom] = useState(`2px solid ${sage.sage7}`);
+  const [borderBottom, setBorderBottom] = useState("2px solid $sage7");
   const [justifyContent, setJustifyContent] = useState("space-between");
   return (
     <EditableComponent
@@ -53,12 +58,14 @@ function Navbar({}: NavbarProps) {
         },
       ]}
     >
-      <nav
-        style={{
+      <StyledNavbar
+        css={{
           height: height,
           borderBottom: borderBottom,
-          display: "flex",
           justifyContent: justifyContent,
+        }}
+        style={{
+          display: "flex",
           alignItems: "center",
         }}
       >
@@ -70,15 +77,19 @@ function Navbar({}: NavbarProps) {
               }}
               href="/"
             >
-              <a style={{
-                color: "inherit",
-                textDecoration: "none",
-              }}>Alex Rose</a>
+              <a
+                style={{
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
+              >
+                Alex Rose
+              </a>
             </Link>
           </StyledText>
         </Tooltip>
         <ThemeToggle />
-      </nav>
+      </StyledNavbar>
     </EditableComponent>
   );
 }

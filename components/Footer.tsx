@@ -20,7 +20,7 @@ const StyledFooter = styled("footer", {
 
 function Footer() {
   const [verticalPadding, setVerticalPadding] = useState("2vh");
-  const [borderTop, setBorderTop] = useState(`2px solid ${sage.sage7}`);
+  const [borderTop, setBorderTop] = useState(`2px solid $sage7`);
   const [justifyContent, setJustifyContent] = useState("space-between");
   return (
     <EditableComponent
@@ -62,12 +62,12 @@ function Footer() {
         }}
         css={{
           paddingY: verticalPadding,
+          borderTop: borderTop,
         }}
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: justifyContent,
-          borderTop: borderTop,
           height: "100%",
           position: "relative",
           zIndex: 10,

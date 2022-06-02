@@ -18,10 +18,7 @@ export const StyledTrigger = styled(SelectPrimitive.SelectTrigger, {
   gap: 5,
   backgroundColor: "$mint5",
   color: "$sage12",
-  boxShadow: `0 2px 10px ${mint.mint7}`,
-  [`.${darkTheme} &`]: {
-    boxShadow: `none`,
-  },
+  boxShadow: `0 2px 10px $mint7`,
   "&:hover": { backgroundColor: "$mint3" },
   "&:focus": { boxShadow: `0 0 0 2px black` },
 });

@@ -48,14 +48,12 @@ export const StyledThumb = styled(SliderPrimitive.Thumb, {
   width: 20,
   height: 20,
   backgroundColor: "$mint9",
-  boxShadow: `0 2px 10px ${sage.sage7}`,
-  [`.${darkTheme} &`]: {
-    boxShadow: `none`,
-  },
+  boxShadow: `0 2px 10px $mint7`,
   borderRadius: 10,
   transition: "background-color 0.2s ease-in-out",
   "&:hover": {
     backgroundColor: "$mint10",
+    boxShadow: `0 0 0 2px $mint8`,
   },
   "&:focus": { boxShadow: `0 0 0 5px $sage8}` },
 });
