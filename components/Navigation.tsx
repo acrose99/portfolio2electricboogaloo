@@ -105,15 +105,16 @@ function Navigation({ defaultValue }: NavigationProps) {
                 value="BlackPantherNarratives"
                 label="Black Panther Narratives"
               />
-              <SelectItem
-                value="DontPanic"
-                label="Don't Panic"
-              />
+              <SelectItem value="DontPanic" label="Don't Panic" />
               <SelectItem value="threeJSSnippets" label="ThreeJS Snippets" />
               <StyledLabel>Skills</StyledLabel>
               <StyledSeparator />
               <SelectItem value="Frameworks" />
               <SelectItem value="Languages" />
+              <StyledLabel>About this Site</StyledLabel>
+              <StyledSeparator />
+              <SelectItem value="Design" />
+              <SelectItem value="Credits" />
             </SelectPrimitive.Group>
           </StyledViewport>
           <StyledScrollDownButton>

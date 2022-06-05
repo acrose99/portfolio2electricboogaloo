@@ -1,6 +1,6 @@
 import Navigation from "../components/Navigation";
 import {Flex} from "../components/Flex";
-import Collapsible from "../components/primitives/Collapsible";
+import EditableCollapsible from "../components/editableComponents/EditableCollapsible";
 import Head from "next/head";
 import EditableText from "../components/editableComponents/EditableText";
 function Languages() {
@@ -9,14 +9,11 @@ function Languages() {
       <Head>
         <title>Alex Rose: Frameworks</title>
       </Head>
-      <div
-        style={{
-          marginTop: "100px",
-        }}
-      >
-        <Flex direction="column" alignItems="center" gap={20}>
+        <Flex css={{
+          marginTop: "50px",
+        }} direction="column" align="center" gap={5}>
           <Navigation defaultValue="Languages" />
-          <Collapsible
+          <EditableCollapsible
             animated={true}
             trigger="Typescript"
             caption="Experience: 2 years"
@@ -29,15 +26,14 @@ function Languages() {
               I'm comfortable with it and I'm confident I can do a
               tech interview, but I'm by no means an expert (yet)."
             />
-          </Collapsible>
-          <Collapsible trigger="Javascript" caption="Experience: 3 years">
+          </EditableCollapsible>
+          <EditableCollapsible trigger="Javascript" caption="Experience: 3 years">
             <EditableText defaultText="I have been using Javascript for a long time, and I'm very comfortable with it. I first started using it as a sophomore in High School to look up the campaign finances of members of Congress. I really got into web development and the language near the end of my Freshman year in College. Like Typescript, I'm comfortable with it but I won't call myself an expert until later in my career." />
-          </Collapsible>
-          <Collapsible trigger="Python" caption="Experience: 1 year">
+          </EditableCollapsible>
+          <EditableCollapsible trigger="Python" caption="Experience: 1 year">
             <EditableText defaultText="Python was the first real language I used, but more recently I've been focused on web development. Regardless, I've used Python for scripting and scraping data and I could pick it back up quicker then other high level programming languages like Java." />
-          </Collapsible>
+          </EditableCollapsible>
         </Flex>
-      </div>
     </>
   );
 }

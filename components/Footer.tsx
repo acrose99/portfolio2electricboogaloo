@@ -12,7 +12,6 @@ const StyledFooter = styled("footer", {
       },
       row: {
         flexDirection: "row",
-        paddingRight: "10rem",
       },
     },
   },
@@ -75,15 +74,16 @@ function Footer() {
       >
         <EditableText defaultText="Made with React, Next.JS, Vercel, and Love." />
         <EditableText>
-          <a
-            style={{
-              textDecoration: "none",
-              color: "inherit",
-            }}
-            href="https://github.com/acrose99"
-          >
-            Github
-          </a>
+          <Link href="/design">
+            <a
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+              }}
+            >
+              Design System
+            </a>
+          </Link>
         </EditableText>
         <EditableText>
           <Link href="/credits">
@@ -96,6 +96,17 @@ function Footer() {
               Credits
             </a>
           </Link>
+        </EditableText>
+        <EditableText>
+          <a
+            style={{
+              textDecoration: "none",
+              color: "inherit",
+            }}
+            href="https://github.com/acrose99"
+          >
+            Github
+          </a>
         </EditableText>
       </StyledFooter>
     </EditableComponent>

@@ -5,7 +5,7 @@ import Navigation from "../components/Navigation";
 import { mint } from "@radix-ui/colors";
 import Bio from "../components/Bio";
 import { StyledText } from "../components/Text";
-import Collapsible from "../components/primitives/Collapsible";
+import EditableCollapsible from "../components/editableComponents/EditableCollapsible";
 import {Flex} from "../components/Flex";
 import EditableText from "../components/editableComponents/EditableText";
 
@@ -15,14 +15,11 @@ export default function Frameworks() {
       <Head>
         <title>Alex Rose: Frameworks</title>
       </Head>
-      <div
-        style={{
-          marginTop: "100px",
-        }}
-      >
-        <Flex direction="column" align="center" gap={5}>
+        <Flex css={{
+          marginTop: "50px",
+        }} direction="column" align="center" gap={5}>
           <Navigation defaultValue="Frameworks" />
-          <Collapsible
+          <EditableCollapsible
             animated={true}
             trigger="React"
             caption="Experience: 3 years"
@@ -40,24 +37,23 @@ export default function Frameworks() {
               effect of React&apos;s maturity in comparison to other frameworks
               more then anything. There is a lot to learn."
             />
-          </Collapsible>
-          <Collapsible trigger="Figma" caption="Experience: 3 years">
+          </EditableCollapsible>
+          <EditableCollapsible trigger="Figma" caption="Experience: 3 years">
             <EditableText defaultText="I was a early adopter of Figma and I&apos;ve been using it for a
               while now before they introduced features like Variants and Auto
               Layout. Figma is a great tool for prototyping and I&apos;m very
               happy with the way it works. I use it for almost any site I make." />
-          </Collapsible>
-          <Collapsible trigger="Next.js" caption="Experience: 2 years">
+          </EditableCollapsible>
+          <EditableCollapsible trigger="Next.js" caption="Experience: 2 years">
             <EditableText defaultText="Next.js is a framework that I&apos;ve been using for a while now.
               I think I understand most of its features now because my main two
               projects at the moment are using it." />
-          </Collapsible>
-          <Collapsible trigger="Vue" caption="Experience: 1 year">
+          </EditableCollapsible>
+          <EditableCollapsible trigger="Vue" caption="Experience: 1 year">
             <EditableText defaultText="Vue3 and the Quasar framework are what I use on a daily basis at
               my job. I&apos;m still getting used to them at the moment." />
-          </Collapsible>
+          </EditableCollapsible>
         </Flex>
-      </div>
     </>
   );
 }

@@ -4,11 +4,19 @@ import ResumeCom from "../components/resume";
 
 function Resume() {
   return (
-    <section style={{
-        marginTop: "100px",
+    <section
+      style={{
         marginBottom: "100px",
-    }}>
-      <Flex gap={5} direction="column" align="center">
+      }}
+    >
+      <Flex
+        css={{
+          marginTop: "50px",
+        }}
+        gap={5}
+        direction="column"
+        align="center"
+      >
         <Navigation defaultValue="Resume" />
         <ResumeCom />
       </Flex>

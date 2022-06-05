@@ -19,7 +19,7 @@ export default function Contact() {
         align="center"
         justify="center"
         css={{
-          marginTop: "5rem",
+          marginY: "50px",
         }}
       >
         <Navigation defaultValue="Contact" />

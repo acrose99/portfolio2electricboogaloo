@@ -4,7 +4,7 @@ import {
   StyledRange,
   StyledTrack,
 } from "../primitives/Slider";
-import Label from "../primitives/Label";
+import {Label} from "../primitives/Label";
 import { Spacer } from "../Spacer";
 import {Flex} from "../Flex";
 import { useEffect, useState } from "react";

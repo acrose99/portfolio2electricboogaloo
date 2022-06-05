@@ -4,8 +4,8 @@ import { keyframes } from "@stitches/react";
 import { MixerHorizontalIcon, Cross2Icon } from "@radix-ui/react-icons";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import { StyledText } from "../Text";
-import Label from "./Label";
-import Input from "../Input";
+import { Label } from "./Label";
+import { Input } from "../Input";
 import { Flex } from "../Flex";
 import { changableProp, callableFunction } from "../../constants/editConstants";
 import { StyledSeparator } from "./Select";
@@ -140,7 +140,16 @@ function Popover({
   function getInputType(type: string, value: string) {
     if (type === "number") {
       return "number";
-    } else if (type === "text") {
+    } else if (
+      value.indexOf("hsl") !== -1 ||
+      value.indexOf("hsla") !== -1 ||
+      value.indexOf("rgba") !== -1 ||
+      value.indexOf("rgb") !== -1 ||
+      value.indexOf("#") !== -1 ||
+      value.indexOf("$sage") !== -1 ||
+      value.indexOf("$mint") !== -1
+    ) {
+      return "color";
     } else if (type === "string") {
       return "text";
     } else if (type === "boolean") {
@@ -161,7 +170,7 @@ function Popover({
             defaultFontWeight="bold"
             defaultColor="mint11"
             defaultText={"Props:"}
-            defaultFontSize={'18px'}
+            defaultFontSize={"18px"}
           />
           {changeableProps &&
             changeableProps.map((prop, index) => (
@@ -170,6 +179,8 @@ function Popover({
                 {prop && (
                   <Input
                     value={prop.value}
+                    /* @ts-ignore */
+                    inputType={getInputType(typeof prop.value, prop.value)}
                     type={getInputType(typeof prop.value, prop.value)}
                     placeholder={prop.placeholder ? prop.placeholder : ""}
                     onChange={(e) => prop.onChange(e.target.value)}

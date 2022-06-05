@@ -26,13 +26,9 @@ function BlackPantherNarratives() {
       <Head>
         <title>Alex Rose: Don&apos;t Panic</title>
       </Head>
-      <div
-        style={{
-          marginTop: "100px",
-          marginBottom: "100px",
-        }}
-      >
-        <Flex direction="column" align="center" gap={5}>
+        <Flex css={{
+          marginTop: "50px",
+        }} direction="column" align="center" gap={5}>
           <Navigation defaultValue="DontPanic" />
           <Project
             goal="Create a welcoming environment for Loyola's CS students"
@@ -49,7 +45,6 @@ function BlackPantherNarratives() {
             preview={<Preview />}
           />
         </Flex>
-      </div>
     </>
   );
 }

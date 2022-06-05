@@ -26,29 +26,29 @@ function BlackPantherNarratives() {
       <Head>
         <title>Alex Rose: Black Panther Narratives</title>
       </Head>
-      <div
-        style={{
-          marginTop: "100px",
-          marginBottom: "100px",
+      <Flex
+        css={{
+          marginY: "50px",
         }}
+        direction="column"
+        align="center"
+        gap={5}
       >
-        <Flex direction="column" align="center" gap={5}>
-          <Navigation defaultValue="BlackPantherNarratives" />
-          <Project
-            goal="Educate the public and continue the legacy of the Black Panthers"
-            status="To be released in 2022 or 2023. Contact me for more information."
-            description="Digital exhibit with the Chicago History Museum to showcase and educate people about the legacy of the Black Panthers. Website is built using React/Next.JS, using Tailwind for styling, and Figma for prototyping and wireframes."
-            stack={["Next.JS", "React", "TailwindCSS", "Typescript"]}
-            accomplishments={[
-              "Made a no-code workflow for historians to add to the site",
-              "Made narrative stories for the site",
-              "Mapbox integration to show the location of the stories",
-              "A lot more that I can't list",
-            ]}
-            preview={<Preview />}
-          />
-        </Flex>
-      </div>
+        <Navigation defaultValue="BlackPantherNarratives" />
+        <Project
+          goal="Educate the public and continue the legacy of the Black Panthers"
+          status="To be released in 2022 or 2023. Contact me for more information."
+          description="Digital exhibit with the Chicago History Museum to showcase and educate people about the legacy of the Black Panthers. Website is built using React/Next.JS, using Tailwind for styling, and Figma for prototyping and wireframes."
+          stack={["Next.JS", "React", "TailwindCSS", "Typescript"]}
+          accomplishments={[
+            "Made a no-code workflow for historians to add to the site",
+            "Made narrative stories for the site",
+            "Mapbox integration to show the location of the stories",
+            "A lot more that I can't list",
+          ]}
+          preview={<Preview />}
+        />
+      </Flex>
     </>
   );
 }

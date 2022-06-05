@@ -4,9 +4,9 @@ import { styled } from "../../stitches.config";
 import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
 import { ArrowDownIcon, ArrowUpIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
-import {Flex} from "../Flex";
+import { Flex } from "../Flex";
 import { StyledText } from "../Text";
-import ContextMenu from "./ContextMenu";
+import ContextMenu from "../primitives/ContextMenu";
 import EditableComponent from "../EditableComponent";
 import EditableText from "../editableComponents/EditableText";
 
@@ -36,7 +36,6 @@ export const StyledCollapsible = styled(CollapsiblePrimitive.Root, {
 export const CollapsibleTrigger = styled(CollapsiblePrimitive.Trigger, {
   cursor: "pointer",
 });
-
 
 let fadeIn = keyframes({
   from: {
@@ -113,7 +112,7 @@ interface CollapsibleProps {
   animated?: boolean;
 }
 
-export default function Collapsible({
+export default function EditableCollapsible({
   trigger,
   caption,
   children,
@@ -121,7 +120,53 @@ export default function Collapsible({
 }: CollapsibleProps) {
   const [open, setOpen] = useState(false);
   const [opened, setOpened] = useState(false);
+  const [triggerValue, setTriggerValue] = useState(trigger);
+  const [triggerColor, setTriggerColor] = useState("$mint11");
+  const [iconBackgroundColor, setIconBackgroundColor] = useState("white");
+  const [iconColor, setIconColor] = useState("$mint11");
   return (
+    <EditableComponent
+      // Prevents overlap between EditableText and Collapsible
+      tooltip={open ? null : "Edit Collapsible"}
+      source="components/primitives/Collapsible.tsx"
+      // designSystem="collapsible"
+      callableFunctions={[
+        {
+          label: "Reset Props",
+          icon: "ResetIcon",
+          onClick: () => {
+            setTriggerValue(trigger);
+            setOpen(false);
+            setTriggerColor("$mint11");
+            setIconBackgroundColor("white");
+            setIconColor("$mint11");
+          },
+          toastLabel: "Reset Collapsible Props",
+        },
+      ]}
+      changableProps={[
+        {
+          label: "Change Title",
+          value: triggerValue,
+          onChange: (value) => setTriggerValue(value),
+        },
+        {
+          label: "Change Color",
+          value: triggerColor,
+          onChange: (value) => setTriggerColor(value),
+        },
+        {
+          label: "Change Icon Color",
+          value: iconColor,
+          onChange: (value) => setIconColor(value),
+        },
+        {
+          label: "Change Icon Background Color",
+          value: iconBackgroundColor,
+          onChange: (value) => setIconBackgroundColor(value),
+        },
+      ]}
+    >
       <StyledCollapsible
         width={{
           "@initial": "sm",
@@ -139,12 +184,12 @@ export default function Collapsible({
           <Flex direction="column">
             <StyledText
               css={{
-                color: '$mint11',
+                color: triggerColor,
                 fontWeight: 800,
               }}
               fontSize="2xl"
             >
-              {trigger}
+              {triggerValue}
             </StyledText>
           </Flex>
           <CollapsibleTrigger asChild>
@@ -152,9 +197,9 @@ export default function Collapsible({
               openedClosed={opened}
               css={{
                 '&[data-state="closed"]': {
-                  backgroundColor: 'white',
+                  backgroundColor: iconBackgroundColor,
                 },
-                color: '$mint11'
+                color: iconColor,
               }}
             >
               <ArrowUpIcon />
@@ -177,5 +222,6 @@ export default function Collapsible({
           </div>
         </CollapsibleContent>
       </StyledCollapsible>
+    </EditableComponent>
   );
 }
