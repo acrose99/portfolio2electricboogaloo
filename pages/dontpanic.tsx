@@ -26,25 +26,30 @@ function BlackPantherNarratives() {
       <Head>
         <title>Alex Rose: Don&apos;t Panic</title>
       </Head>
-        <Flex css={{
-          marginTop: "50px",
-        }} direction="column" align="center" gap={5}>
-          <Navigation defaultValue="DontPanic" />
-          <Project
-            goal="Create a welcoming environment for Loyola's CS students"
-            status="I left the club when I graduated in 2021."
-            description="I organized events, was responsible for most communication and co-created the main website for Loyola University Chicago’s main Computer Science club on campus."
-            stack={["Next.JS", "React", "TailwindCSS", "Typescript"]}
-            accomplishments={[
-              "Redid the website to be self-hosted, and much cleaner looking",
-              "Transitioned to fully online events/discussions during COVID-19",
-              "Helped coordinate with speakers/students/etc",
-              "Made new friends :)",
-            ]}
-            link="https://dont-panic-luc.github.io/"
-            preview={<Preview />}
-          />
-        </Flex>
+      <Flex
+        css={{
+          marginY: "50px",
+        }}
+        direction="column"
+        align="center"
+        gap={5}
+      >
+        <Navigation defaultValue="DontPanic" />
+        <Project
+          goal="Create a welcoming environment for Loyola's CS students"
+          status="I left the club when I graduated in 2021."
+          description="I organized events, was responsible for most communication and co-created the main website for Loyola University Chicago’s main Computer Science club on campus."
+          stack={["Next.JS", "React", "TailwindCSS", "Typescript"]}
+          accomplishments={[
+            "Redid the website to be self-hosted, and much cleaner looking",
+            "Transitioned to fully online events/discussions during COVID-19",
+            "Helped coordinate with speakers/students/etc",
+            "Made new friends :)",
+          ]}
+          link="https://dont-panic-luc.github.io/"
+          preview={<Preview />}
+        />
+      </Flex>
     </>
   );
 }

@@ -1,6 +1,6 @@
+import Image from "next/image";
 import {Flex} from "../components/Flex";
 import Navigation from "../components/Navigation";
-import ResumeCom from "../components/resume";
 
 function Resume() {
   return (
@@ -11,14 +11,18 @@ function Resume() {
     >
       <Flex
         css={{
-          marginTop: "50px",
+          marginY: "50px",
         }}
         gap={5}
         direction="column"
         align="center"
       >
         <Navigation defaultValue="Resume" />
-        <ResumeCom />
+        <Image
+         quality={100}
+         objectFit="contain"
+         priority={true}
+         alt="Resume" height={1000} width={800} src="/Resume.jpg" />
       </Flex>
     </section>
   );
