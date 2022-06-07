@@ -2,7 +2,7 @@ import Head from "next/head";
 import {Flex} from "../components/Flex";
 import InlideCode from "../components/InlineCode";
 import Navigation from "../components/Navigation";
-import { StyledText } from "../components/Text";
+import { Text } from "../components/Text";
 import { styled } from "../stitches.config";
 
 const StyledLi = styled("li", {
@@ -19,9 +19,15 @@ function Credits() {
       <Head>
         <title>Alex Rose: Credits</title>
       </Head>
-      <Flex css={{
-        marginTop: "50px",
-      }} justify="center" align="center" direction="column" gap={5}>
+      <Flex
+        css={{
+          marginTop: "50px",
+        }}
+        justify="center"
+        align="center"
+        direction="column"
+        gap={5}
+      >
         <Navigation defaultValue="Credits" />
         <Flex
           css={{
@@ -30,7 +36,7 @@ function Credits() {
           direction="column"
           gap={4}
         >
-          <StyledText
+          <Text
             as="h1"
             css={{
               fontWeight: "bold",
@@ -40,13 +46,13 @@ function Credits() {
             fontSize={"4xl"}
           >
             Credits:
-          </StyledText>
+          </Text>
           <section
             style={{
               maxWidth: "70%",
             }}
           >
-            <StyledText
+            <Text
               css={{
                 fontWeight: "regular",
                 color: "$mint12",
@@ -54,8 +60,8 @@ function Credits() {
               fontSize={"xl"}
             >
               Tech Stack:
-            </StyledText>
-            <StyledText fontSize={"sm"}>
+            </Text>
+            <Text fontSize={"sm"}>
               This site would not be possible without the amazing work of the
               team making{" "}
               <a
@@ -81,25 +87,25 @@ function Credits() {
               </a>{" "}
               for styling. for styling. If your curious, the colors are{" "}
               <InlideCode>Mint</InlideCode> and <InlideCode>Sage</InlideCode>.
-            </StyledText>
-            <StyledText fontSize={"sm"}>
+            </Text>
+            <Text fontSize={"sm"}>
               I have to once again thank the team at Modulz for making{" "}
               <a href="https://stitches.dev/">Stitches</a>, a CSS-in-JS
               framework for composable React components. I am using Stitches for
               theming (light and dark mode), variants, and styled components.
-            </StyledText>
-            <StyledText fontSize={"sm"}>
+            </Text>
+            <Text fontSize={"sm"}>
               Thank you the amazing team at Vercel for making{" "}
               <a href="https://nextjs.org/">Next.js</a> and{" "}
               <a href="https://vercel.com/">Vercel</a>. This site is hosted on
               Vercel, and I am using Next.js for the frontend.
-            </StyledText>
-            <StyledText fontSize={"sm"}>
+            </Text>
+            <Text fontSize={"sm"}>
               Finally, thank you to everyone at Meta for making{" "}
               <a href="https://reactjs.org/">React</a>, not just for this site,
               but for being my first introduction to Web Development. The more I
               learn, the more I appreciate it.
-            </StyledText>
+            </Text>
           </section>
           <section
             style={{
@@ -107,7 +113,7 @@ function Credits() {
               marginBottom: "5rem",
             }}
           >
-            <StyledText
+            <Text
               as="h1"
               css={{
                 fontWeight: "regular",
@@ -117,8 +123,8 @@ function Credits() {
               fontSize={"xl"}
             >
               Inspiration:
-            </StyledText>
-            <StyledText fontSize={"sm"}>
+            </Text>
+            <Text fontSize={"sm"}>
               {" "}
               By far my greatest inspiration for this site is the amazing work
               of Rauno Freiberg. His site{" "}
@@ -128,11 +134,11 @@ function Credits() {
               is amazing and my main goal behind this site is extend the ideas
               of interactive components into something more personal. Definitely
               check out his work!
-            </StyledText>
-            <StyledText fontSize={"sm"}>
+            </Text>
+            <Text fontSize={"sm"}>
               In no particular order, I would like to thank the following people
               for being general inspirations for web development:
-            </StyledText>
+            </Text>
             <ul>
               <StyledLi>
                 <a target="_blank" rel="noreferrer" href="https://rsms.me/">

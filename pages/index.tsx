@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Navigation from "../components/Navigation";
 import Bio from "../components/Bio";
-import { StyledText } from "../components/Text";
+import { Text } from "../components/Text";
 import EditableComponent from "../components/EditableComponent";
 import { useState } from "react";
 import {Flex} from "../components/Flex";

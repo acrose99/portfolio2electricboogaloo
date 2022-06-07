@@ -5,7 +5,7 @@ import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
 import { ArrowDownIcon, ArrowUpIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 import { Flex } from "../Flex";
-import { StyledText } from "../Text";
+import { Text } from "../Text";
 import ContextMenu from "../primitives/ContextMenu";
 import EditableComponent from "../EditableComponent";
 import EditableText from "../editableComponents/EditableText";
@@ -182,7 +182,7 @@ export default function EditableCollapsible({
       >
         <Flex direction="row" justify="between" align="center">
           <Flex direction="column">
-            <StyledText
+            <Text
               css={{
                 color: triggerColor,
                 fontWeight: 800,
@@ -190,7 +190,7 @@ export default function EditableCollapsible({
               fontSize="2xl"
             >
               {triggerValue}
-            </StyledText>
+            </Text>
           </Flex>
           <CollapsibleTrigger asChild>
             <IconButton
@@ -211,15 +211,20 @@ export default function EditableCollapsible({
             textAlign: "center",
           }}
         >
-          <div>
-            <EditableText
-              defaultText={caption}
-              defaultColor="$mint10"
-              defaultFontWeight="lighter"
-              defaultFontSize="18px"
-            />
+          <EditableText
+            defaultFontSize={"24px"}
+            defaultColor={"$mint10"}
+          >
+            {caption}
+          </EditableText>
+          <Text
+          // defaultText={caption}
+          // defaultColor="$mint10"
+          // defaultFontWeight="lighter"
+          // defaultFontSize="18px"
+          >
             {children}
-          </div>
+          </Text>
         </CollapsibleContent>
       </StyledCollapsible>
     </EditableComponent>

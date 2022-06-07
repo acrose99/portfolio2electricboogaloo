@@ -3,7 +3,7 @@ import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 import { Flex } from "../Flex";
-import { StyledText } from "../Text";
+import { Text } from "../Text";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { duotoneSea } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
@@ -77,7 +77,7 @@ function Code({ children }: CodeProps) {
             <ArrowRightIcon width={24} height={24} />
           </IconButton>
         </CollapsibleTrigger>
-        <StyledText
+        <Text
           css={{
             color: "$sage12",
             fontWeight: 800,
@@ -85,7 +85,7 @@ function Code({ children }: CodeProps) {
           fontSize="lg"
         >
           View Code
-        </StyledText>
+        </Text>
       </Flex>
       <CollapsibleContent css={{}}>
         <SyntaxHighlighter

@@ -1,5 +1,5 @@
 import { mint } from "@radix-ui/colors";
-import { StyledText } from "../Text";
+import { Text } from "../Text";
 import { slides } from "./constants";
 import EditableText from "../editableComponents/EditableText";
 interface BioStyledTextProps {

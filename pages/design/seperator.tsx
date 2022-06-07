@@ -3,16 +3,16 @@ import Code from "../../components/design/Code";
 import Summary from "../../components/design/Summary";
 import { Flex } from "../../components/Flex";
 import { Separator } from "../../components/primitives/Separator";
-import { StyledText } from "../../components/Text";
+import { Text } from "../../components/Text";
 import { styled } from "../../stitches.config";
 
 
 function Seperator() {
   const verticalCode = `
   <Flex css={{ height: 50}} gap={3} align="center">
-      <StyledText color="$sage12">Lorem ipsum</StyledText>
+      <Text color="$sage12">Lorem ipsum</Text>
       <Separator orientation="vertical" />
-      <StyledText color="$sage12">dolor sit</StyledText>
+      <Text color="$sage12">dolor sit</Text>
   </Flex>`;
   return (
     <Flex
@@ -28,25 +28,27 @@ function Seperator() {
       <Block
         title="Horizontal"
         code={`
-        <StyledText color="$sage12">
+        <Text color="$sage12">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </StyledText>
+        </Text>
         <Separator orientation="horizontal" />
-        <StyledText color="$sage12">
+        <Text color="$sage12">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </StyledText>`}
+        </Text>`}
       >
-        <StyledText
+        <Text
           css={{
             color: "$mint11",
           }}
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </StyledText>
+        </Text>
         <Separator orientation="horizontal" />
-        <StyledText color="$sage12">
+        <Text css={{
+          color: "$sage12",
+        }}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </StyledText>
+        </Text>
       </Block>
       <Block title="Vertical" code={verticalCode}>
         <Flex
@@ -56,15 +58,15 @@ function Seperator() {
           gap={3}
           align="center"
         >
-          <StyledText
+          <Text
             css={{
               color: "$mint11",
             }}
           >
             Lorem ipsum
-          </StyledText>
+          </Text>
           <Separator orientation="vertical" />
-          <StyledText>dolor sit</StyledText>
+          <Text>dolor sit</Text>
         </Flex>
       </Block>
     </Flex>

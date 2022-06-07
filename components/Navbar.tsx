@@ -3,7 +3,7 @@ import { useState } from "react";
 import EditableComponent from "./EditableComponent";
 import EditableText from "./editableComponents/EditableText";
 import { ThemeToggle } from "./ThemeToggle";
-import Text, { StyledText } from "./Text";
+import {Text} from "./Text";
 import Tooltip from "./primitives/Tooltip";
 import { styled } from "../stitches.config";
 import Link from "next/link";
@@ -70,7 +70,7 @@ function Navbar({}: NavbarProps) {
         }}
       >
         <Tooltip side="bottom" trigger="Sorry, you can't edit me!">
-          <StyledText fontSize={"xl"}>
+          <Text fontSize={"xl"}>
             <Link
               style={{
                 textDecoration: "none",
@@ -86,7 +86,7 @@ function Navbar({}: NavbarProps) {
                 Alex Rose
               </a>
             </Link>
-          </StyledText>
+          </Text>
         </Tooltip>
         <ThemeToggle />
       </StyledNavbar>

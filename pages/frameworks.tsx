@@ -4,7 +4,6 @@ import StitchesLogo from "../components/StitchesLogo";
 import Navigation from "../components/Navigation";
 import { mint } from "@radix-ui/colors";
 import Bio from "../components/Bio";
-import { StyledText } from "../components/Text";
 import EditableCollapsible from "../components/editableComponents/EditableCollapsible";
 import {Flex} from "../components/Flex";
 import EditableText from "../components/editableComponents/EditableText";

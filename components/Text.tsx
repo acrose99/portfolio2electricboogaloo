@@ -9,31 +9,10 @@ interface TextProps {
   exitDown?: boolean;
 }
 import { styled } from "../stitches.config";
-import { keyframes } from "@stitches/react";
-const enterUp = keyframes({
-  "0%": {
-    opacity: 0,
-    transform: "translateY(10px)",
-  },
-  "100%": {
-    opacity: 1,
-    transform: "translateY(0)",
-  },
-});
-const exitDown = keyframes({
-  "0%": {
-    opacity: 1,
-    transform: "translateY(0)",
-  },
-  "100%": {
-    opacity: 0,
-    transform: "translateY(10px)",
-  },
-});
-export const StyledText = styled("p", {
+
+export const Text = styled("p", {
   fontFamily: "$inter",
   fontWeight: "lighter",
-  fontSize: "14px",
   color: "$sage12",
   variants: {
     fontSize: {
@@ -90,53 +69,13 @@ export const StyledText = styled("p", {
         lineHeight: "$9xl",
       },
     },
-    italic: {
-      true: {
-        fontStyle: "italic",
-      },
-    },
-    enterUp: {
-      true: {
-        "@media (prefers-reduced-motion: no-preference)": {
-          animation: `${enterUp} 0.5s ease-in-out`,
-        },
-      },
-    },
-    exitDown: {
-      true: {
-        "@media (prefers-reduced-motion: no-preference)": {
-          animation: `${exitDown} 0.5s ease-in-out`,
-        },
+    color: {
+      accent: {
+        color: "$mint11",
       },
     },
   },
+  defaultVariants: {
+    fontSize: "sm",
+  }
 });
-
-
-export default function Text({
-  children,
-  color = "$sage12",
-  fontSize = "16px",
-  fontWeight = "lighter",
-  fontStyle = "normal",
-  lineHeight = "24px",
-  enterUp = false,
-  exitDown = false,
-}: TextProps) {
-  return (
-    <StyledText
-      /* @ts-ignore */
-      css={{
-        color: color,
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-        fontStyle: fontStyle,
-        lineHeight: lineHeight,
-      }}
-      enterUp={enterUp}
-      exitDown={exitDown}
-    >
-      {children}
-    </StyledText>
-  );
-}

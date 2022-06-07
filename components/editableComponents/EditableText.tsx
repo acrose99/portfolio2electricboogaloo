@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Text from "../Text";
+import {Text} from "../Text";
 import EditableComponent from "../EditableComponent";
 import Tooltip from "../primitives/Tooltip";
 
@@ -35,7 +35,9 @@ function EditableText({
           icon: "CopyIcon",
           label: "Copy Text",
           /* copies the text to the clipboard */
-          onClick: () => {navigator.clipboard.writeText(text)},
+          onClick: () => {
+            navigator.clipboard.writeText(text);
+          },
           toastLabel: "Copied to clipboard",
         },
         // {
@@ -60,7 +62,7 @@ function EditableText({
             setFontSize(defaultFontSize);
             setFontWeight(defaultFontWeight);
             setFontStyle("normal");
-            setLineHeight("24px");
+            setLineHeight("150%");
           },
           icon: "ResetIcon",
           toastLabel: "Reset Props",
@@ -102,21 +104,25 @@ function EditableText({
       <Tooltip sideOffset={10} triggerAsChild={false} trigger="Edit Text">
         {children && (
           <Text
-            lineHeight={lineHeight}
-            fontStyle={fontStyle}
-            fontSize={fontSize}
-            fontWeight={fontWeight}
-            color={color}
+            css={{
+              lineHeight: lineHeight,
+              fontSize: fontSize,
+              fontWeight: fontWeight,
+              fontStyle: fontStyle,
+              color: color,
+            }}
           >
             {children}
           </Text>
         )}
         <Text
-          lineHeight={lineHeight}
-          fontStyle={fontStyle}
-          fontSize={fontSize}
-          fontWeight={fontWeight}
-          color={color}
+          css={{
+            lineHeight: lineHeight,
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+            fontStyle: fontStyle,
+            color: color,
+          }}
         >
           {text}
         </Text>

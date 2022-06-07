@@ -7,16 +7,16 @@ import { Flex } from "../../components/Flex";
 import { Input } from "../../components/Input";
 import { Label } from "../../components/primitives/Label";
 import { Separator } from "../../components/primitives/Separator";
-import { StyledText } from "../../components/Text";
+import { Text } from "../../components/Text";
 import { styled } from "../../stitches.config";
 
 function InputPage() {
   const [inputColor, setInputColor] = useState("#000000");
   const verticalCode = `
   <Flex css={{ height: 50}} gap={3} align="center">
-      <StyledText color="$sage12">Lorem ipsum</StyledText>
+      <Text color="$sage12">Lorem ipsum</Text>
       <Separator orientation="vertical" />
-      <StyledText color="$sage12">dolor sit</StyledText>
+      <Text color="$sage12">dolor sit</Text>
   </Flex>`;
   return (
     <Flex

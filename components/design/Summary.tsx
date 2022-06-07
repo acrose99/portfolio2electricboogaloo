@@ -1,4 +1,4 @@
-import { StyledText } from "../Text";
+import { Text } from "../Text";
 
 interface SummaryProps {
   name: string;
@@ -8,7 +8,7 @@ interface SummaryProps {
 function Summary({ name, description }: SummaryProps) {
   return (
     <>
-      <StyledText
+      <Text
         fontSize="4xl"
         css={{
           color: "$mint11",
@@ -16,8 +16,8 @@ function Summary({ name, description }: SummaryProps) {
         }}
       >
         {name}
-      </StyledText>
-      <StyledText
+      </Text>
+      <Text
         fontSize="xl"
         css={{
           color: "$sage11",
@@ -25,7 +25,7 @@ function Summary({ name, description }: SummaryProps) {
         }}
       >
         {description}
-      </StyledText>
+      </Text>
     </>
   );
 }

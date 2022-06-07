@@ -1,5 +1,5 @@
 import { styled } from "../../stitches.config";
-import { StyledText } from "../Text";
+import { Text } from "../Text";
 import Code from "./Code";
 import Example from "./Example";
 
@@ -16,7 +16,7 @@ interface BlockProps {
 function Block({ children, code, title }: BlockProps) {
   return (
     <StyledDiv>
-      <StyledText
+      <Text
         fontSize="2xl"
         css={{
           color: "$sage12",
@@ -24,7 +24,7 @@ function Block({ children, code, title }: BlockProps) {
         }}
       >
         {title}
-      </StyledText>
+      </Text>
       <Example>{children}</Example>
       <Code>{code}</Code>
     </StyledDiv>
