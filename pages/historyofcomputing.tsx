@@ -38,7 +38,7 @@ function HistoryOfComputing() {
         <Project
           goal="As a Mulachy Fellow, I was tasked to make a front-end website meant to visualize the History of Computing in a unique way."
           status="Completed, in 2020,  when I finished my Mulachy Fellowship, but I now update it infrequently"
-          description="Visualized the History of Computing in a unique way, by highlighting other historical fields like the history of culture, ancient history, etc. The website was built with Next.JS/React, hosted on Vercel, and designed partially on Figma. I managed a team of two students (in cooperation with the Loyola Software Systems Laboratory) for a majority of the fellowship and reported to a professor."
+          description="We visualized the History of Computing in a unique way, by highlighting other historical fields like the history of culture, ancient history, etc. The website was built with Next.JS/React, hosted on Vercel, and designed partially on Figma. I managed a team of two students (in cooperation with the Loyola Software Systems Laboratory) for a majority of the fellowship and reported to a professor."
           stack={[
             "Next.JS",
             "React",

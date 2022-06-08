@@ -36,7 +36,7 @@ function BlackPantherNarratives() {
       >
         <Navigation defaultValue="DontPanic" />
         <Project
-          goal="Create a welcoming environment for Loyola's CS students"
+          goal="The overarching goal of Don't Panic is to create a welcoming environment for Loyola's CS students"
           status="I left the club when I graduated in 2021."
           description="I organized events, was responsible for most communication and co-created the main website for Loyola University Chicago’s main Computer Science club on campus."
           stack={["Next.JS", "React", "TailwindCSS", "Typescript"]}

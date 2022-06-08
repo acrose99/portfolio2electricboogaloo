@@ -36,9 +36,9 @@ function BlackPantherNarratives() {
       >
         <Navigation defaultValue="BlackPantherNarratives" />
         <Project
-          goal="Educate the public and continue the legacy of the Black Panthers"
+          goal="We want to educate the public and continue the legacy of the Black Panthers"
           status="To be released in 2022 or 2023. Contact me for more information."
-          description="Digital exhibit with the Chicago History Museum to showcase and educate people about the legacy of the Black Panthers. Website is built using React/Next.JS, using Tailwind for styling, and Figma for prototyping and wireframes."
+          description="To this end, we are making an exhibit with the Chicago History Museum to showcase and educate people about the legacy of the Black Panthers, in Chicago. The website is built using React/Next.JS, using Tailwind for styling, and Figma for prototyping and wireframes."
           stack={["Next.JS", "React", "TailwindCSS", "Typescript"]}
           accomplishments={[
             "Made a no-code workflow for historians to add to the site",

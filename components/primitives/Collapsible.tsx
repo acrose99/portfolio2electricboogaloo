@@ -5,7 +5,7 @@ import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
 import { ArrowDownIcon, ArrowUpIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
 import {Flex} from "../Flex";
-import { StyledText } from "../Text";
+import { Text } from "../Text";
 import ContextMenu from "./ContextMenu";
 import EditableComponent from "../EditableComponent";
 import EditableText from "../editableComponents/EditableText";
@@ -122,60 +122,60 @@ export default function Collapsible({
   const [open, setOpen] = useState(false);
   const [opened, setOpened] = useState(false);
   return (
-      <StyledCollapsible
-        width={{
-          "@initial": "sm",
-          "@md": "md",
-          "@lg": "lg",
-          "@xl": "xl",
-        }}
-        open={open}
-        onOpenChange={(open) => {
-          setOpen(open);
-          setOpened(true);
+    <StyledCollapsible
+      width={{
+        "@initial": "sm",
+        "@md": "md",
+        "@lg": "lg",
+        "@xl": "xl",
+      }}
+      open={open}
+      onOpenChange={(open) => {
+        setOpen(open);
+        setOpened(true);
+      }}
+    >
+      <Flex direction="row" justify="between" align="center">
+        <Flex direction="column">
+          <Text
+            css={{
+              color: "$mint11",
+              fontWeight: 800,
+            }}
+            fontSize="2xl"
+          >
+            {trigger}
+          </Text>
+        </Flex>
+        <CollapsibleTrigger asChild>
+          <IconButton
+            openedClosed={opened}
+            css={{
+              '&[data-state="closed"]': {
+                backgroundColor: "white",
+              },
+              color: "$mint11",
+            }}
+          >
+            <ArrowUpIcon />
+          </IconButton>
+        </CollapsibleTrigger>
+      </Flex>
+      <CollapsibleContent
+        css={{
+          textAlign: "center",
         }}
       >
-        <Flex direction="row" justify="between" align="center">
-          <Flex direction="column">
-            <StyledText
-              css={{
-                color: '$mint11',
-                fontWeight: 800,
-              }}
-              fontSize="2xl"
-            >
-              {trigger}
-            </StyledText>
-          </Flex>
-          <CollapsibleTrigger asChild>
-            <IconButton
-              openedClosed={opened}
-              css={{
-                '&[data-state="closed"]': {
-                  backgroundColor: 'white',
-                },
-                color: '$mint11'
-              }}
-            >
-              <ArrowUpIcon />
-            </IconButton>
-          </CollapsibleTrigger>
-        </Flex>
-        <CollapsibleContent
-          css={{
-            textAlign: "center",
-          }}
-        >
-          <div>
-            <EditableText
-              defaultText={caption}
-              defaultColor="$mint10"
-              defaultFontWeight="lighter"
-              defaultFontSize="18px"
-            />
-            {children}
-          </div>
-        </CollapsibleContent>
-      </StyledCollapsible>
+        <div>
+          <EditableText
+            defaultText={caption}
+            defaultColor="$mint10"
+            defaultFontWeight="lighter"
+            defaultFontSize="18px"
+          />
+          {children}
+        </div>
+      </CollapsibleContent>
+    </StyledCollapsible>
   );
 }

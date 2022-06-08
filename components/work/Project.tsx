@@ -13,21 +13,12 @@ type Tab = {
   content: React.ReactNode;
 };
 
-interface ProjectProps {
-  goal: string;
-  status: string;
-  description: string;
-  stack: string[];
-  accomplishments: string[];
-  preview: React.ReactNode;
-  link?: string;
-}
-
 const StyledProject = styled("section", {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   padding: "1rem",
+  marginY: "2rem",
   borderRadius: "0.5rem",
   backgroundColor: "$sage1",
   boxShadow: `0 0 0.25rem 0.25rem rgba(0, 0, 0, 0.2)`,
@@ -48,6 +39,17 @@ const StyledProject = styled("section", {
     },
   },
 });
+
+
+interface ProjectProps {
+  goal: string;
+  status: string;
+  description: string;
+  stack: string[];
+  accomplishments: string[];
+  preview: React.ReactNode;
+  link?: string;
+}
 
 function Project({
   goal,
@@ -72,19 +74,19 @@ function Project({
         orientation="horizontal"
         tabs={[
           {
-            label: "Goal",
+            label: "Summary",
             value: goal,
-            content: <EditableText defaultText={goal} />,
+            content: (
+              <>
+                <EditableText defaultText={goal} />
+                <EditableText defaultText={description} />
+              </>
+            ),
           },
           {
             label: "Status",
             value: status,
             content: <EditableText defaultText={status} />,
-          },
-          {
-            label: "Description",
-            value: description,
-            content: <EditableText defaultText={description} />,
           },
           {
             label: "Preview",
@@ -96,10 +98,16 @@ function Project({
             value: "Accomplishments",
             content: <Accomplishments accomplishments={accomplishments} />,
           },
+          {
+            label: "Stack",
+            value: "Stack",
+            content: <Stack stack={stack} />,
+          },
         ]}
       />
-      <Separator gradient orientation="horizontal" />
-      <Stack stack={stack} />
+      <Separator css={{
+        marginBottom: "1rem",
+      }} gradient orientation="horizontal" />
       {link && <LinkCom href={link} />}
     </StyledProject>
   );

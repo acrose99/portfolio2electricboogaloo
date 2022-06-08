@@ -57,9 +57,11 @@ const fadeIn = keyframes({
 });
 
 const StyledContent = styled(TabsPrimitive.Content, {
-  flexGrow: 1,
-  paddingY: 20,
-  // borderBottomLeftRadius: 6,
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  paddingY: 5,
+  marginTops: 5,
   borderTopRightRadius: 6,
   borderBottomRightRadius: 6,
   outline: "none",

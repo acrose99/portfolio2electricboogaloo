@@ -3,7 +3,7 @@ import { styled } from "../../stitches.config";
 import { keyframes } from "@stitches/react";
 import { MixerHorizontalIcon, Cross2Icon } from "@radix-ui/react-icons";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
-import { StyledText } from "../Text";
+import { Text } from "../Text";
 import { Label } from "./Label";
 import { Input } from "../Input";
 import { Flex } from "../Flex";
