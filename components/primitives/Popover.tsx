@@ -1,7 +1,11 @@
 import React from "react";
-import { styled } from "../../stitches.config";
+import { styled, theme, darkTheme } from "../../stitches.config";
 import { keyframes } from "@stitches/react";
-import { MixerHorizontalIcon, Cross2Icon } from "@radix-ui/react-icons";
+import {
+  MixerHorizontalIcon,
+  Cross2Icon,
+  Cross1Icon,
+} from "@radix-ui/react-icons";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import { Text } from "../Text";
 import { Label } from "./Label";
@@ -9,7 +13,11 @@ import { Input } from "../Input";
 import { Flex } from "../Flex";
 import { changableProp, callableFunction } from "../../constants/editConstants";
 import { StyledSeparator } from "./Select";
+import * as AccessibleIcon from "@radix-ui/react-accessible-icon";
+
 import EditableText from "../editableComponents/EditableText";
+import { useTheme } from "next-themes";
+let tinyColor = require("tinycolor2");
 
 const slideUpAndFade = keyframes({
   "0%": { opacity: 0, transform: "translateY(2px)" },
@@ -55,7 +63,9 @@ const StyledContent = styled(PopoverPrimitive.Content, {
 });
 
 const StyledArrow = styled(PopoverPrimitive.Arrow, {
-  fill: "white",
+  // height: "20px",
+  // width: "20px",
+  fill: "$mint11",
 });
 
 const StyledClose = styled(PopoverPrimitive.Close, {
@@ -137,6 +147,7 @@ function Popover({
   alignOffset,
   changeableProps,
 }: PopoverProps) {
+  let themeMode = useTheme();
   function getInputType(type: string, value: string) {
     if (type === "number") {
       return "number";
@@ -156,13 +167,31 @@ function Popover({
       return "checkbox";
     }
   }
+  function getInputColor(type: string, value: string) {
+    // let color = value.slice(1, value.length);
+    if (value.indexOf("$sage") !== -1 || value.indexOf("$mint") !== -1) {
+      let color = value.slice(value.indexOf("$") + 1, value.length);
+      try {
+        if (themeMode.theme === "light") {
+          let radixColor = theme.colors[color];
+          return tinyColor(radixColor.value).toHexString();
+        } else {
+          let radixColor = darkTheme.colors[color];
+          return tinyColor(radixColor.value).toHexString();
+        }
+      } catch {
+        return "black";
+      }
+    }
+    return tinyColor(value).toHexString();
+  }
   return (
     <PopoverRoot>
       <PopoverTrigger>{children}</PopoverTrigger>
       <PopoverContent
-        side={side ? side : "bottom"}
-        sideOffset={sideOffset ? sideOffset : 0}
-        align={align ? align : "start"}
+        side={"right"}
+        sideOffset={sideOffset ? 0 : 10}
+        align={"center"}
         alignOffset={alignOffset ? alignOffset : 0}
       >
         <Flex direction="column" align="start" gap={2}>
@@ -177,14 +206,28 @@ function Popover({
               <Fieldset key={index}>
                 <Label>{prop.label}</Label>
                 {prop && (
-                  <Input
-                    value={prop.value}
-                    /* @ts-ignore */
-                    inputType={getInputType(typeof prop.value, prop.value)}
-                    type={getInputType(typeof prop.value, prop.value)}
-                    placeholder={prop.placeholder ? prop.placeholder : ""}
-                    onChange={(e) => prop.onChange(e.target.value)}
-                  />
+                  <>
+                    <Input
+                      // value={prop.value}
+                      value={
+                        /* @ts-ignore */
+                        getInputType(prop.type, prop.value) === "color"
+                          ? /* @ts-ignore */
+                            getInputColor(prop.type, prop.value)
+                          : prop.value
+                      }
+                      /* @ts-ignore */
+                      inputType={getInputType(typeof prop.value, prop.value)}
+                      type={getInputType(typeof prop.value, prop.value)}
+                      placeholder={prop.placeholder ? prop.placeholder : ""}
+                      onChange={(e) => prop.onChange(e.target.value)}
+                    />
+                    {getInputType(typeof prop.value, prop.value) === "text" && prop.value != "" && (
+                      <Cross2Icon height={'24px'} width={'24px'}
+                        onClick={() => prop.onChange("")}
+                       />
+                    )}
+                  </>
                 )}
               </Fieldset>
             ))}

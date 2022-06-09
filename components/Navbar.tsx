@@ -16,7 +16,8 @@ const StyledNavbar = styled("nav", {
 
 function Navbar({}: NavbarProps) {
   const [height, setHeight] = useState("10vh");
-  const [borderBottom, setBorderBottom] = useState("2px solid $sage7");
+  const [borderBottom, setBorderBottom] = useState("2px solid");
+  const [borderBottomColor, setBorderBottomColor] = useState("$sage7");
   const [justifyContent, setJustifyContent] = useState("space-between");
   return (
     <EditableComponent
@@ -28,7 +29,8 @@ function Navbar({}: NavbarProps) {
           icon: "ResetIcon",
           onClick: () => {
             setHeight("10vh");
-            setBorderBottom(`2px solid ${sage.sage7}`);
+            setBorderBottom("2px solid");
+            setBorderBottomColor(`$sage7`);
             setJustifyContent("space-between");
           },
           toastLabel: "Reset Navbar Props",
@@ -50,6 +52,13 @@ function Navbar({}: NavbarProps) {
           },
         },
         {
+          label: "Border Color",
+          value: borderBottomColor,
+          onChange: (value) => {
+            setBorderBottomColor(value);
+          },
+        },
+        {
           label: "Justify Content",
           value: justifyContent,
           onChange: (value) => {
@@ -62,6 +71,7 @@ function Navbar({}: NavbarProps) {
         css={{
           height: height,
           borderBottom: borderBottom,
+          borderBottomColor: borderBottomColor,
           justifyContent: justifyContent,
         }}
         style={{
