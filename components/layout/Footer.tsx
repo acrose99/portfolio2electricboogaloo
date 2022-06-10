@@ -1,8 +1,8 @@
 import { mintA, sage } from "@radix-ui/colors";
-import EditableText from "./editableComponents/EditableText";
-import EditableComponent from "./EditableComponent";
+import EditableText from "../editableComponents/EditableText";
+import EditableComponent from "../EditableComponent";
 import { useState } from "react";
-import { styled } from "../stitches.config";
+import { styled } from "../../stitches.config";
 import Link from "next/link";
 const StyledFooter = styled("footer", {
   variants: {
@@ -19,7 +19,8 @@ const StyledFooter = styled("footer", {
 
 function Footer() {
   const [verticalPadding, setVerticalPadding] = useState("2vh");
-  const [borderTop, setBorderTop] = useState(`2px solid $sage7`);
+  const [borderTop, setBorderTop] = useState('2px solid');
+  const [borderTopColor, setBorderTopColor] = useState(`$sage7`);
   const [justifyContent, setJustifyContent] = useState("space-between");
   return (
     <EditableComponent
@@ -29,6 +30,11 @@ function Footer() {
           label: "Vertical Padding",
           value: verticalPadding,
           onChange: (value) => setVerticalPadding(value),
+        },
+        {
+          label: "Border Top Color",
+          value: borderTopColor,
+          onChange: (value) => setBorderTopColor(value),
         },
         {
           label: "Border Top",
@@ -47,8 +53,9 @@ function Footer() {
           toastLabel: "Reset Footer Props",
           icon: "ResetIcon",
           onClick: () => {
-            setVerticalPadding("10vh");
+            setVerticalPadding("2vh");
             setBorderTop(`2px solid ${sage.sage7}`);
+            setBorderTopColor(`$sage7`);
             setJustifyContent("space-between");
           },
         },
@@ -62,6 +69,7 @@ function Footer() {
         css={{
           paddingY: verticalPadding,
           borderTop: borderTop,
+          borderTopColor: borderTopColor,
         }}
         style={{
           display: "flex",

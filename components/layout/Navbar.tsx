@@ -1,12 +1,8 @@
-import { mint, mintA, sage } from "@radix-ui/colors";
 import { useState } from "react";
-import EditableComponent from "./EditableComponent";
-import EditableText from "./editableComponents/EditableText";
-import { ThemeToggle } from "./ThemeToggle";
-import {Text} from "./Text";
-import Tooltip from "./primitives/Tooltip";
-import { styled } from "../stitches.config";
-import Link from "next/link";
+import EditableComponent from "../EditableComponent";
+import { ThemeToggle } from "../ThemeToggle";
+import { styled } from "../../stitches.config";
+import HomeLink from "./HomeLink";
 interface NavbarProps {}
 
 const StyledNavbar = styled("nav", {
@@ -79,25 +75,7 @@ function Navbar({}: NavbarProps) {
           alignItems: "center",
         }}
       >
-        <Tooltip side="bottom" trigger="Sorry, you can't edit me!">
-          <Text fontSize={"xl"}>
-            <Link
-              style={{
-                textDecoration: "none",
-              }}
-              href="/"
-            >
-              <a
-                style={{
-                  color: "inherit",
-                  textDecoration: "none",
-                }}
-              >
-                Alex Rose
-              </a>
-            </Link>
-          </Text>
-        </Tooltip>
+        <HomeLink />
         <ThemeToggle />
       </StyledNavbar>
     </EditableComponent>

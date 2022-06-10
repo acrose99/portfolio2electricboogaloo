@@ -100,6 +100,7 @@ export const {
       system: 'system-ui',
       robotoMono: 'Roboto Mono, monospace',
       inter: 'Inter, sans-serif',
+      notoSerif: 'Noto Serif, serif',
     },
   },
   utils: {
