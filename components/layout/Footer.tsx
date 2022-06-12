@@ -78,7 +78,10 @@ function Footer() {
           align="center"
           /* @ts-ignore */
           justify={justifyContent}
-          gap={9}
+          gap={{
+            "@initial": "4",
+            "@md": "9",
+          }}
         >
           <EditableText defaultText="Made with React, Next.JS, Vercel, and Love." />
           <EditableText>

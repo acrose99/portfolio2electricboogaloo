@@ -7,15 +7,6 @@ import { useWindowSize } from "../hooks/useWindowDimensions";
 import { SettingContext } from "../pages/_app";
 function Bio() {
   const [length, setLength] = useState(25);
-  const size = useWindowSize();
-  const settings = useContext(SettingContext);
-  useEffect(() => {
-    if (size.width < 400) {
-      alert(
-        "Hi! This website is meant to be edited, but it looks like you're using a mobile device. Consider using a computer :)"
-      );
-    }
-  }, [size]);
   return (
     <Flex
       css={{

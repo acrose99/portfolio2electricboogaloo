@@ -27,7 +27,7 @@ function Settings({}: SettingsProps) {
   const [settingsDisabled, setSettingsDisabled] = useState(false);
   useEffect(() => {
     let size = window.innerWidth;
-    if (size < 400) {
+    if (size <= 428) {
       setSettings({
         enableEditing: false,
         displayTooltips: false,

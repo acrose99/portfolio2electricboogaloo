@@ -204,7 +204,10 @@ export default function Dropdown({
         <DropdownMenuSeparator />
         {githubLink && 
           <DropdownMenuItem>
-            <a href={githubLink} target="_blank" rel="noopener noreferrer">
+            <a style={{
+              textDecoration: "none",
+              color: 'inherit'
+            }} href={githubLink} target="_blank" rel="noopener noreferrer">
               View Site on GitHub
             </a>
           </DropdownMenuItem>}
