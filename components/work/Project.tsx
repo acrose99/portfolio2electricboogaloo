@@ -25,7 +25,7 @@ const StyledProject = styled("section", {
   variants: {
     width: {
       sm: {
-        width: 400,
+        width: 300,
       },
       md: {
         width: 500,

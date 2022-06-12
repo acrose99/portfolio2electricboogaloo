@@ -11,29 +11,40 @@ import EditableComponent from "../EditableComponent";
 import EditableText from "../editableComponents/EditableText";
 
 export const StyledCollapsible = styled(CollapsiblePrimitive.Root, {
-  paddingY: 10,
-  paddingX: 46,
   marginY: 36,
-  borderRadius: 12,
   variants: {
     width: {
       sm: {
-        width: 400,
+        width: 250,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
       },
       md: {
-        width: 500,
+        width: 300,
       },
       lg: {
-        width: 600,
-      },
-      xl: {
-        width: 700,
+        width: 350,
       },
     },
   },
 });
 
 export const CollapsibleTrigger = styled(CollapsiblePrimitive.Trigger, {
+  variants: {
+    width: {
+      sm: {
+        width: 250,
+      },
+      md: {
+        width: 300,
+      },
+      lg: {
+        width: 350,
+      },
+    },
+  },
   cursor: "pointer",
 });
 
@@ -55,7 +66,7 @@ export const CollapsibleContent = styled(CollapsiblePrimitive.Content, {
 
 let rotateOpenIcon = keyframes({
   from: {
-    transform: "rotate(0deg)",
+    transform: "rotate(90deg)",
   },
   to: {
     transform: "rotate(180deg)",
@@ -67,7 +78,7 @@ let rotateCloseIcon = keyframes({
     transform: "rotate(180deg)",
   },
   "100%": {
-    transform: "rotate(0deg)",
+    transform: "rotate(90deg)",
   },
 });
 
@@ -75,21 +86,11 @@ export const IconButton = styled("button", {
   all: "unset",
   fontFamily: "inherit",
   borderRadius: "100%",
-  height: 25,
-  width: 25,
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
   color: "$mint11",
   boxShadow: `0 2px 10px $sagea7`,
-  '&[data-state="open"]': {
-    backgroundColor: "$mint3",
-    animation: `${rotateOpenIcon} .5s ease-in-out`,
-    transform: "rotate(180deg)",
-  },
-  '&[data-state="closed"]': {
-    backgroundColor: "white",
-  },
   "&:hover": { backgroundColor: "$mint5" },
   "&:focus": { boxShadow: `0 0 0 2px black` },
 
@@ -98,7 +99,7 @@ export const IconButton = styled("button", {
       true: {
         '&[data-state="closed"]': {
           animation: `${rotateCloseIcon} .5s ease-in-out`,
-          transform: "rotate(0deg)",
+          transform: "rotate(90deg)",
         },
       },
     },
@@ -122,11 +123,12 @@ export default function EditableCollapsible({
   const [opened, setOpened] = useState(false);
   const [triggerValue, setTriggerValue] = useState(trigger);
   const [triggerColor, setTriggerColor] = useState("$mint11");
-  const [iconBackgroundColor, setIconBackgroundColor] = useState("white");
+
   const [iconColor, setIconColor] = useState("$mint11");
   return (
     <EditableComponent
       // Prevents overlap between EditableText and Collapsible
+      showTooltip={false}
       tooltip={open ? null : "Edit Collapsible"}
       source="components/primitives/Collapsible.tsx"
       // designSystem="collapsible"
@@ -138,7 +140,6 @@ export default function EditableCollapsible({
             setTriggerValue(trigger);
             setOpen(false);
             setTriggerColor("$mint11");
-            setIconBackgroundColor("white");
             setIconColor("$mint11");
           },
           toastLabel: "Reset Collapsible Props",
@@ -156,14 +157,9 @@ export default function EditableCollapsible({
           onChange: (value) => setTriggerColor(value),
         },
         {
-          label: "Change Icon Color",
+          label: "Change Arrow Color",
           value: iconColor,
           onChange: (value) => setIconColor(value),
-        },
-        {
-          label: "Change Icon Background Color",
-          value: iconBackgroundColor,
-          onChange: (value) => setIconBackgroundColor(value),
         },
       ]}
     >
@@ -172,7 +168,6 @@ export default function EditableCollapsible({
           "@initial": "sm",
           "@md": "md",
           "@lg": "lg",
-          "@xl": "xl",
         }}
         open={open}
         onOpenChange={(open) => {
@@ -180,51 +175,72 @@ export default function EditableCollapsible({
           setOpened(true);
         }}
       >
-        <Flex direction="row" justify="between" align="center">
-          <Flex direction="column">
+        <CollapsibleTrigger
+          width={{
+            "@initial": "sm",
+            "@md": "md",
+            "@lg": "lg",
+          }}
+          asChild
+        >
+          <Flex
+            gap={9}
+            css={{
+              borderRadius: "20px",
+              border: `2px solid $mint7`,
+              background: "$sage3",
+              color: triggerColor,
+              "&:hover": {
+                cursor: "pointer",
+                boxShadow:
+                  "6px 6px 6px $mint8, -4px -2px 5px $mint9, 4px 6px 3px $mint10",
+              },
+              transition: "box-shadow .2s ease-in-out",
+            }}
+            direction="row"
+            align="center"
+            justify="center"
+          >
             <Text
               css={{
-                color: triggerColor,
+                color: "inherit",
                 fontWeight: 800,
               }}
-              fontSize="2xl"
+              fontSize={{
+                "@initial": "md",
+                "@md": "lg",
+                "@lg": "xl",
+                "@xl": "2xl",
+              }}
             >
               {triggerValue}
             </Text>
-          </Flex>
-          <CollapsibleTrigger asChild>
             <IconButton
               openedClosed={opened}
               css={{
-                '&[data-state="closed"]': {
-                  backgroundColor: iconBackgroundColor,
-                },
+                animation: open
+                  ? `${rotateOpenIcon} .5s ease-in-out !important`
+                  : `${rotateCloseIcon} .5s ease-in-out !important`,
+                transform: open ? "rotate(180deg)" : "rotate(90deg)",
+                backgroundColor: open ? "iconBackgroundColor" : "none",
                 color: iconColor,
               }}
             >
-              <ArrowUpIcon />
+              <ArrowUpIcon height={24} width={24} />
             </IconButton>
-          </CollapsibleTrigger>
-        </Flex>
+          </Flex>
+        </CollapsibleTrigger>
         <CollapsibleContent
           css={{
+            marginY: 24,
+            position: "relative",
             textAlign: "center",
           }}
         >
-          <EditableText
-            defaultFontSize={"24px"}
-            defaultColor={"$mint10"}
-          >
+          <EditableText defaultFontSize={"24px"} defaultColor={"$mint10"}>
             {caption}
           </EditableText>
-          <Text
-          // defaultText={caption}
-          // defaultColor="$mint10"
-          // defaultFontWeight="lighter"
-          // defaultFontSize="18px"
-          >
-            {children}
-          </Text>
+          <Text>{children}</Text>
         </CollapsibleContent>
       </StyledCollapsible>
     </EditableComponent>

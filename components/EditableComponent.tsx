@@ -5,8 +5,9 @@ import {
 } from "../constants/editConstants";
 import ContextMenu from "./primitives/ContextMenu";
 import Tooltip from "./primitives/Tooltip";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Toast from "./primitives/Toast";
+import { SettingContext } from "../pages/_app";
 interface EditableComponentProps extends React.HTMLAttributes<HTMLElement> {
   changableProps: changableProp[];
   callableFunctions?: callableFunction[];
@@ -14,9 +15,11 @@ interface EditableComponentProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
   designSystem?: string; // TODO: add type later
   source?: string;
+  showTooltip?: boolean;
   tooltip?: string;
   toolTipColor?: string;
   tooltipOffset?: number;
+  triggerAsChild?: boolean;
 }
 
 function EditableComponent({
@@ -27,8 +30,10 @@ function EditableComponent({
   tooltip,
   designSystem,
   source,
+  showTooltip = true,
   toolTipColor,
   tooltipOffset,
+  triggerAsChild,
 }: EditableComponentProps) {
   const [open, setOpen] = useState(false);
   const [activeToast, setActiveToast] = useState(null);
@@ -59,36 +64,53 @@ function EditableComponent({
       };
     });
   }
+  const useTooltip = useContext(SettingContext).settings.displayTooltips;
+  const isEditable = useContext(SettingContext).settings.enableEditing;
   return (
-    <ContextMenu
-      callableFunctions={callableFunctions}
-      checkableFunctions={checkableFunctions}
-      changableProps={changableProps}
-      designSystem={designSystem}
-      source={source}
-    >
-      <Toast
-        title={activeToast}
-        open={open}
-        setOpen={() => {
-          window.clearTimeout(timerRef.current);
-          timerRef.current = window.setTimeout(() => {
-            setOpen(false);
-          }, 1000);
-        }}
-      >
-        {tooltip && (
-          <Tooltip
-            toolTipColor={toolTipColor}
-            sideOffset={tooltipOffset}
-            trigger={tooltip}
+    <>
+      {isEditable ? (
+        <ContextMenu
+          callableFunctions={callableFunctions}
+          checkableFunctions={checkableFunctions}
+          changableProps={changableProps}
+          designSystem={designSystem}
+          source={source}
+        >
+          <Toast
+            title={activeToast}
+            open={open}
+            setOpen={() => {
+              window.clearTimeout(timerRef.current);
+              timerRef.current = window.setTimeout(() => {
+                setOpen(false);
+              }, 1000);
+            }}
           >
-            {children}
-          </Tooltip>
-        )}
-        {!tooltip && children}
-      </Toast>
-    </ContextMenu>
+            {tooltip && useTooltip ? (
+              <Tooltip
+                toolTipColor={toolTipColor}
+                sideOffset={tooltipOffset}
+                trigger={tooltip}
+                showTooltip={showTooltip}
+                triggerAsChild={triggerAsChild}
+              >
+                {children}
+              </Tooltip>
+            ) : (
+              <Tooltip
+                trigger={null}
+                showTooltip={false}
+                triggerAsChild={triggerAsChild}
+              >
+                {children}
+              </Tooltip>
+            )}
+          </Toast>
+        </ContextMenu>
+      ) : (
+        <>{children}</>
+      )}
+    </>
   );
 }
 

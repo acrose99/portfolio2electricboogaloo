@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
-import { styled } from "../stitches.config";
+import { styled } from "../../stitches.config";
 import { useTheme } from "next-themes";
 import { SunIcon, MoonIcon, LaptopIcon } from "@radix-ui/react-icons";
-import EditableComponent from "./EditableComponent";
+import EditableComponent from "../EditableComponent";
 import { sage } from "@radix-ui/colors";
 
 const IconButton = styled("button", {
   border: "none",
   background: "transparent",
   outline: "none",
+  "&:hover": {
+    cursor: "pointer",
+  },
 });
 
 export const ThemeToggle = () => {
@@ -61,8 +64,7 @@ export const ThemeToggle = () => {
         aria-label="toggle a light and dark color scheme"
         style={{
           cursor: "default",
-          paddingTop: "1rem",
-          paddingRight: "1rem",
+          padding: "1rem",
         }}
         onClick={toggleTheme}
       >

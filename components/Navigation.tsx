@@ -32,6 +32,8 @@ function Navigation({ defaultValue }: NavigationProps) {
   const router = useRouter();
   return (
     <EditableComponent
+      tooltip="Edit Navigation"
+      triggerAsChild={false}
       changableProps={[
         {
           label: "Background Color",
@@ -70,20 +72,18 @@ function Navigation({ defaultValue }: NavigationProps) {
         }}
         defaultValue={defaultValue}
       >
-        <Tooltip trigger="Edit Navigation">
-          <StyledTrigger
-            css={{
-              background: background,
-              color: color,
-              fontSize: fontSize,
-            }}
-          >
-            <SelectPrimitive.Value aria-label={defaultValue} />
-            <SelectPrimitive.Icon>
-              <ChevronDownIcon />
-            </SelectPrimitive.Icon>
-          </StyledTrigger>
-        </Tooltip>
+        <StyledTrigger
+          css={{
+            background: background,
+            color: color,
+            fontSize: fontSize,
+          }}
+        >
+          <SelectPrimitive.Value aria-label={defaultValue} />
+          <SelectPrimitive.Icon>
+            <ChevronDownIcon />
+          </SelectPrimitive.Icon>
+        </StyledTrigger>
         <StyledContent>
           <StyledScrollUpButton>
             <ChevronUpIcon />

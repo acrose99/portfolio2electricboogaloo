@@ -1,8 +1,9 @@
 import * as TooltipPrimitives from "@radix-ui/react-tooltip";
-import React from "react";
+import React, { useContext } from "react";
 import { styled } from "../../stitches.config";
 import { keyframes } from "@stitches/react";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
+import { SettingContext } from "../../pages/_app";
 
 const slideUpAndFade = keyframes({
   "0%": { opacity: 0, transform: "translateY(2px)" },
@@ -25,12 +26,18 @@ const slideLeftAndFade = keyframes({
 });
 
 const StyledTrigger = styled(TooltipPrimitive.Trigger, {
+  cursor: "context-menu",
   backgroundColor: "transparent",
   border: "none",
   padding: "1rem",
-  cursor: "context-menu",
-  "&:hover": {
-    backgroundColor: "$mint3",
+  variants: {
+    showTooltip: {
+      true: {
+        "&:hover": {
+          backgroundColor: "$mint3",
+        },
+      },
+    },
   },
 });
 
@@ -79,6 +86,7 @@ interface TooltipProps {
   align?: "start" | "center" | "end";
   alignOffset?: number;
   triggerAsChild?: boolean;
+  showTooltip?: boolean;
   toolTipColor?: string;
 }
 
@@ -96,6 +104,7 @@ function Tooltip({
   alignOffset = 0,
   triggerAsChild = true,
   toolTipColor = "mint3",
+  showTooltip = true,
 }: TooltipProps) {
   return (
     <TooltipPrimitive.Provider
@@ -108,6 +117,7 @@ function Tooltip({
         onOpenChange={onOpenChange ? (open) => onOpenChange(open) : undefined}
       >
         <StyledTrigger
+          showTooltip={showTooltip}
           css={{
             "&:hover": {
               backgroundColor: toolTipColor,
@@ -117,17 +127,19 @@ function Tooltip({
         >
           {children}
         </StyledTrigger>
-        <TooltipPrimitive.Content
-          side={side}
-          sideOffset={sideOffset}
-          align={align}
-          alignOffset={alignOffset}
-        >
-          <StyledContent sideOffset={sideOffset}>
-            {trigger}
-            <StyledArrow />
-          </StyledContent>
-        </TooltipPrimitive.Content>
+        {trigger && (
+          <TooltipPrimitive.Content
+            side={side}
+            sideOffset={sideOffset}
+            align={align}
+            alignOffset={alignOffset}
+          >
+            <StyledContent sideOffset={sideOffset}>
+              {trigger}
+              <StyledArrow />
+            </StyledContent>
+          </TooltipPrimitive.Content>
+        )}
       </TooltipPrimitive.Root>
     </TooltipPrimitive.Provider>
   );

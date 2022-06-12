@@ -1,8 +1,10 @@
 import { useState } from "react";
 import EditableComponent from "../EditableComponent";
-import { ThemeToggle } from "../ThemeToggle";
+import { ThemeToggle } from "./ThemeToggle";
 import { styled } from "../../stitches.config";
 import HomeLink from "./HomeLink";
+import Settings from "./Settings";
+import { Flex } from "../Flex";
 interface NavbarProps {}
 
 const StyledNavbar = styled("nav", {
@@ -19,6 +21,7 @@ function Navbar({}: NavbarProps) {
     <EditableComponent
       source="components/Navbar.tsx"
       tooltip="Edit the Navbar"
+      triggerAsChild={true}
       callableFunctions={[
         {
           label: "Reset Props",
@@ -69,14 +72,15 @@ function Navbar({}: NavbarProps) {
           borderBottom: borderBottom,
           borderBottomColor: borderBottomColor,
           justifyContent: justifyContent,
-        }}
-        style={{
           display: "flex",
           alignItems: "center",
         }}
       >
         <HomeLink />
-        <ThemeToggle />
+        <Flex gap={5} justify="end">
+          <Settings />
+          <ThemeToggle />
+        </Flex>
       </StyledNavbar>
     </EditableComponent>
   );

@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
-import {Text} from "../Text";
+import { useContext, useEffect, useState } from "react";
+import { Text } from "../Text";
 import EditableComponent from "../EditableComponent";
 import Tooltip from "../primitives/Tooltip";
+import { SettingContext } from "../../pages/_app";
 
 interface EditableTextProps {
   children?: React.ReactNode;
@@ -26,83 +27,115 @@ function EditableText({
   const [fontWeight, setFontWeight] = useState(defaultFontWeight);
   const [fontStyle, setFontStyle] = useState("normal");
   const [lineHeight, setLineHeight] = useState(defaultLineHeight);
+  const isEditable = useContext(SettingContext).settings.enableEditing;
   return (
-    <EditableComponent
-      // designSystem="Text"
-      source="components/editableComponents/EditableText.tsx"
-      callableFunctions={[
-        {
-          icon: "CopyIcon",
-          label: "Copy Text",
-          /* copies the text to the clipboard */
-          onClick: () => {
-            navigator.clipboard.writeText(text);
-          },
-          toastLabel: "Copied to clipboard",
-        },
-        // {
-        //   icon: "PlusIcon",
-        //   label: "Duplicate",
-        //   /* Duplicates the Component in the DOM */
-        //   onClick: () => {
-        //     const newElement = document.createElement("div");
-        //     newElement.innerHTML = text;
-        //     newElement.style.color = color;
-        //     newElement.style.fontSize = fontSize;
-        //     newElement.style.fontWeight = fontWeight;
-        //     document.getElementById("editable-text").appendChild(newElement);
-        //   },
-        // },
-        {
-          label: "Reset Props",
-          /* resets the text to the default */
-          onClick: () => {
-            setText(defaultText);
-            setColor(defaultColor);
-            setFontSize(defaultFontSize);
-            setFontWeight(defaultFontWeight);
-            setFontStyle("normal");
-            setLineHeight("150%");
-          },
-          icon: "ResetIcon",
-          toastLabel: "Reset Props",
-        },
-      ]}
-      changableProps={[
-        !children && {
-          label: "Text",
-          value: children ? children : text,
-          onChange: (value: string) => setText(value),
-        },
-        {
-          label: "Color",
-          value: color,
-          onChange: (value) => setColor(value),
-        },
-        {
-          label: "Font Size",
-          value: fontSize,
-          onChange: (value) => setFontSize(value),
-        },
-        {
-          label: "Font Weight",
-          value: fontWeight,
-          onChange: (value) => setFontWeight(value),
-        },
-        {
-          label: "Font Style",
-          value: fontStyle,
-          onChange: (value) => setFontStyle(value),
-        },
-        {
-          label: "Line Height",
-          value: lineHeight,
-          onChange: (value) => setLineHeight(value),
-        },
-      ]}
-    >
-      <Tooltip sideOffset={10} triggerAsChild={false} trigger="Edit Text">
-        {children && (
+    <>
+      {isEditable ? (
+        <EditableComponent
+          // designSystem="Text"
+          source="components/editableComponents/EditableText.tsx"
+          callableFunctions={[
+            {
+              icon: "CopyIcon",
+              label: "Copy Text",
+              /* copies the text to the clipboard */
+              onClick: () => {
+                navigator.clipboard.writeText(text);
+              },
+              toastLabel: "Copied to clipboard",
+            },
+            {
+              label: "Reset Props",
+              /* resets the text to the default */
+              onClick: () => {
+                setText(defaultText);
+                setColor(defaultColor);
+                setFontSize(defaultFontSize);
+                setFontWeight(defaultFontWeight);
+                setFontStyle("normal");
+                setLineHeight("150%");
+              },
+              icon: "ResetIcon",
+              toastLabel: "Reset Props",
+            },
+          ]}
+          changableProps={[
+            !children && {
+              label: "Text",
+              value: children ? children : text,
+              onChange: (value: string) => setText(value),
+            },
+            {
+              label: "Color",
+              value: color,
+              onChange: (value) => setColor(value),
+            },
+            {
+              label: "Font Size",
+              value: fontSize,
+              onChange: (value) => setFontSize(value),
+            },
+            {
+              label: "Font Weight",
+              value: fontWeight,
+              onChange: (value) => setFontWeight(value),
+            },
+            {
+              label: "Font Style",
+              value: fontStyle,
+              onChange: (value) => setFontStyle(value),
+            },
+            {
+              label: "Line Height",
+              value: lineHeight,
+              onChange: (value) => setLineHeight(value),
+            },
+          ]}
+          tooltip="Edit Text"
+          triggerAsChild={false}
+        >
+          <>
+            {children && (
+              <Text
+                css={{
+                  lineHeight: lineHeight,
+                  fontSize: fontSize,
+                  fontWeight: fontWeight,
+                  fontStyle: fontStyle,
+                  color: color,
+                }}
+              >
+                {children}
+              </Text>
+            )}
+            <Text
+              css={{
+                lineHeight: lineHeight,
+                fontSize: fontSize,
+                fontWeight: fontWeight,
+                fontStyle: fontStyle,
+                color: color,
+              }}
+            >
+              {text}
+            </Text>
+          </>
+        </EditableComponent>
+      ) : (
+        <>
+          {children && (
+            <Text
+              css={{
+                lineHeight: lineHeight,
+                fontSize: fontSize,
+                fontWeight: fontWeight,
+                fontStyle: fontStyle,
+                color: color,
+              }}
+            >
+              {children}
+            </Text>
+          )}
           <Text
             css={{
               lineHeight: lineHeight,
@@ -112,22 +145,11 @@ function EditableText({
               color: color,
             }}
           >
-            {children}
+            {text}
           </Text>
-        )}
-        <Text
-          css={{
-            lineHeight: lineHeight,
-            fontSize: fontSize,
-            fontWeight: fontWeight,
-            fontStyle: fontStyle,
-            color: color,
-          }}
-        >
-          {text}
-        </Text>
-      </Tooltip>
-    </EditableComponent>
+        </>
+      )}
+    </>
   );
 }
 

@@ -17,6 +17,7 @@ import * as AccessibleIcon from "@radix-ui/react-accessible-icon";
 
 import EditableText from "../editableComponents/EditableText";
 import { useTheme } from "next-themes";
+import { useWindowSize } from "../../hooks/useWindowDimensions";
 let tinyColor = require("tinycolor2");
 
 const slideUpAndFade = keyframes({
@@ -41,7 +42,7 @@ const slideLeftAndFade = keyframes({
 const StyledContent = styled(PopoverPrimitive.Content, {
   borderRadius: 4,
   padding: 20,
-  minWidth: 260,
+  width: 300,
   backgroundColor: "$sage1",
   boxShadow:
     "hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px",
@@ -185,14 +186,15 @@ function Popover({
     }
     return tinyColor(value).toHexString();
   }
+  const size = useWindowSize();
   return (
     <PopoverRoot>
       <PopoverTrigger>{children}</PopoverTrigger>
       <PopoverContent
-        side={"right"}
-        sideOffset={sideOffset ? 0 : 10}
-        align={"center"}
-        alignOffset={alignOffset ? alignOffset : 0}
+      side={size.width < 600 ? "top" : 'right'}
+      sideOffset={sideOffset ? 0 : 10}
+      align={"center"}
+      alignOffset={alignOffset ? alignOffset : 0}
       >
         <Flex direction="column" align="start" gap={2}>
           <EditableText
@@ -222,11 +224,14 @@ function Popover({
                       placeholder={prop.placeholder ? prop.placeholder : ""}
                       onChange={(e) => prop.onChange(e.target.value)}
                     />
-                    {getInputType(typeof prop.value, prop.value) === "text" && prop.value != "" && (
-                      <Cross2Icon height={'24px'} width={'24px'}
-                        onClick={() => prop.onChange("")}
-                       />
-                    )}
+                    {getInputType(typeof prop.value, prop.value) === "text" &&
+                      prop.value != "" && (
+                        <Cross2Icon
+                          height={"24px"}
+                          width={"24px"}
+                          onClick={() => prop.onChange("")}
+                        />
+                      )}
                   </>
                 )}
               </Fieldset>

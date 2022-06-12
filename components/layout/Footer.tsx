@@ -4,6 +4,7 @@ import EditableComponent from "../EditableComponent";
 import { useState } from "react";
 import { styled } from "../../stitches.config";
 import Link from "next/link";
+import { Flex } from "../Flex";
 const StyledFooter = styled("footer", {
   variants: {
     flexDirection: {
@@ -19,9 +20,9 @@ const StyledFooter = styled("footer", {
 
 function Footer() {
   const [verticalPadding, setVerticalPadding] = useState("2vh");
-  const [borderTop, setBorderTop] = useState('2px solid');
+  const [borderTop, setBorderTop] = useState("2px solid");
   const [borderTopColor, setBorderTopColor] = useState(`$sage7`);
-  const [justifyContent, setJustifyContent] = useState("space-between");
+  const [justifyContent, setJustifyContent] = useState("center");
   return (
     <EditableComponent
       tooltip="Right click to edit the footer"
@@ -56,66 +57,67 @@ function Footer() {
             setVerticalPadding("2vh");
             setBorderTop(`2px solid ${sage.sage7}`);
             setBorderTopColor(`$sage7`);
-            setJustifyContent("space-between");
+            setJustifyContent("center");
           },
         },
       ]}
     >
       <StyledFooter
-        flexDirection={{
-          "@initial": "column",
-          "@md": "row",
-        }}
         css={{
           paddingY: verticalPadding,
           borderTop: borderTop,
           borderTopColor: borderTopColor,
-        }}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: justifyContent,
-          height: "100%",
           position: "relative",
-          zIndex: 10,
         }}
       >
-        <EditableText defaultText="Made with React, Next.JS, Vercel, and Love." />
-        <EditableText>
-          <Link href="/design">
+        <Flex
+          direction={{
+            "@initial": "column",
+            "@md": "row",
+          }}
+          align="center"
+          /* @ts-ignore */
+          justify={justifyContent}
+          gap={9}
+        >
+          <EditableText defaultText="Made with React, Next.JS, Vercel, and Love." />
+          <EditableText>
+            <Link href="/design">
+              <a
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                Design System
+              </a>
+            </Link>
+          </EditableText>
+          <EditableText>
+            <Link href="/credits">
+              <a
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                }}
+              >
+                Credits
+              </a>
+            </Link>
+          </EditableText>
+          <EditableText>
             <a
               style={{
                 textDecoration: "none",
                 color: "inherit",
               }}
+              href="https://github.com/acrose99"
             >
-              Design System
+              Github
             </a>
-          </Link>
-        </EditableText>
-        <EditableText>
-          <Link href="/credits">
-            <a
-              style={{
-                textDecoration: "none",
-                color: "inherit",
-              }}
-            >
-              Credits
-            </a>
-          </Link>
-        </EditableText>
-        <EditableText>
-          <a
-            style={{
-              textDecoration: "none",
-              color: "inherit",
-            }}
-            href="https://github.com/acrose99"
-          >
-            Github
-          </a>
-        </EditableText>
+          </EditableText>
+        </Flex>
       </StyledFooter>
     </EditableComponent>
   );

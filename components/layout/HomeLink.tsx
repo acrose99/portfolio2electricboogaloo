@@ -5,11 +5,12 @@ import { Text } from "../Text";
 interface HomeLinkProps {}
 
 const StyledLink = styled("a", {
-  color: "$sage12",
+  color: "$mint11",
   fontFamily: "$notoSerif",
   fontWeight: "900",
   fontSize: "1.5rem",
   textDecoration: "none",
+  cursor: "pointer",
 });
 
 function HomeLink({}: HomeLinkProps) {

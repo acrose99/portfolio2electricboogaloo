@@ -18,4 +18,5 @@ export type checkableFunction = {
   label: string;
   onClick: () => void;
   checked: boolean;
+  disabled?: boolean;
 };

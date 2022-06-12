@@ -35,9 +35,13 @@ export const {
     },
     shadows: {
       ...mint,
+      ...mintA,
       ...sage,
+      ...sageA,
       ...sky,
+      ...skyA,
       ...violet,
+      ...violetA,
     },
     space: {
       1: '5px',
@@ -138,8 +142,12 @@ export const darkTheme = createTheme('dark-theme', {
   },
   shadows: {
     ...mintDark,
+    ...mintA,
     ...sageDark,
+    ...sageA,
     ...skyDark,
+    ...skyA,
     ...violetDark,
+    ...violetA,
   },
 });

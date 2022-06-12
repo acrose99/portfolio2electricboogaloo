@@ -13,7 +13,6 @@ export const StyledSlider = styled(SliderPrimitive.Root, {
   userSelect: "none",
   touchAction: "none",
   width: 200,
-
   '&[data-orientation="horizontal"]': {
     height: 20,
   },
@@ -23,6 +22,7 @@ export const StyledSlider = styled(SliderPrimitive.Root, {
     width: 20,
     height: 100,
   },
+  
 });
 
 export const StyledTrack = styled(SliderPrimitive.Track, {

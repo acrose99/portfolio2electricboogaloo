@@ -4,7 +4,7 @@ import { blackA } from "@radix-ui/colors";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import EditableComponent from "../EditableComponent";
 import { keyframes } from "@stitches/react";
-import {Flex} from "../Flex";
+import { Flex } from "../Flex";
 
 const StyledTabs = styled(TabsPrimitive.Root, {
   display: "flex",
@@ -15,9 +15,18 @@ const StyledTabs = styled(TabsPrimitive.Root, {
 const StyledList = styled(TabsPrimitive.List, {
   flexShrink: 0,
   display: "flex",
-  flexDirection: "row",
   alignItems: "center",
   borderBottom: `1px solid $sage6`,
+  variants: {
+    width: {
+      sm: {
+        flexWrap: "wrap",
+      },
+      md: {
+        flexWrap: "nowrap",
+      },
+    },
+  },
 });
 
 const StyledTrigger = styled(TabsPrimitive.Trigger, {
@@ -44,7 +53,7 @@ const StyledTrigger = styled(TabsPrimitive.Trigger, {
   "&:focus": { position: "relative" },
   variants: {
     fontSize: {
-      small: { fontSize: "12px" },
+      small: { fontSize: "10px" },
       medium: { fontSize: "14px" },
       large: { fontSize: "16px" },
     },
@@ -94,14 +103,18 @@ export default function Tabs({
   return (
     <>
       <StyledTabs orientation={orientation} defaultValue={defaultValue}>
-        <TabsList aria-label="Manage your account">
+        <TabsList 
+        width={{
+          "@initial": "sm",
+          '@md': 'md',
+        }} aria-label="Manage your account">
           {tabs.map(({ value, label, content }) => (
             <TabsTrigger
-             fontSize={{
-               '@initial': 'small',
-                '@md': 'medium',
-                '@lg': 'large',
-             }}
+              fontSize={{
+                "@initial": "small",
+                "@md": "medium",
+                "@lg": "large",
+              }}
               key={value}
               value={value}
               aria-label={label}
@@ -113,11 +126,19 @@ export default function Tabs({
           ))}
         </TabsList>
         {tabs.map(({ value, content }) => (
-          <Flex key={value} direction="column" justify="center" align="center">
-            <TabsContent key={value} id={`tab-${value}`} value={value}>
+          <TabsContent key={value} id={`tab-${value}`} value={value}>
+            <Flex
+              css={{
+                textAlign: "center",
+              }}
+              key={value}
+              direction="column"
+              justify="center"
+              align="center"
+            >
               {content}
-            </TabsContent>
-          </Flex>
+            </Flex>
+          </TabsContent>
         ))}
       </StyledTabs>
     </>

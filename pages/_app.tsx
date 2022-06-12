@@ -4,13 +4,15 @@ import "../global.css";
 import "@fontsource/roboto-mono";
 import "@fontsource/inter";
 import "@fontsource/noto-serif";
-import { styled, darkTheme } from "../stitches.config";
+import { styled, theme, darkTheme } from "../stitches.config";
 import Footer from "../components/layout/Footer";
 import { ThemeProvider } from "next-themes";
 import Navbar from "../components/layout/Navbar";
 import Script from "next/script";
 import { DefaultSeo } from "next-seo";
 import Head from "next/head";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { useWindowSize } from "../hooks/useWindowDimensions";
 const Container = styled("main", {
   display: "flex",
   flexDirection: "column",
@@ -25,9 +27,24 @@ const Container = styled("main", {
   $$transparent: "#FDFCFD00",
 });
 
+export const SettingContext = createContext(null);
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const [settings, setSettings] = useState({
+    enableEditing: true,
+    displayTooltips: true,
+  });
+  const settingsRef = useRef(useContext(SettingContext));
+  const [defaultColors, setDefaultColors] = useState(darkTheme.colors);
+  function setDefaultColor(defaultColor: string, value: string) {
+    setDefaultColors({
+      ...defaultColors,
+      [defaultColor]: value,
+    });
+  }
   return (
-    <>
+    <SettingContext.Provider
+      value={{ settings, setSettings, defaultColors, setDefaultColor }}
+    >
       <Head>
         <meta charSet="utf-8" />
         <meta name="language" content="english" />
@@ -111,6 +128,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           gtag('config', 'G-04KLC3DPQS');
         `}
       </Script>
-    </>
+    </SettingContext.Provider>
   );
 }

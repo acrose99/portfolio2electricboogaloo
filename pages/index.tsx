@@ -12,13 +12,9 @@ export default function Home() {
       <Head>
         <title>Alex Rose: Bio</title>
       </Head>
-      <Flex gap={6} direction="column" align="center">
-        <EditableText
-          defaultFontSize="24px"
-          defaultFontWeight="bolder"
-          defaultText="Right click an element to start changing the site"
-          defaultColor="$mint11"
-        />
+      <Flex css={{
+        marginTop: 100,
+      }} gap={6} direction="column" align="center">
         <Navigation defaultValue="Bio" />
         <Bio />
       </Flex>

@@ -4,9 +4,9 @@ import {
   StyledRange,
   StyledTrack,
 } from "../primitives/Slider";
-import {Label} from "../primitives/Label";
+import { Label } from "../primitives/Label";
 import { Spacer } from "../Spacer";
-import {Flex} from "../Flex";
+import { Flex } from "../Flex";
 import { useEffect, useState } from "react";
 import EditableComponent from "../EditableComponent";
 
@@ -88,8 +88,27 @@ function BioSlider({ length, setLength }: BioSliderProps) {
       ]}
     >
       <form>
-        <Flex gap={5} direction="row" align="center" justify="center">
-          <Label>Bio Length: {lengthLabel}</Label>
+        <Flex
+          css={{
+            "@media (max-width: 375px)": {
+              width: "70%",
+              margin: "0 auto",
+            },
+          }}
+          direction="row"
+          align="center"
+          justify="center"
+          gap={5}
+        >
+          <Label
+            css={{
+              "@media (max-width: 375px)": {
+                fontSize: 12
+              },
+            }}
+          >
+            Bio Length: {lengthLabel}
+          </Label>
           <StyledSlider
             disabled={disabled}
             defaultValue={[length]}

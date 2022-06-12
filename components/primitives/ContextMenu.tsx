@@ -119,7 +119,9 @@ const StyledItemIndicator = styled(ContextMenuPrimitive.ItemIndicator, {
 });
 
 // Exports
-export const ContextMenuTrigger = ContextMenuPrimitive.Trigger;
+export const ContextMenuTrigger = styled(ContextMenuPrimitive.Trigger, {
+    cursor: "context-menu",
+});
 export const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup;
 
 // Your app...
