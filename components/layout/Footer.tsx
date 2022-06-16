@@ -83,19 +83,8 @@ function Footer() {
             "@md": "9",
           }}
         >
-          <EditableText defaultText="Made with React, Next.JS, Vercel, and Love." />
           <EditableText>
-            <Link href="/design">
-              <a
-                style={{
-                  textDecoration: "none",
-                  color: "inherit",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                Design System
-              </a>
-            </Link>
+            Made with React, Next.JS, Vercel, and Love
           </EditableText>
           <EditableText>
             <Link href="/credits">

@@ -186,7 +186,7 @@ export default function Dropdown({
               {children}
             </DropdownMenu>
           ))}
-        <DropdownMenuSeparator />
+        {extraDropdownMenus && <DropdownMenuSeparator />}
         {checkableFunctions &&
           checkableFunctions.map((prop, index) => (
             <DropdownMenuCheckboxItem

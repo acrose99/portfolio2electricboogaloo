@@ -10,7 +10,8 @@ export type callableFunction = {
   label: string;
   onClick: () => void;
   icon?: string;
-  toastLabel: string;
+  toastLabel?: string;
+  seperator?: boolean;
 };
 
 

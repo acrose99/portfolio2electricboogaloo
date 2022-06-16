@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { keyframes } from "@stitches/react";
 import { styled } from "../../stitches.config";
 import { violet, mauve, blackA } from "@radix-ui/colors";
@@ -11,13 +11,15 @@ import {
 } from "@radix-ui/react-icons";
 import * as Icons from "@radix-ui/react-icons";
 
+import shortid from "shortid";
+
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
 import {
   changableProp,
   callableFunction,
   checkableFunction,
 } from "../../constants/editConstants";
-import {Flex} from "../Flex";
+import { Flex } from "../Flex";
 import Link from "next/link";
 
 const slideDown = keyframes({
@@ -72,7 +74,7 @@ const itemStyles = {
 
 const ContextMenuItem = styled(ContextMenuPrimitive.Item, { ...itemStyles });
 const ContextMenuCheckboxItem = styled(ContextMenuPrimitive.CheckboxItem, {
-  paddingLeft: '10px !important',
+  paddingLeft: "10px !important",
   ...itemStyles,
 });
 const ContextMenuRadioItem = styled(ContextMenuPrimitive.RadioItem, {
@@ -120,7 +122,7 @@ const StyledItemIndicator = styled(ContextMenuPrimitive.ItemIndicator, {
 
 // Exports
 export const ContextMenuTrigger = styled(ContextMenuPrimitive.Trigger, {
-    cursor: "context-menu",
+  cursor: "context-menu",
 });
 export const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup;
 
@@ -167,74 +169,81 @@ function ContextMenu({
   source,
 }: ContextMenuProps) {
   return (
-    <ContextMenuPrimitive.Root modal>
-      <ContextMenuTrigger>{children}</ContextMenuTrigger>
-      <ContextMenuContent sideOffset={5}>
-        <ContextMenuItem asChild>
-          <Popover
-            side="bottom"
-            sideOffset={-5}
-            align="center"
-            changeableProps={changableProps}
-          >
-            <Icon icon="Pencil2Icon" />
-            Change Props
-          </Popover>
-        </ContextMenuItem>
+    <>
+      <ContextMenuPrimitive.Root modal={false}>
+        <ContextMenuTrigger>{children}</ContextMenuTrigger>
+        <ContextMenuContent sideOffset={5}>
+          <ContextMenuItem asChild>
+            <Popover
+              side="bottom"
+              sideOffset={-5}
+              align="center"
+              changeableProps={changableProps}
+            >
+              <Icon icon="Pencil2Icon" />
+              Change Props
+            </Popover>
+          </ContextMenuItem>
 
-        {callableFunctions &&
-          callableFunctions.map((prop, index) => (
-            <ContextMenuPropItem
-              icon={prop.icon}
-              key={index}
-              onClick={() => prop.onClick()}
-            >
-              {prop.label}
+          {callableFunctions &&
+            callableFunctions.map((prop, index) => (
+              <>
+                {prop.seperator && <ContextMenuSeparator />}
+                <ContextMenuPropItem
+                  icon={prop.icon}
+                  key={index}
+                  onClick={() => prop.onClick()}
+                >
+                  {prop.label}
+                </ContextMenuPropItem>
+              </>
+            ))}
+          {checkableFunctions && <ContextMenuSeparator />}
+          {checkableFunctions &&
+            checkableFunctions.map((prop, index) => (
+              <ContextMenuCheckboxItem
+                key={index}
+                onCheckedChange={() => prop.onClick()}
+                checked={prop.checked}
+              >
+                <ContextMenuItemIndicator>
+                  <CheckIcon
+                    style={{
+                      display: prop.checked ? "inline" : "none",
+                    }}
+                  />
+                </ContextMenuItemIndicator>
+                {prop.label}
+              </ContextMenuCheckboxItem>
+            ))}
+          {designSystem || source ? <ContextMenuSeparator /> : null}
+          {designSystem && (
+            <ContextMenuPropItem icon="ComponentInstanceIcon">
+              <Link href={"/design/" + designSystem}>
+                View Component Design
+              </Link>
             </ContextMenuPropItem>
-          ))}
-        {checkableFunctions && <ContextMenuSeparator />}
-        {checkableFunctions &&
-          checkableFunctions.map((prop, index) => (
-            <ContextMenuCheckboxItem
-              key={index}
-              onCheckedChange={() => prop.onClick()}
-              checked={prop.checked}
-            >
-              <ContextMenuItemIndicator>
-                <CheckIcon
-                  style={{
-                    display: prop.checked ? "inline" : "none",
-                  }}
-                />
-              </ContextMenuItemIndicator>
-              {prop.label}
-            </ContextMenuCheckboxItem>
-          ))}
-        {designSystem || source ? <ContextMenuSeparator /> : null}
-        {designSystem && (
-          <ContextMenuPropItem icon="ComponentInstanceIcon">
-            <Link href={"/design/" + designSystem}>View Component Design</Link>
-          </ContextMenuPropItem>
-        )}
-        {source && (
-          <ContextMenuPropItem icon="GitHubLogoIcon">
-            <a
-              style={{
-                color: "inherit",
-              }}
-              href={
-                "https://github.com/acrose99/portfolio2electricboogaloo/tree/main/" +
-                source
-              }
-              rel="noreferrer"
-              target="_blank"
-            >
-              Go to Source
-            </a>
-          </ContextMenuPropItem>
-        )}
-      </ContextMenuContent>
-    </ContextMenuPrimitive.Root>
+          )}
+          {source && (
+            <ContextMenuPropItem icon="GitHubLogoIcon">
+              <a
+                style={{
+                  color: "inherit",
+                }}
+                href={
+                  "https://github.com/acrose99/portfolio2electricboogaloo/tree/main/" +
+                  source
+                }
+                rel="noreferrer"
+                target="_blank"
+              >
+                Go to Source
+              </a>
+            </ContextMenuPropItem>
+          )}
+        </ContextMenuContent>
+      </ContextMenuPrimitive.Root>
+    </>
   );
 }
 

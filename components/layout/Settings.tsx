@@ -8,7 +8,6 @@ import { SettingContext } from "../../pages/_app";
 import { styled } from "../../stitches.config";
 import EditableComponent from "../EditableComponent";
 import Dropdown from "../primitives/Dropdown";
-import DefaultColors from "./Settings/DefaultColors";
 
 const IconButton = styled("button", {
   border: "none",
@@ -62,12 +61,6 @@ function Settings({}: SettingsProps) {
             });
           },
           disabled: settingsDisabled,
-        },
-      ]}
-      extraDropdownMenus={[
-        {
-          label: "Default Colors",
-          children: <DefaultColors setDefaultColor={setDefaultColor} />,
         },
       ]}
     >

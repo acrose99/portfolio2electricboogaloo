@@ -90,9 +90,10 @@ function Navigation({ defaultValue }: NavigationProps) {
           </StyledScrollUpButton>
           <StyledViewport>
             <SelectPrimitive.Group>
-              <StyledLabel>About</StyledLabel>
+              <StyledLabel>About Alex</StyledLabel>
               <StyledSeparator />
               <SelectItem value="Bio" />
+              <SelectItem value="Skills" label="Skills" />
               <SelectItem value="Resume" />
               <SelectItem value="Contact" />
               <StyledLabel>Work</StyledLabel>
@@ -107,13 +108,8 @@ function Navigation({ defaultValue }: NavigationProps) {
               />
               <SelectItem value="DontPanic" label="Don't Panic" />
               <SelectItem value="threeJSSnippets" label="ThreeJS Snippets" />
-              <StyledLabel>Skills</StyledLabel>
-              <StyledSeparator />
-              <SelectItem value="Frameworks" />
-              <SelectItem value="Languages" />
               <StyledLabel>About this Site</StyledLabel>
               <StyledSeparator />
-              <SelectItem value="Design" />
               <SelectItem value="Credits" />
             </SelectPrimitive.Group>
           </StyledViewport>

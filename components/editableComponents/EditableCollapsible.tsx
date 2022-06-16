@@ -1,6 +1,8 @@
 import { sageA } from "@radix-ui/colors";
 import { keyframes } from "@stitches/react";
 import { styled } from "../../stitches.config";
+import type * as Stitches from "@stitches/react";
+
 import * as CollapsiblePrimitive from "@radix-ui/react-collapsible";
 import { ArrowDownIcon, ArrowUpIcon } from "@radix-ui/react-icons";
 import { useState } from "react";
@@ -11,7 +13,7 @@ import EditableComponent from "../EditableComponent";
 import EditableText from "../editableComponents/EditableText";
 
 export const StyledCollapsible = styled(CollapsiblePrimitive.Root, {
-  marginY: 36,
+  marginY: 16,
   variants: {
     width: {
       sm: {
@@ -91,7 +93,7 @@ export const IconButton = styled("button", {
   justifyContent: "center",
   color: "$mint11",
   boxShadow: `0 2px 10px $sagea7`,
-  "&:hover": { backgroundColor: "$mint5" },
+  "&:hover": { backgroundColor: "$sage5" },
   "&:focus": { boxShadow: `0 0 0 2px black` },
 
   variants: {
@@ -106,31 +108,37 @@ export const IconButton = styled("button", {
   },
 });
 
+
+
 interface CollapsibleProps {
   trigger: string;
   caption?: string;
   children: React.ReactNode;
   animated?: boolean;
+  css?: Stitches.CSS;
+  tooltipColor?: string;
 }
 
 export default function EditableCollapsible({
   trigger,
   caption,
   children,
+  css,
   animated = true,
+  tooltipColor
 }: CollapsibleProps) {
   const [open, setOpen] = useState(false);
   const [opened, setOpened] = useState(false);
   const [triggerValue, setTriggerValue] = useState(trigger);
   const [triggerColor, setTriggerColor] = useState("$mint11");
 
-  const [iconColor, setIconColor] = useState("$mint11");
   return (
     <EditableComponent
       // Prevents overlap between EditableText and Collapsible
       showTooltip={false}
       tooltip={open ? null : "Edit Collapsible"}
-      source="components/primitives/Collapsible.tsx"
+      toolTipColor={open ? null : tooltipColor ? tooltipColor : null}
+      source="components/editableComponents/EditableCollapsible.tsx"
       // designSystem="collapsible"
       callableFunctions={[
         {
@@ -140,7 +148,6 @@ export default function EditableCollapsible({
             setTriggerValue(trigger);
             setOpen(false);
             setTriggerColor("$mint11");
-            setIconColor("$mint11");
           },
           toastLabel: "Reset Collapsible Props",
         },
@@ -155,11 +162,6 @@ export default function EditableCollapsible({
           label: "Change Color",
           value: triggerColor,
           onChange: (value) => setTriggerColor(value),
-        },
-        {
-          label: "Change Arrow Color",
-          value: iconColor,
-          onChange: (value) => setIconColor(value),
         },
       ]}
     >
@@ -190,12 +192,14 @@ export default function EditableCollapsible({
               border: `2px solid $mint7`,
               background: "$sage3",
               color: triggerColor,
+              paddingRight: "40px",
               "&:hover": {
                 cursor: "pointer",
                 boxShadow:
                   "6px 6px 6px $mint8, -4px -2px 5px $mint9, 4px 6px 3px $mint10",
               },
               transition: "box-shadow .2s ease-in-out",
+              ...css,
             }}
             direction="row"
             align="center"
@@ -210,7 +214,6 @@ export default function EditableCollapsible({
                 "@initial": "md",
                 "@md": "lg",
                 "@lg": "xl",
-                "@xl": "2xl",
               }}
             >
               {triggerValue}
@@ -218,12 +221,11 @@ export default function EditableCollapsible({
             <IconButton
               openedClosed={opened}
               css={{
-                animation: open
-                  ? `${rotateOpenIcon} .5s ease-in-out !important`
-                  : `${rotateCloseIcon} .5s ease-in-out !important`,
+                animation: !opened // prevent animation on initial render
+                  ? null : open ? `${rotateOpenIcon} .5s ease-in-out` : `${rotateCloseIcon} .5s ease-in-out`,
                 transform: open ? "rotate(180deg)" : "rotate(90deg)",
                 backgroundColor: open ? "iconBackgroundColor" : "none",
-                color: iconColor,
+                color: 'inherit',
               }}
             >
               <ArrowUpIcon height={24} width={24} />

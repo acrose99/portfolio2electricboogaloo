@@ -36,15 +36,6 @@ function EditableText({
           source="components/editableComponents/EditableText.tsx"
           callableFunctions={[
             {
-              icon: "CopyIcon",
-              label: "Copy Text",
-              /* copies the text to the clipboard */
-              onClick: () => {
-                navigator.clipboard.writeText(text);
-              },
-              toastLabel: "Copied to clipboard",
-            },
-            {
               label: "Reset Props",
               /* resets the text to the default */
               onClick: () => {
@@ -58,6 +49,15 @@ function EditableText({
               icon: "ResetIcon",
               toastLabel: "Reset Props",
             },
+            {
+              icon: "ClipboardCopyIcon",
+              label: "Copy Text",
+              /* copies the text to the clipboard */
+              onClick: () => {
+                navigator.clipboard.writeText(text);
+              },
+              toastLabel: "Copied to clipboard",
+            }
           ]}
           changableProps={[
             !children && {

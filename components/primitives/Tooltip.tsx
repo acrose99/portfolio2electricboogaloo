@@ -118,11 +118,6 @@ function Tooltip({
       >
         <StyledTrigger
           showTooltip={showTooltip}
-          css={{
-            "&:hover": {
-              backgroundColor: toolTipColor,
-            },
-          }}
           asChild={triggerAsChild}
         >
           {children}
@@ -134,7 +129,9 @@ function Tooltip({
             align={align}
             alignOffset={alignOffset}
           >
-            <StyledContent sideOffset={sideOffset}>
+            <StyledContent css={{
+              backgroundColor: toolTipColor,
+            }} sideOffset={sideOffset}>
               {trigger}
               <StyledArrow />
             </StyledContent>

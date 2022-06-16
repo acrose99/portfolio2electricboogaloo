@@ -34,16 +34,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     displayTooltips: true,
   });
   const settingsRef = useRef(useContext(SettingContext));
-  const [defaultColors, setDefaultColors] = useState(darkTheme.colors);
-  function setDefaultColor(defaultColor: string, value: string) {
-    setDefaultColors({
-      ...defaultColors,
-      [defaultColor]: value,
-    });
-  }
   return (
     <SettingContext.Provider
-      value={{ settings, setSettings, defaultColors, setDefaultColor }}
+      value={{ settings, setSettings}} 
     >
       <Head>
         <meta charSet="utf-8" />

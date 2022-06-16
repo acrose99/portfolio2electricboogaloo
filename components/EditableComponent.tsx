@@ -5,9 +5,11 @@ import {
 } from "../constants/editConstants";
 import ContextMenu from "./primitives/ContextMenu";
 import Tooltip from "./primitives/Tooltip";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import Toast from "./primitives/Toast";
 import { SettingContext } from "../pages/_app";
+import shortid from "shortid";
+
 interface EditableComponentProps extends React.HTMLAttributes<HTMLElement> {
   changableProps: changableProp[];
   callableFunctions?: callableFunction[];
@@ -66,51 +68,91 @@ function EditableComponent({
   }
   const useTooltip = useContext(SettingContext).settings.displayTooltips;
   const isEditable = useContext(SettingContext).settings.enableEditing;
+  let [componentID, setComponentID] = useState(null);
+  useEffect(() => {
+    setComponentID(shortid.generate());
+  }, []);
   return (
-    <>
-      {isEditable ? (
-        <ContextMenu
-          callableFunctions={callableFunctions}
-          checkableFunctions={checkableFunctions}
-          changableProps={changableProps}
-          designSystem={designSystem}
-          source={source}
-        >
-          <Toast
-            title={activeToast}
-            open={open}
-            setOpen={() => {
-              window.clearTimeout(timerRef.current);
-              timerRef.current = window.setTimeout(() => {
-                setOpen(false);
-              }, 1000);
-            }}
+    <div aria-hidden={true}>
+      <div aria-hidden={true} id={componentID}>
+        {isEditable ? (
+          <ContextMenu
+            callableFunctions={[
+              ...callableFunctions,
+              {
+                label: "Delete Component",
+                icon: "TrashIcon",
+                onClick: () => {
+                  let element = document.getElementById(componentID);
+                  element.remove();
+                },
+                toastLabel: "Delete Component",
+                seperator: true,
+              },
+              {
+                label: "Copy Component Code",
+                icon: "CopyIcon",
+                onClick: () => {
+                  let element = document.getElementById(componentID);
+                  let secondChild = element.children[0].children[0]
+                  let secondChildCode = secondChild.innerHTML;
+                  navigator.clipboard.writeText(secondChildCode);
+                  setActiveToast("Copied Component Code");
+                },
+              },
+              // {
+              //   label: "Duplicate Component",
+              //   icon: "CopyIcon",
+              //   onClick: () => {
+              //     let element = document.getElementById(componentID);
+              //     let copy = element.cloneNode(true) as HTMLElement;
+              //     copy.id = shortid.generate();
+              //     element.parentElement.appendChild(copy);
+              //   },
+              //   toastLabel: "Copy Component",
+              // },
+            ]}
+            checkableFunctions={checkableFunctions}
+            changableProps={changableProps}
+            designSystem={designSystem}
+            source={source}
           >
-            {tooltip && useTooltip ? (
-              <Tooltip
-                toolTipColor={toolTipColor}
-                sideOffset={tooltipOffset}
-                trigger={tooltip}
-                showTooltip={showTooltip}
-                triggerAsChild={triggerAsChild}
-              >
-                {children}
-              </Tooltip>
-            ) : (
-              <Tooltip
-                trigger={null}
-                showTooltip={false}
-                triggerAsChild={triggerAsChild}
-              >
-                {children}
-              </Tooltip>
-            )}
-          </Toast>
-        </ContextMenu>
-      ) : (
-        <>{children}</>
-      )}
-    </>
+            <Toast
+              title={activeToast}
+              open={open}
+              setOpen={() => {
+                window.clearTimeout(timerRef.current);
+                timerRef.current = window.setTimeout(() => {
+                  setOpen(false);
+                }, 1000);
+              }}
+            >
+              {tooltip && useTooltip ? (
+                <Tooltip
+                  toolTipColor={toolTipColor}
+                  sideOffset={tooltipOffset}
+                  trigger={tooltip}
+                  showTooltip={showTooltip}
+                  triggerAsChild={triggerAsChild}
+                >
+                  {children}
+                </Tooltip>
+              ) : (
+                <Tooltip
+                  trigger={null}
+                  showTooltip={false}
+                  triggerAsChild={triggerAsChild}
+                >
+                  {children}
+                </Tooltip>
+              )}
+            </Toast>
+          </ContextMenu>
+        ) : (
+          <>{children}</>
+        )}
+      </div>
+    </div>
   );
 }
 
