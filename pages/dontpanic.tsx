@@ -5,7 +5,7 @@ import Head from "next/head";
 import EditableText from "../components/editableComponents/EditableText";
 import Tabs from "../components/primitives/Tabs";
 import Project from "../components/work/Project";
-import Image from "next/image";
+import Image from "../components/Image";
 
 const Preview = () => {
   return (

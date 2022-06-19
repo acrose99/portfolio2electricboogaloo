@@ -22,7 +22,7 @@ export default function Home() {
       </Head>
       <Flex
         css={{
-          marginTop: 100,
+          marginTop: 10,
         }}
         gap={6}
         direction="column"

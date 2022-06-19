@@ -5,13 +5,13 @@ import Head from "next/head";
 import EditableText from "../components/editableComponents/EditableText";
 import Tabs from "../components/primitives/Tabs";
 import Project from "../components/work/Project";
-import Image from "next/image";
+import ImageComponent from "../components/Image";
 
 const Preview = () => {
   return (
     <>
-      <Image
-        alt="Screenshot of site"
+      <ImageComponent
+        alt="Screenshot of BLack Panther Narratives"
         src="/work/bpPreview.png"
         width={1000}
         height={600}

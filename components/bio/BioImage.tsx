@@ -1,35 +1,24 @@
-import Image from "next/image";
 import { useState } from "react";
 import { styled } from "../../stitches.config";
 import EditableComponent from "../EditableComponent";
 import { Flex } from "../Flex";
 import ToggleGroup from "../primitives/ToggleGroup";
-
+import * as DialogPrimitive from "@radix-ui/react-dialog";
+import { Cross2Icon } from "@radix-ui/react-icons";
+import { keyframes } from "@stitches/react";
+import { blackA } from "@radix-ui/colors";
+import ImageComponent from "../Image";
 interface BioImageProps {}
 
-let StyledBioImage = styled(Image, {
-  variants: {
-    filter: {
-      sepia: {
-        filter: "sepia(100%)",
-      },
-      grayscale: {
-        filter: "grayscale(100%)",
-      },
-      invert: {
-        filter: "invert(100%)",
-      },
-    },
-  },
-});
 
 function BioImage({}: BioImageProps) {
+  const [isOpen, setIsOpen] = useState(false);
   const [width, setWidth] = useState(400);
   const [height, setHeight] = useState(400);
   const [filter, setFilter] = useState(null);
   let images = [
     {
-      label: "Aesthetic",
+      label: "Plants",
       value: "/plantyboi.png",
     },
     {
@@ -48,6 +37,7 @@ function BioImage({}: BioImageProps) {
   const [image, setImage] = useState("/plantyboi.png");
   return (
     <EditableComponent
+      source="/components/bio/BioImage.tsx"
       changableProps={[
         {
           label: "Width",
@@ -90,17 +80,16 @@ function BioImage({}: BioImageProps) {
           icon: "ResetIcon",
         },
       ]}
-      tooltip="Edit Image"
+      tooltip={isOpen ? null : "Edit image"}
     >
       <Flex direction={"column"}>
-        <StyledBioImage
+        <ImageComponent
           src={image}
-          alt="Computer in a field of grass with trees"
-          priority={true}
+          alt={images.find((i) => i.value === image)?.label}
           width={width}
           height={height}
-          quality={100}
           filter={filter}
+          priority={true}
         />
         <ToggleGroup
           items={images}
