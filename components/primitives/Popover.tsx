@@ -152,7 +152,8 @@ function Popover({
   function getInputType(type: string, value: string) {
     if (type === "number") {
       return "number";
-    } else if (
+    }
+     else if (
       value.indexOf("hsl") !== -1 ||
       value.indexOf("hsla") !== -1 ||
       value.indexOf("rgba") !== -1 ||
@@ -213,7 +214,7 @@ function Popover({
                       // value={prop.value}
                       value={
                         /* @ts-ignore */
-                        getInputType(prop.type, prop.value) === "color"
+                        getInputType(typeof prop.value, prop.value) === "color"
                           ? /* @ts-ignore */
                             getInputColor(prop.type, prop.value)
                           : prop.value

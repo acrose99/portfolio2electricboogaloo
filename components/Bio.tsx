@@ -5,6 +5,7 @@ import { Flex } from "./Flex";
 import Image from "next/image";
 import { useWindowSize } from "../hooks/useWindowDimensions";
 import { SettingContext } from "../pages/_app";
+import BioImage from "./bio/BioImage";
 function Bio() {
   const [length, setLength] = useState(25);
   return (
@@ -20,14 +21,7 @@ function Bio() {
     >
       <BioSlider length={length} setLength={setLength} />
       <BioText length={length} />
-      <Image
-        src="/plantyboi.png"
-        alt="Computer in a field of grass with trees"
-        priority={true}
-        width={400}
-        height={400}
-        quality={100}
-      />
+      <BioImage/>
     </Flex>
   );
 }

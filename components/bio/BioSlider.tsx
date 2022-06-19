@@ -107,7 +107,7 @@ function BioSlider({ length, setLength }: BioSliderProps) {
               },
             }}
           >
-            Bio Length: {lengthLabel}
+            Length: {lengthLabel}
           </Label>
           <StyledSlider
             disabled={disabled}

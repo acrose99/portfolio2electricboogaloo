@@ -1,6 +1,7 @@
 import {
   SelectItem,
   StyledContent,
+  StyledGroup,
   StyledItem,
   StyledItemIndicator,
   StyledLabel,
@@ -28,11 +29,11 @@ import Tooltip from "./primitives/Tooltip";
 function Navigation({ defaultValue }: NavigationProps) {
   const [background, setBackground] = useState("$mint5");
   const [color, setColor] = useState("$mint11");
-  const [fontSize, setFontSize] = useState("16px");
+  const [fontSize, setFontSize] = useState("20px");
   const router = useRouter();
   return (
     <EditableComponent
-      tooltip="Edit Navigation"
+      tooltip=""
       triggerAsChild={false}
       changableProps={[
         {
@@ -59,7 +60,7 @@ function Navigation({ defaultValue }: NavigationProps) {
           onClick: () => {
             setBackground("$mint5");
             setColor("$mint11");
-            setFontSize("16px");
+            setFontSize("18px");
           },
           toastLabel: "Reset Navigation Props",
         },
@@ -89,13 +90,15 @@ function Navigation({ defaultValue }: NavigationProps) {
             <ChevronUpIcon />
           </StyledScrollUpButton>
           <StyledViewport>
-            <SelectPrimitive.Group>
+            <StyledGroup>
               <StyledLabel>About Alex</StyledLabel>
               <StyledSeparator />
               <SelectItem value="Bio" />
               <SelectItem value="Skills" label="Skills" />
               <SelectItem value="Resume" />
               <SelectItem value="Contact" />
+            </StyledGroup>
+            <StyledGroup>
               <StyledLabel>Work</StyledLabel>
               <StyledSeparator />
               <SelectItem
@@ -108,10 +111,12 @@ function Navigation({ defaultValue }: NavigationProps) {
               />
               <SelectItem value="DontPanic" label="Don't Panic" />
               <SelectItem value="threeJSSnippets" label="ThreeJS Snippets" />
+            </StyledGroup>
+            <StyledGroup>
               <StyledLabel>About this Site</StyledLabel>
               <StyledSeparator />
               <SelectItem value="Credits" />
-            </SelectPrimitive.Group>
+            </StyledGroup>
           </StyledViewport>
           <StyledScrollDownButton>
             <ChevronDownIcon />

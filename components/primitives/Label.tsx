@@ -2,7 +2,7 @@ import { styled } from "../../stitches.config";
 import * as LabelPrimitive from "@radix-ui/react-label";
 
 export const Label = styled(LabelPrimitive.Root, {
-  fontSize: 15,
+  fontSize: 16,
   fontWeight: 500,
   whiteSpace: "nowrap",
   color: "$mint11",

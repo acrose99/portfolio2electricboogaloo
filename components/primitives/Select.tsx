@@ -12,7 +12,7 @@ export const StyledTrigger = styled(SelectPrimitive.SelectTrigger, {
   justifyContent: "center",
   borderRadius: 4,
   padding: "10px 15px",
-  fontSize: 13,
+  fontSize: 24,
   lineHeight: 1,
   height: '100%',
   gap: 5,
@@ -39,7 +39,7 @@ export const StyledItem = styled(SelectPrimitive.Item, {
   all: "unset",
   fontSize: 13,
   lineHeight: 1,
-  color: "$mint12",
+  color: "$sage11",
   borderRadius: 3,
   display: "flex",
   alignItems: "center",
@@ -52,24 +52,28 @@ export const StyledItem = styled(SelectPrimitive.Item, {
     color: mint.mint8,
     pointerEvents: "none",
   },
-
+  "&:hover": {
+    cursor: "pointer",
+  },
   "&:focus": {
-    backgroundColor: '$mint8',
-    color: "$mint1",
+    backgroundColor: "$mint8",
+    color: "$mint12",
   },
 });
 
 export const StyledLabel = styled(SelectPrimitive.Label, {
   padding: "0 25px",
-  fontSize: 16,
+  fontSize: 18,
+  fontFamily: "$notoSerif",
   lineHeight: "25px",
   color: "$sage12",
+  fontStyle: 'bolder'
 });
 
 export const StyledSeparator = styled(SelectPrimitive.Separator, {
   height: 1,
   backgroundColor: "$mint6",
-  margin: 5,
+  marginY: 10,
 });
 
 export const StyledItemIndicator = styled(SelectPrimitive.ItemIndicator, {
@@ -79,6 +83,17 @@ export const StyledItemIndicator = styled(SelectPrimitive.ItemIndicator, {
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
+});
+
+
+export const StyledGroup = styled(SelectPrimitive.SelectGroup, {
+  padding: 5,
+  transition: "background-color 0.2s ease-in-out",
+  "&:hover": { backgroundColor: "$sageA3" },
+  [`.${darkTheme} &`]: {
+    "&:hover": { backgroundColor: "$mint2" },
+  },
+  "&:focus": { boxShadow: `0 0 0 2px black` },
 });
 
 export const scrollButtonStyles = {

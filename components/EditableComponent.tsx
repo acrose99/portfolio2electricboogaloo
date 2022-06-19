@@ -11,7 +11,7 @@ import { SettingContext } from "../pages/_app";
 import shortid from "shortid";
 
 interface EditableComponentProps extends React.HTMLAttributes<HTMLElement> {
-  changableProps: changableProp[];
+  changableProps?: changableProp[];
   callableFunctions?: callableFunction[];
   checkableFunctions?: checkableFunction[];
   children: React.ReactNode;
@@ -26,7 +26,7 @@ interface EditableComponentProps extends React.HTMLAttributes<HTMLElement> {
 
 function EditableComponent({
   changableProps,
-  callableFunctions,
+  callableFunctions=[], // fix iterative error in line 81
   checkableFunctions,
   children,
   tooltip,
@@ -78,7 +78,7 @@ function EditableComponent({
         {isEditable ? (
           <ContextMenu
             callableFunctions={[
-              ...callableFunctions,
+              ...callableFunctions, 
               {
                 label: "Delete Component",
                 icon: "TrashIcon",

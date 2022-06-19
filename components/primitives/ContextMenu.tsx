@@ -56,11 +56,8 @@ const itemStyles = {
   display: "flex",
   alignItems: "center",
   height: 25,
-  // padding: "0 5px",
   position: "relative",
-  // paddingLeft: 25,
   userSelect: "none",
-
   "&[data-disabled]": {
     color: "$sage8",
     pointerEvents: "none",
@@ -173,32 +170,32 @@ function ContextMenu({
       <ContextMenuPrimitive.Root modal={false}>
         <ContextMenuTrigger>{children}</ContextMenuTrigger>
         <ContextMenuContent sideOffset={5}>
-          <ContextMenuItem asChild>
-            <Popover
-              side="bottom"
-              sideOffset={-5}
-              align="center"
-              changeableProps={changableProps}
-            >
-              <Icon icon="Pencil2Icon" />
-              Change Props
-            </Popover>
-          </ContextMenuItem>
-
+          {changableProps && (
+            <ContextMenuItem asChild>
+              <Popover
+                side="bottom"
+                sideOffset={-5}
+                align="center"
+                changeableProps={changableProps}
+              >
+                <Icon icon="Pencil2Icon" />
+                Change Props
+              </Popover>
+            </ContextMenuItem>
+          )}
           {callableFunctions &&
             callableFunctions.map((prop, index) => (
-              <>
+              <div key={index}>
                 {prop.seperator && <ContextMenuSeparator />}
                 <ContextMenuPropItem
                   icon={prop.icon}
-                  key={index}
                   onClick={() => prop.onClick()}
                 >
                   {prop.label}
                 </ContextMenuPropItem>
-              </>
+              </div>
             ))}
-          {checkableFunctions && <ContextMenuSeparator />}
+          {checkableFunctions &&  <ContextMenuSeparator />}
           {checkableFunctions &&
             checkableFunctions.map((prop, index) => (
               <ContextMenuCheckboxItem

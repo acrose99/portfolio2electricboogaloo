@@ -67,24 +67,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           url: "https://www.alexrose.xyz/",
           title: "Alex Rose",
           description: "Alex Rose is a Software Developer located in Chicago",
-          images: [
-            {
-              url: "http://alexrose.xyz/ogImage2.png",
-              secureUrl: "https://alexrose.xyz/ogImage2.png",
-              width: 180,
-              height: 110,
-              alt: "Alex Rose",
-              type: "image/png",
-            },
-            {
-              url: "http://alexrose.xyz/ogImage.png",
-              secureUrl: "https://alexrose.xyz/ogImage.png",
-              width: 1200,
-              height: 630,
-              alt: "Alex Rose",
-              type: "image/png",
-            },
-          ],
           site_name: "Alex Rose",
         }}
       />

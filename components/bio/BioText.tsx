@@ -68,11 +68,20 @@ function BioComprehensionText() {
 
 function BioStalkerText() {
   return (
+    <>
+      <EditableText
+        defaultText="My favorite artists are Daft Punk, The Talking Heads, and The Avalanches.
+        My favorite meal is Okonomiyaki at Gaijin. My favorite drink is an Guarana or an Inca Cola. My favorite soccer team is FC Barcelona and I was once a talented goalie in my youth." 
+      />
+    </>
+  );
+}
+
+function Links() {
+  return (
     <EditableText>
-      My Spotify account is{" "}
-      <a href="https://open.spotify.com/user/flunky2k">here</a>. My GitHub is{" "}
-      <a href="https://github.com/acrose99">here</a>. My LinkedIn is{" "}
-      <a href="https://www.linkedin.com/in/alexander-c-rose/">here</a>.
+      My GitHub is <a href="https://github.com/acrose99">here</a>. My LinkedIn
+      is <a href="https://www.linkedin.com/in/alexander-c-rose/">here</a>.
     </EditableText>
   );
 }
@@ -109,6 +118,7 @@ function BioText({ length }: BioStyledTextProps) {
           <BioStalkerText />
         </>
       )}
+      <Links />
     </div>
   );
 }
