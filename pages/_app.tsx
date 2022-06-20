@@ -35,9 +35,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   });
   const settingsRef = useRef(useContext(SettingContext));
   return (
-    <SettingContext.Provider
-      value={{ settings, setSettings}} 
-    >
+    <SettingContext.Provider value={{ settings, setSettings }}>
       <Head>
         <meta charSet="utf-8" />
         <meta name="language" content="english" />
@@ -64,10 +62,29 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         description="Alex Rose is a Software Developer located in Chicago"
         canonical="https://www.alexrose.xyz/"
         openGraph={{
+          type: "website",
           url: "https://www.alexrose.xyz/",
           title: "Alex Rose",
           description: "Alex Rose is a Software Developer located in Chicago",
           site_name: "Alex Rose",
+          images: [
+            {
+              url: "http://alexrose.xyz/OGS.png",
+              secureUrl: "https://alexrose.xyz/OGS.png",
+              width: 1200,
+              height: 630,
+              alt: "Alex Rose",
+              type: "image/png",
+            },
+            {
+              url: "http://alexrose.xyz/OGS2.png",
+              secureUrl: "https://alexrose.xyz/OGS2.png",
+              width: 800,
+              height: 600,
+              alt: "Alex Rose",
+              type: "image/png",
+            }
+          ],
         }}
       />
       <ThemeProvider

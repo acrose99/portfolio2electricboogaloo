@@ -111,6 +111,7 @@ function Image({ src, alt, width, height, priority, filter }: ImageProps) {
               objectFit={"contain"}
               quality={100}
               cursor={isOpen ? "zoomOut" : "zoomIn"}
+              priority={true}
             />
           </DialogClose>
         </Content>
