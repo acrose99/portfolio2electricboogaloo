@@ -54,10 +54,14 @@ function EditableText({
               label: "Copy Text",
               /* copies the text to the clipboard */
               onClick: () => {
-                navigator.clipboard.writeText(text);
+                if (text) {
+                  navigator.clipboard.writeText(text);
+                } else {
+                  navigator.clipboard.writeText(children.toString());
+                }
               },
               toastLabel: "Copied to clipboard",
-            }
+            },
           ]}
           changableProps={[
             !children && {
