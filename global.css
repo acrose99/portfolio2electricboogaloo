@@ -1,8 +1,37 @@
-*, ::after, ::before, body {
+*,
+::after,
+::before,
+body {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
 }
 
 body {
-    margin: 0px;
+  margin: 0px;
+}
+
+#container {
+  --transparent: #fdfcfd00;
+  display: flex;
+  flex-direction: column;
+  max-width: 100vw;
+  background-image: linear-gradient(to right, var(--sky1), var(--transparent)),
+      linear-gradient(to top right, var(--mintA5), var(--transparent)),
+    linear-gradient(to top left, var(--sky2), var(--transparent)),
+    linear-gradient(to bottom left, var(--mint3), var(--transparent)),
+    linear-gradient(to top right, var(--mint1), var(--sky1), var(--transparent));
+  background-size: cover;
+}
+
+.dark-theme #container {
+  --transparent: #fdfcfd00;
+  display: flex;
+  flex-direction: column;
+  max-width: 100vw;
+  background-image: linear-gradient(to right, var(--sky1), var(--transparent)),
+      linear-gradient(to top right, var(--mintA5), var(--transparent)),
+    linear-gradient(to top left, var(--sky2), var(--transparent)),
+    linear-gradient(to bottom left, var(--mint3), var(--transparent)),
+    linear-gradient(to top right, var(--mint1), var(--sky1), var(--transparent));
+  background-size: cover;
 }

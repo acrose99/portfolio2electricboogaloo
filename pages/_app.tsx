@@ -4,6 +4,16 @@ import "../global.css";
 import "@fontsource/roboto-mono";
 import "@fontsource/inter";
 import "@fontsource/noto-serif";
+import "@radix-ui/colors/mint.css";
+import "@radix-ui/colors/mintA.css";
+import "@radix-ui/colors/mintDark.css";
+import "@radix-ui/colors/mintDarkA.css";
+import "@radix-ui/colors/sage.css";
+import "@radix-ui/colors/sageDark.css";
+import "@radix-ui/colors/sky.css";
+import "@radix-ui/colors/skyDark.css";
+import "@radix-ui/colors/violet.css";
+import "@radix-ui/colors/violetDark.css";
 import { styled, theme, darkTheme } from "../stitches.config";
 import Footer from "../components/layout/Footer";
 import { ThemeProvider } from "next-themes";
@@ -13,19 +23,6 @@ import { DefaultSeo } from "next-seo";
 import Head from "next/head";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { useWindowSize } from "../hooks/useWindowDimensions";
-const Container = styled("main", {
-  display: "flex",
-  flexDirection: "column",
-  maxWidth: "100vw",
-  backgroundImage: `linear-gradient(to right, $sky1, $$transparent), 
-                    linear-gradient(to top right, $mintA5, $$transparent),
-                    linear-gradient(to top left, $sky2, $$transparent),
-                    linear-gradient(to bottom left, $sky3, $$transparent),
-                    linear-gradient(to top right, $mint1, $sky1, $$transparent)`,
-  backgroundSize: "cover",
-  // Safari transparency bug workaround
-  $$transparent: "#FDFCFD00",
-});
 
 export const SettingContext = createContext(null);
 export default function MyApp({ Component, pageProps }: AppProps) {
@@ -83,7 +80,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
               height: 600,
               alt: "Alex Rose",
               type: "image/png",
-            }
+            },
           ],
         }}
       />
@@ -95,17 +92,17 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           light: "light",
         }}
       >
-        <Container>
+        <main id="container">
           <Navbar />
-          <main
+          <div
             style={{
               minHeight: "80vh",
             }}
           >
             <Component {...pageProps} />
-          </main>
+          </div>
           <Footer />
-        </Container>
+        </main>
       </ThemeProvider>
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-04KLC3DPQS"

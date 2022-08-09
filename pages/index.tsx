@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import { Flex } from "../components/Flex";
 import EditableText from "../components/editableComponents/EditableText";
 import { useWindowSize } from "../hooks/useWindowDimensions";
+import { Command } from "cmdk";
+
 export default function Home() {
   useEffect(() => {
     if (window.innerWidth <= 428) {

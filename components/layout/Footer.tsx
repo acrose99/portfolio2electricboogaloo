@@ -5,18 +5,6 @@ import { useState } from "react";
 import { styled } from "../../stitches.config";
 import Link from "next/link";
 import { Flex } from "../Flex";
-const StyledFooter = styled("footer", {
-  variants: {
-    flexDirection: {
-      column: {
-        flexDirection: "column",
-      },
-      row: {
-        flexDirection: "row",
-      },
-    },
-  },
-});
 
 function Footer() {
   const [verticalPadding, setVerticalPadding] = useState("2vh");
@@ -62,9 +50,10 @@ function Footer() {
         },
       ]}
     >
-      <StyledFooter
-        css={{
-          paddingY: verticalPadding,
+      <footer
+        style={{
+          paddingTop: verticalPadding,
+          paddingBottom: verticalPadding,
           borderTop: borderTop,
           borderTopColor: borderTopColor,
           position: "relative",
@@ -110,7 +99,7 @@ function Footer() {
             </a>
           </EditableText>
         </Flex>
-      </StyledFooter>
+      </footer>
     </EditableComponent>
   );
 }
