@@ -197,12 +197,11 @@ function Popover({
       alignOffset={alignOffset ? alignOffset : 0}
       >
         <Flex direction="column" align="start" gap={2}>
-          <EditableText
-            defaultFontWeight="bold"
-            defaultColor="mint11"
-            defaultText={"Props:"}
-            defaultFontSize={"18px"}
-          />
+          <Text fontSize={'lg'} css={{
+            fontWeight: 'bold',
+          }}>
+            Props
+          </Text>
           {changeableProps &&
             changeableProps.map((prop, index) => (
               <Fieldset key={index}>
