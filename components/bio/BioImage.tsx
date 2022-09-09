@@ -59,8 +59,9 @@ export const DialogClose = DialogPrimitive.Close;
 interface BioImageProps {}
 
 let StyledBioImage = styled(Image, {
-  aspectRatio: "4/5 !important",
   cursor: "zoom-in",
+  borderRadius: "9999px",
+  border: "10px solid $mint4 !important",
   variants: {
     filter: {
       sepia: {
@@ -76,30 +77,12 @@ let StyledBioImage = styled(Image, {
   },
 });
 
+
 function BioImage({}: BioImageProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [width, setWidth] = useState(400);
   const [height, setHeight] = useState(400);
   const [filter, setFilter] = useState(null);
-  let images = [
-    {
-      label: "Plants",
-      value: "/plantyboi.png",
-    },
-    {
-      label: "Alex",
-      value: "/Alex.png",
-    },
-    {
-      label: "Mural",
-      value: "/panda.png",
-    },
-    {
-      label: "Chicago",
-      value: "/Chicago.png",
-    },
-  ];
-  const [image, setImage] = useState("/plantyboi.png");
   return (
     <EditableComponent
       source="/components/bio/BioImage.tsx"
@@ -149,10 +132,12 @@ function BioImage({}: BioImageProps) {
     >
       <Flex direction={"column"}>
         <Dialog open={isOpen} onOpenChange={(open) => setIsOpen(open)}>
-          <DialogTrigger asChild>
+          <DialogTrigger style={{
+            
+          }} asChild>
             <StyledBioImage
-              src={image}
-              alt={images.find((i) => i.value === image)?.label}
+              src="/plantyboi.png"
+              alt="Plants with a computer"
               priority={true}
               width={width}
               height={height}
@@ -163,8 +148,8 @@ function BioImage({}: BioImageProps) {
           <Content>
             <DialogClose asChild>
               <Image
-                src={image}
-                alt={images.find((i) => i.value === image)?.label}
+                src="/plantyboi.png"
+                alt="Plants with a computer"
                 layout={"fill"}
                 objectFit={"contain"}
                 quality={100}
@@ -172,14 +157,6 @@ function BioImage({}: BioImageProps) {
             </DialogClose>
           </Content>
         </Dialog>
-        <ToggleGroup
-          items={images}
-          onChange={(value) => {
-            if (value) {
-              setImage(images.filter((item) => item.label === value)[0].value);
-            }
-          }}
-        />
       </Flex>
     </EditableComponent>
   );

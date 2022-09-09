@@ -124,6 +124,21 @@ export const {
       paddingTop: value,
       paddingBottom: value,
     }),
+    shadowSm: (color) => ({
+      boxShadow: `0 1px 2px 0 ${color}`,
+    }),
+    shadowMd: (color) => ({
+      boxShadow: `0 4px 6px -1px ${color}, 0 2px 4px -2px ${color}`,
+    }),
+    shadowLg: (color) => ({
+      boxShadow: `0 10px 15px -3px ${color}, 0 4px 6px -4px ${color}`,
+    }),
+    shadowXl: (color) => ({
+      boxShadow: `0 20px 25px -5px ${color}, 0 8px 10px -6px ${color}`,
+    }),
+    shadowInner: (color) => ({
+      boxShadow: `inset 0 2px 4px 0 ${color}`,
+    }),
   },
   media: {
     sm: '(min-width: 576px)',

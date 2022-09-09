@@ -13,7 +13,6 @@ import { Input } from "../Input";
 import { Flex } from "../Flex";
 import { changableProp, callableFunction } from "../../constants/editConstants";
 import { StyledSeparator } from "./Select";
-import * as AccessibleIcon from "@radix-ui/react-accessible-icon";
 
 import EditableText from "../editableComponents/EditableText";
 import { useTheme } from "next-themes";

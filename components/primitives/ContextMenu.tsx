@@ -1,17 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {  } from "react";
 import { keyframes } from "@stitches/react";
 import { styled } from "../../stitches.config";
-import { violet, mauve, blackA } from "@radix-ui/colors";
+import { violet } from "@radix-ui/colors";
 import Popover from "./Popover";
 import ContextMenuPropItem from "./ContextMenu/ContextMenuItem";
 import {
-  DotFilledIcon,
   CheckIcon,
-  ChevronRightIcon,
 } from "@radix-ui/react-icons";
 import * as Icons from "@radix-ui/react-icons";
 
-import shortid from "shortid";
 
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
 import {
@@ -19,7 +16,6 @@ import {
   callableFunction,
   checkableFunction,
 } from "../../constants/editConstants";
-import { Flex } from "../Flex";
 import Link from "next/link";
 
 const slideDown = keyframes({
@@ -78,13 +74,7 @@ const ContextMenuRadioItem = styled(ContextMenuPrimitive.RadioItem, {
   paddingLeft: 0,
   ...itemStyles,
 });
-const ContextMenuTriggerItem = styled(ContextMenuPrimitive.TriggerItem, {
-  '&[data-state="open"]': {
-    backgroundColor: violet.violet4,
-    color: violet.violet11,
-  },
-  ...itemStyles,
-});
+
 
 const ContextMenuItemIndicator = styled(ContextMenuPrimitive.Label, {
   paddingLeft: 0,
@@ -169,7 +159,7 @@ function ContextMenu({
     <>
       <ContextMenuPrimitive.Root modal={false}>
         <ContextMenuTrigger>{children}</ContextMenuTrigger>
-        <ContextMenuContent sideOffset={5}>
+        <ContextMenuContent>
           {changableProps && (
             <ContextMenuItem asChild>
               <Popover
