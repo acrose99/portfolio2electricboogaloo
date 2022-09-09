@@ -137,7 +137,7 @@ export const {
       boxShadow: `0 20px 25px -5px ${color}, 0 8px 10px -6px ${color}`,
     }),
     shadowInner: (color) => ({
-      boxShadow: `inset 0 2px 4px 0 ${color}`,
+      boxShadow: `inset 0 2px 4px 0px ${color}`,
     }),
   },
   media: {

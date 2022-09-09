@@ -29,15 +29,15 @@ const StyledContent = styled(DialogPrimitive.Content, {
 });
 
 const overlayShow = keyframes({
-  '0%': { opacity: 0 },
-  '100%': { opacity: 1 },
+  "0%": { opacity: 0 },
+  "100%": { opacity: 1 },
 });
 
 const StyledOverlay = styled(DialogPrimitive.Overlay, {
   backgroundColor: blackA.blackA9,
-  position: 'fixed',
+  position: "fixed",
   inset: 0,
-  '@media (prefers-reduced-motion: no-preference)': {
+  "@media (prefers-reduced-motion: no-preference)": {
     animation: `${overlayShow} 150ms cubic-bezier(0.16, 1, 0.3, 1) forwards`,
   },
 });
@@ -45,7 +45,7 @@ const StyledOverlay = styled(DialogPrimitive.Overlay, {
 function Content({ children, ...props }) {
   return (
     <DialogPrimitive.Portal>
-      <StyledOverlay  />
+      <StyledOverlay />
       <StyledContent {...props}>{children}</StyledContent>
     </DialogPrimitive.Portal>
   );
@@ -60,8 +60,8 @@ interface BioImageProps {}
 
 let StyledBioImage = styled(Image, {
   cursor: "zoom-in",
-  borderRadius: "9999px",
-  border: "10px solid $mint4 !important",
+  borderRadius: "50%",
+  boxShadow: "0 20px 25px -5px $mint7, 0 10px 10px -5px $mint7, 0 -8px 10px -5px $mint7",
   variants: {
     filter: {
       sepia: {
@@ -77,6 +77,11 @@ let StyledBioImage = styled(Image, {
   },
 });
 
+let StyledDiv = styled('div', {
+  '& span': {
+    overflow: 'visible !important',
+  },
+});
 
 function BioImage({}: BioImageProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -132,18 +137,19 @@ function BioImage({}: BioImageProps) {
     >
       <Flex direction={"column"}>
         <Dialog open={isOpen} onOpenChange={(open) => setIsOpen(open)}>
-          <DialogTrigger style={{
-            
-          }} asChild>
-            <StyledBioImage
-              src="/plantyboi.png"
-              alt="Plants with a computer"
-              priority={true}
-              width={width}
-              height={height}
-              quality={100}
-              filter={filter}
-            />
+          <DialogTrigger asChild>
+            <StyledDiv>
+              <StyledBioImage
+                src="/plantyboi.png"
+                alt="Plants with a computer"
+                priority={true}
+                width={width}
+                height={height}
+                quality={100}
+                filter={filter}
+                objectFit="cover"
+              />
+            </StyledDiv>
           </DialogTrigger>
           <Content>
             <DialogClose asChild>
