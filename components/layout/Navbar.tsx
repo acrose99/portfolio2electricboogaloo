@@ -17,72 +17,93 @@ function Navbar({}: NavbarProps) {
   const [borderBottom, setBorderBottom] = useState("2px solid");
   const [borderBottomColor, setBorderBottomColor] = useState("$sage7");
   const [justifyContent, setJustifyContent] = useState("space-between");
+  const [background, setBackground] = useState("$mint1");
   return (
-    <EditableComponent
-      source="components/Navbar.tsx"
-      tooltip="Edit the Navbar"
-      triggerAsChild={true}
-      callableFunctions={[
-        {
-          label: "Reset Props",
-          icon: "ResetIcon",
-          onClick: () => {
-            setHeight("10vh");
-            setBorderBottom("2px solid");
-            setBorderBottomColor(`$sage7`);
-            setJustifyContent("space-between");
-          },
-          toastLabel: "Reset Navbar Props",
-        },
-      ]}
-      changableProps={[
-        {
-          label: "Height",
-          value: height,
-          onChange: (value) => {
-            setHeight(value);
-          },
-        },
-        {
-          label: "Border Bottom",
-          value: borderBottom,
-          onChange: (value) => {
-            setBorderBottom(value);
-          },
-        },
-        {
-          label: "Border Color",
-          value: borderBottomColor,
-          onChange: (value) => {
-            setBorderBottomColor(value);
-          },
-        },
-        {
-          label: "Justify Content",
-          value: justifyContent,
-          onChange: (value) => {
-            setJustifyContent(value);
-          },
-        },
-      ]}
+    <div
+      aria-hidden={true}
+      style={{
+        position: "sticky",
+        top: 0,
+        width: "100%",
+        zIndex: 1,
+      }}
     >
-      <StyledNavbar
-        css={{
-          height: height,
-          borderBottom: borderBottom,
-          borderBottomColor: borderBottomColor,
-          justifyContent: justifyContent,
-          display: "flex",
-          alignItems: "center",
-        }}
+      <EditableComponent
+        source="components/Navbar.tsx"
+        tooltip="Edit the Navbar"
+        triggerAsChild={true}
+        callableFunctions={[
+          {
+            label: "Reset Props",
+            icon: "ResetIcon",
+            onClick: () => {
+              setHeight("10vh");
+              setBackground("$mint1");
+              setBorderBottom("2px solid");
+              setBorderBottomColor(`$sage7`);
+              setJustifyContent("space-between");
+            },
+            toastLabel: "Reset Navbar Props",
+          },
+        ]}
+        changableProps={[
+          {
+            label: "Height",
+            value: height,
+            onChange: (value) => {
+              setHeight(value);
+            },
+          },
+          {
+            label: "Background",
+            value: background,
+            onChange: (value) => {
+              setBackground(value);
+            }
+          },
+          {
+            label: "Border Bottom",
+            value: borderBottom,
+            onChange: (value) => {
+              setBorderBottom(value);
+            },
+          },
+          {
+            label: "Border Color",
+            value: borderBottomColor,
+            onChange: (value) => {
+              setBorderBottomColor(value);
+            },
+          },
+          {
+            label: "Justify Content",
+            value: justifyContent,
+            onChange: (value) => {
+              setJustifyContent(value);
+            },
+          },
+        ]}
       >
-        <HomeLink />
-        <Flex gap={5} justify="end">
-          <Settings />
-          <ThemeToggle />
-        </Flex>
-      </StyledNavbar>
-    </EditableComponent>
+        <StyledNavbar
+          css={{
+            height: height,
+            borderBottom: borderBottom,
+            borderBottomColor: borderBottomColor,
+            justifyContent: justifyContent,
+            display: "flex",
+            alignItems: "center",
+            position: "sticky",
+            background: background,
+          }}
+        >
+          <HomeLink />
+          <Flex gap={5} justify="end">
+            <Settings />
+            <ThemeToggle />
+          </Flex>
+        </StyledNavbar>
+      </EditableComponent>
+    </div>
   );
 }
 

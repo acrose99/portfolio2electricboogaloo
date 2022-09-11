@@ -1,13 +1,39 @@
-import { mint } from "@radix-ui/colors";
+import { mint, mintA, mintDarkA } from "@radix-ui/colors";
 import { Text } from "../Text";
 import { slides } from "./constants";
 import EditableText from "../editableComponents/EditableText";
+import { darkTheme } from "../../stitches.config";
 interface BioStyledTextProps {
   length: number;
 }
 
 function BioIntroStyledText() {
-  return <EditableText defaultText={"Hey! My name is Alex Rose. Welcome!"} />;
+  return (
+    <EditableText
+      // css={{
+      //   fontFamily: "$oleoSwash",
+      //   color: "$mint11",
+      //   textAlign: "center",
+      //   filter: `drop-shadow(0px 5px 10px ${mintA.mintA10})`,
+      //   [`.${darkTheme} &`]: {
+      //     filter: `drop-shadow(0px 5px 10px ${mintDarkA.mintA8})`,
+      //   },
+      // }}
+      // fontSize={"5xl"}
+      defaultFontFamily="$oleoSwash"
+      defaultFontSize="$5xl"
+      defaultColor="$mint11"
+      css={{
+        textAlign: "center",
+        filter: `drop-shadow(0px 5px 10px ${mintA.mintA10})`,
+        [`.${darkTheme} &`]: {
+          filter: `drop-shadow(0px 5px 10px ${mintDarkA.mintA8})`,
+        },
+      }}
+    >
+      Hey! My name is Alex Rose.
+    </EditableText>
+  );
 }
 
 function BioBasicsText() {
@@ -71,7 +97,7 @@ function BioStalkerText() {
     <>
       <EditableText
         defaultText="My favorite artists are Daft Punk, The Talking Heads, and The Avalanches.
-        My favorite meal is Okonomiyaki at Gaijin. My favorite drink is an Guarana or an Inca Cola. My favorite soccer team is FC Barcelona and I was once a talented goalie in my youth." 
+        My favorite meal is Okonomiyaki at Gaijin. My favorite drink is an Guarana or an Inca Cola. My favorite soccer team is FC Barcelona and I was once a talented goalie in my youth."
       />
     </>
   );

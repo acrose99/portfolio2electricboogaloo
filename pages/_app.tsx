@@ -2,6 +2,7 @@ import type { AppProps } from "next/app";
 import "@csstools/normalize.css";
 import "../global.css";
 import "@fontsource/roboto-mono";
+import "@fontsource/oleo-script-swash-caps";
 import "@fontsource/inter";
 import "@fontsource/noto-serif";
 import { styled, theme, darkTheme } from "../stitches.config";
@@ -99,12 +100,13 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           <Navbar />
           <main
             style={{
-              minHeight: "80vh",
+              minHeight: "100vh",
+              paddingTop: "5svh",
             }}
           >
             <Component {...pageProps} />
           </main>
-          <Footer />
+          {/* <Footer /> */}
         </Container>
       </ThemeProvider>
       <Script

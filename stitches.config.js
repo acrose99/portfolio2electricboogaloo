@@ -105,6 +105,7 @@ export const {
       robotoMono: 'Roboto Mono, monospace',
       inter: 'Inter, sans-serif',
       notoSerif: 'Noto Serif, serif',
+      oleoSwash: 'Oleo Script Swash Caps, cursive',
     },
   },
   utils: {

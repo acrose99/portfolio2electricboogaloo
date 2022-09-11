@@ -34,7 +34,7 @@ const StyledTrigger = styled(TooltipPrimitive.Trigger, {
     showTooltip: {
       true: {
         "&:hover": {
-          backgroundColor: "$mint3",
+          backgroundColor: "$mint5",
         },
       },
     },

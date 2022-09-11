@@ -67,6 +67,11 @@
   "resolved" "https://registry.npmjs.org/@fontsource/noto-serif/-/noto-serif-4.5.9.tgz"
   "version" "4.5.9"
 
+"@fontsource/oleo-script-swash-caps@^4.5.9":
+  "integrity" "sha512-h69yemG9rRfWkvr6D08884MbtbAjAQJRFcWUTaT5Ng6ZYBpr1ncahcDpP2SwtwkZgrVuKkgnzGYGf0Dwo7GIIQ=="
+  "resolved" "https://registry.npmjs.org/@fontsource/oleo-script-swash-caps/-/oleo-script-swash-caps-4.5.9.tgz"
+  "version" "4.5.9"
+
 "@fontsource/roboto-mono@^4.5.7":
   "integrity" "sha512-1uBjM95BEz7zJlmmnpNAM5afMvIxx0wqr86eA76vRqZw8OF5wmsRqYfF3caHuVarBH9/AGN7t9h+3UXK8fjq/Q=="
   "resolved" "https://registry.npmjs.org/@fontsource/roboto-mono/-/roboto-mono-4.5.7.tgz"

@@ -25,11 +25,13 @@ function Navigation({ defaultValue }: NavigationProps) {
   const router = useRouter();
   return (
     <StyledRoot
-    defaultValue={defaultValue}
-    onValueChange={(value) => {
-      /* clear nested routes */
-      router.push(value === "Bio" ? "/" : value.toLowerCase());
-    }}
+      defaultValue={defaultValue}
+      onValueChange={(value) => {
+        /* clear nested routes */
+        if (value === "Source") {
+          router.push("https://github.com/acrose99/portfolio2electricboogaloo");
+        } else router.push(value === "Bio" ? "/" : value.toLowerCase());
+      }}
     >
       <StyledTrigger
         css={{
@@ -75,6 +77,7 @@ function Navigation({ defaultValue }: NavigationProps) {
               <StyledLabel>About this Site</StyledLabel>
               <StyledSeparator />
               <SelectItem value="Credits" />
+              <SelectItem value="Source" label="Source Code" />
             </StyledGroup>
           </StyledViewport>
           <StyledScrollDownButton>

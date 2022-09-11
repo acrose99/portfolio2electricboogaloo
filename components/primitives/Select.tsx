@@ -26,6 +26,7 @@ export const StyledTrigger = styled(SelectPrimitive.SelectTrigger, {
 export const StyledContent = styled(SelectPrimitive.Content, {
   overflow: "hidden",
   backgroundColor: "$sage1",
+  zIndex: 100,
   borderRadius: 6,
   boxShadow:
     "0px 10px 38px -10px rgba(22, 23, 24, 0.35), 0px 10px 20px -15px rgba(22, 23, 24, 0.2)",
@@ -33,6 +34,7 @@ export const StyledContent = styled(SelectPrimitive.Content, {
 
 export const StyledViewport = styled(SelectPrimitive.Viewport, {
   padding: 15,
+  zIndex: 10,
 });
 
 export const StyledItem = styled(SelectPrimitive.Item, {
