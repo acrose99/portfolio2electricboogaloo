@@ -35,6 +35,7 @@ const StyledTrigger = styled(TooltipPrimitive.Trigger, {
       true: {
         "&:hover": {
           backgroundColor: "$mint5",
+          transition: "background-color .2s ease-in-out",
         },
       },
     },
@@ -108,7 +109,7 @@ function Tooltip({
 }: TooltipProps) {
   return (
     <TooltipPrimitive.Provider
-      delayDuration={delayDuration}
+      delayDuration={0}
       skipDelayDuration={skipDelayDuration}
     >
       <TooltipPrimitive.Root
@@ -116,10 +117,7 @@ function Tooltip({
         open={open ? true : undefined}
         onOpenChange={onOpenChange ? (open) => onOpenChange(open) : undefined}
       >
-        <StyledTrigger
-          showTooltip={showTooltip}
-          asChild={triggerAsChild}
-        >
+        <StyledTrigger showTooltip={showTooltip} asChild={triggerAsChild}>
           {children}
         </StyledTrigger>
         {trigger && (
@@ -129,9 +127,12 @@ function Tooltip({
             align={align}
             alignOffset={alignOffset}
           >
-            <StyledContent css={{
-              backgroundColor: toolTipColor,
-            }} sideOffset={sideOffset}>
+            <StyledContent
+              css={{
+                backgroundColor: toolTipColor,
+              }}
+              sideOffset={sideOffset}
+            >
               {trigger}
               <StyledArrow />
             </StyledContent>

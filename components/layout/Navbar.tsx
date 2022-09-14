@@ -17,7 +17,7 @@ function Navbar({}: NavbarProps) {
   const [borderBottom, setBorderBottom] = useState("2px solid");
   const [borderBottomColor, setBorderBottomColor] = useState("$sage7");
   const [justifyContent, setJustifyContent] = useState("space-between");
-  const [background, setBackground] = useState("$mint1");
+  const [background, setBackground] = useState("$navbg");
   return (
     <div
       aria-hidden={true}

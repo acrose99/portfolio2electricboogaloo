@@ -12,6 +12,7 @@ import {
   violet,
   violetDark,
   violetA,
+  mintDarkA,
 } from '@radix-ui/colors';
 export const {
   config,
@@ -32,6 +33,7 @@ export const {
       ...skyA,
       ...violet,
       ...violetA,
+      navbg: mint.mint1,
     },
     shadows: {
       ...mint,
@@ -155,6 +157,7 @@ export const darkTheme = createTheme('dark-theme', {
     ...sageDark,
     ...skyDark,
     ...violetDark,
+    navbg: mintDark.mint3,
   },
   shadows: {
     ...mintDark,
