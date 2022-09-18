@@ -16,6 +16,7 @@ const contentShow = keyframes({
 const StyledContent = styled(DialogPrimitive.Content, {
   cursor: "zoom-out",
   position: "fixed",
+  zIndex: 1000,
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",

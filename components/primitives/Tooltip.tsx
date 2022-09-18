@@ -117,7 +117,15 @@ function Tooltip({
         open={open ? true : undefined}
         onOpenChange={onOpenChange ? (open) => onOpenChange(open) : undefined}
       >
-        <StyledTrigger showTooltip={showTooltip} asChild={triggerAsChild}>
+        <StyledTrigger
+          css={{
+            "&:hover": {
+              backgroundColor: toolTipColor ? toolTipColor : null,
+            },
+          }}
+          showTooltip={showTooltip}
+          asChild={triggerAsChild}
+        >
           {children}
         </StyledTrigger>
         {trigger && (

@@ -15,18 +15,18 @@ const StyledLink = styled("a", {
 
 function HomeLink({}: HomeLinkProps) {
   return (
-    <Tooltip side="bottom" trigger="Sorry, you can't edit me!">
-      <Text fontSize={"xl"}>
-        <Link
-          style={{
-            textDecoration: "none",
-          }}
-          href="/"
-        >
-          <StyledLink>Alex Rose</StyledLink>
-        </Link>
-      </Text>
-    </Tooltip>
+    <Text css={{
+      marginLeft: "1rem",
+    }} fontSize={"xl"}>
+      <Link
+        style={{
+          textDecoration: "none",
+        }}
+        href="/"
+      >
+        <StyledLink>Alex Rose</StyledLink>
+      </Link>
+    </Text>
   );
 }
 
