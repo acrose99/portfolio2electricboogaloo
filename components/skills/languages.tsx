@@ -125,7 +125,7 @@ function Language({ title, experience }: LanguageProps) {
                 color: "$sky11",
                 fontSize: "$2xl",
                 fontWeight: "bold",
-                "@media (max-width: 375px)": {
+                "@media (max-width: 475px)": {
                   fontSize: 12,
                 },
               }}
@@ -135,7 +135,7 @@ function Language({ title, experience }: LanguageProps) {
             <Label
               css={{
                 color: "$sky12",
-                "@media (max-width: 375px)": {
+                "@media (max-width: 475px)": {
                   fontSize: 12,
                 },
               }}

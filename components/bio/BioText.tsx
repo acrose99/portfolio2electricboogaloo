@@ -10,16 +10,6 @@ interface BioStyledTextProps {
 function BioIntroStyledText() {
   return (
     <EditableText
-      // css={{
-      //   fontFamily: "$oleoSwash",
-      //   color: "$mint11",
-      //   textAlign: "center",
-      //   filter: `drop-shadow(0px 5px 10px ${mintA.mintA10})`,
-      //   [`.${darkTheme} &`]: {
-      //     filter: `drop-shadow(0px 5px 10px ${mintDarkA.mintA8})`,
-      //   },
-      // }}
-      // fontSize={"5xl"}
       defaultFontFamily="$oleoSwash"
       defaultFontSize="$5xl"
       defaultColor="$mint11"
@@ -48,7 +38,7 @@ function BioConciseText() {
   return (
     <EditableText>
       I went to Loyola University Chicago and studied Computer Science. I
-      graduated early in December last year with a B.S with a Minor in History.
+      graduated in 2021 with a B.S with a Minor in History.
       I was also the Vice President of Loyola’s computer science club for a
       while. Now, I&apos;m an Software Engineer at{" "}
       <a href="https://cccis.com/about/">CCC</a> doing frontend development.
@@ -58,7 +48,7 @@ function BioConciseText() {
     </EditableText>
   );
 }
-function BioDetailedText() {
+function BioComprehensionText() {
   return (
     <>
       <EditableText
@@ -71,18 +61,24 @@ function BioDetailedText() {
   );
 }
 
-function BioComprehensionText() {
+function BioDetailedText() {
   return (
     <>
-      <EditableText
-        defaultText="Specifically, my greatest passion is innovation within the digital
+      <EditableText>
+        Specifically, my greatest passion is innovation within the digital
         humanities. It’s a way to use programming for good by educating people
         about new subjects. To this end I did a fellowship making a project
-        about the History of Computing as a Junior, and I’m currently working on
-        an digitial exhibit about the Black Panthers for the Chicago History
-        Museum, which should be unveiled later in 2022 or 2023 (contact me if
-        you want more info)."
-      />
+        about the{" "}
+        <a href="https://www.alexrose.xyz/historyofcomputing">
+          History of Computing as a Junior
+        </a>
+        , and{" "}
+        <a href="https://www.alexrose.xyz/digitalexhibit">
+          I worked on a large concept project about how to make a digital
+          exhibit
+        </a>
+        .
+      </EditableText>
       <EditableText
         defaultText="Otherwise, I think learning by doing is the best way to learn, and it
         helps me feel productive. Thus, I have a few side projects you can check

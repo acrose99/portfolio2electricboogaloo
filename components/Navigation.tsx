@@ -67,8 +67,8 @@ function Navigation({ defaultValue }: NavigationProps) {
                 label="History of Computing"
               />
               <SelectItem
-                value="BlackPantherNarratives"
-                label="Black Panther Narratives"
+                value="digitalexhibit"
+                label="Digital Exhibit Concept"
               />
               <SelectItem value="DontPanic" label="Don't Panic" />
               <SelectItem value="threeJSSnippets" label="ThreeJS Snippets" />
