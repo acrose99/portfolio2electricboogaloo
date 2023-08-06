@@ -1,5 +1,5 @@
 import Image from "next/image";
-import {Flex} from "../components/Flex";
+import { Flex } from "../components/Flex";
 import Navigation from "../components/Navigation";
 
 function Resume() {
@@ -19,10 +19,14 @@ function Resume() {
       >
         <Navigation defaultValue="Resume" />
         <Image
-         quality={100}
-         objectFit="contain"
-         priority={true}
-         alt="Resume" height={1000} width={800} src="/Resume.jpg" />
+          quality={100}
+          objectFit="contain"
+          priority={true}
+          alt="Resume"
+          height={1000}
+          width={800}
+          src="/alex_resume.png"
+        />
       </Flex>
     </section>
   );

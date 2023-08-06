@@ -26,19 +26,11 @@ function HistoryOfComputing() {
       <Head>
         <title>Alex Rose: History Of Computing</title>
       </Head>
-      <Flex
-        css={{
-          marginY: "50px",
-        }}
-        direction="column"
-        align="center"
-        gap={5}
-      >
-        <Navigation defaultValue="HistoryOfComputing" />
+      <Flex direction="column" align="center" gap={5}>
         <Project
           goal="As a Mulachy Fellow, I was tasked to make a front-end website meant to visualize the History of Computing in a unique way."
           status="Completed, in 2020,  when I finished my Mulachy Fellowship, but I now update it infrequently"
-          description="We visualized the History of Computing in a unique way, by highlighting other historical fields like the history of culture, ancient history, etc. The website was built with Next.JS/React, hosted on Vercel, and designed partially on Figma. I managed a team of two students (in cooperation with the Loyola Software Systems Laboratory) for a majority of the fellowship and reported to a professor."
+          description="We did this by highlighting other historical fields like the history of culture, ancient history, etc. The website was built with Next.JS/React, hosted on Vercel, and designed partially on Figma. I managed a team of two students (in cooperation with the Loyola Software Systems Laboratory) for a majority of the fellowship and reported to a professor."
           stack={[
             "Next.JS",
             "React",

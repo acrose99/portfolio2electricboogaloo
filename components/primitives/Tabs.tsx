@@ -5,7 +5,8 @@ import * as TabsPrimitive from "@radix-ui/react-tabs";
 import EditableComponent from "../EditableComponent";
 import { keyframes } from "@stitches/react";
 import { Flex } from "../Flex";
-
+import Stitches from "@stitches/react/types/stitches";
+import type * as StitchesCSS from "@stitches/react";
 const StyledTabs = styled(TabsPrimitive.Root, {
   display: "flex",
   flexDirection: "column",
@@ -32,22 +33,24 @@ const StyledList = styled(TabsPrimitive.List, {
 const StyledTrigger = styled(TabsPrimitive.Trigger, {
   all: "unset",
   fontFamily: "inherit",
-  padding: "5px 10px",
+  padding: "5px 5px",
+  "@sm": {
+    padding: "5px 10px",
+  },
   height: 45,
   flex: 1,
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  fontWeight: "bolder",
   lineHeight: 1,
-  color: "$sage12",
+  color: "$sage11",
   userSelect: "none",
   transition: "all 0.5s ease-in-out",
   "&:hover": {
-    color: "$mint11",
+    color: "$sage12",
   },
   '&[data-state="active"]': {
-    color: "$mint11",
+    color: "$sage12",
     boxShadow: "inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor",
   },
   "&:focus": { position: "relative" },
@@ -86,28 +89,31 @@ export const TabsContent = StyledContent;
 type Tab = {
   value: string;
   label: string;
-  content: React.ReactNode;
+  content: React.ReactNode | JSX.Element;
 };
 
 interface TabsProps {
   orientation?: "horizontal" | "vertical";
   defaultValue: string;
   tabs: Tab[];
+  tabTriggerCSS?: StitchesCSS.CSS;
 }
 
 export default function Tabs({
   orientation = "horizontal",
   defaultValue,
   tabs,
+  tabTriggerCSS,
 }: TabsProps) {
   return (
     <>
       <StyledTabs orientation={orientation} defaultValue={defaultValue}>
-        <TabsList 
-        width={{
-          "@initial": "sm",
-          '@md': 'md',
-        }} aria-label="Manage your account">
+        <TabsList
+          width={{
+            "@initial": "sm",
+            "@md": "md",
+          }}
+        >
           {tabs.map(({ value, label, content }) => (
             <TabsTrigger
               fontSize={{
@@ -115,6 +121,7 @@ export default function Tabs({
                 "@md": "medium",
                 "@lg": "large",
               }}
+              css={tabTriggerCSS}
               key={value}
               value={value}
               aria-label={label}

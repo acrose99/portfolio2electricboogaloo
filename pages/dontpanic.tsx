@@ -1,5 +1,5 @@
 import Navigation from "../components/Navigation";
-import {Flex} from "../components/Flex";
+import { Flex } from "../components/Flex";
 import Collapsible from "../components/primitives/Collapsible";
 import Head from "next/head";
 import EditableText from "../components/editableComponents/EditableText";
@@ -20,21 +20,13 @@ const Preview = () => {
   );
 };
 
-function BlackPantherNarratives() {
+function DontPanic() {
   return (
     <>
       <Head>
         <title>Alex Rose: Don&apos;t Panic</title>
       </Head>
-      <Flex
-        css={{
-          marginY: "50px",
-        }}
-        direction="column"
-        align="center"
-        gap={5}
-      >
-        <Navigation defaultValue="DontPanic" />
+      <Flex direction="column" align="center" gap={5}>
         <Project
           goal="The overarching goal of Don't Panic is to create a welcoming environment for Loyola's CS students"
           status="I left the club when I graduated in 2021."
@@ -54,4 +46,4 @@ function BlackPantherNarratives() {
   );
 }
 
-export default BlackPantherNarratives;
+export default DontPanic;

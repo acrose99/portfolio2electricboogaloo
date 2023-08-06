@@ -1,5 +1,5 @@
 import Navigation from "../components/Navigation";
-import {Flex} from "../components/Flex";
+import { Flex } from "../components/Flex";
 import Collapsible from "../components/primitives/Collapsible";
 import Head from "next/head";
 import EditableText from "../components/editableComponents/EditableText";
@@ -26,15 +26,7 @@ function BlackPantherNarratives() {
       <Head>
         <title>Alex Rose: Digital Exhibit Concept</title>
       </Head>
-      <Flex
-        css={{
-          marginY: "50px",
-        }}
-        direction="column"
-        align="center"
-        gap={5}
-      >
-        <Navigation defaultValue="digitalexhibit" />
+      <Flex direction="column" align="center" gap={5}>
         <Project
           goal="We want to raise the storytelling and educational potential of digital exhibits. It should be easy for historians to create digital exhibits, and we want to make it fun for people to learn about history through these sites. "
           status="Completed, but I may add a way to make this easier to use for historians in the future."

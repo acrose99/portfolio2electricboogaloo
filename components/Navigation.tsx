@@ -56,22 +56,9 @@ function Navigation({ defaultValue }: NavigationProps) {
               <StyledSeparator />
               <SelectItem value="Bio" />
               <SelectItem value="Skills" label="Skills" />
+              <SelectItem value="Work" label="Highlighted Work" />
               <SelectItem value="Resume" />
               <SelectItem value="Contact" />
-            </StyledGroup>
-            <StyledGroup>
-              <StyledLabel>Work</StyledLabel>
-              <StyledSeparator />
-              <SelectItem
-                value="HistoryOfComputing"
-                label="History of Computing"
-              />
-              <SelectItem
-                value="digitalexhibit"
-                label="Digital Exhibit Concept"
-              />
-              <SelectItem value="DontPanic" label="Don't Panic" />
-              <SelectItem value="threeJSSnippets" label="ThreeJS Snippets" />
             </StyledGroup>
             <StyledGroup>
               <StyledLabel>About this Site</StyledLabel>

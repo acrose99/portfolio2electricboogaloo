@@ -18,7 +18,6 @@ const StyledProject = styled("section", {
   flexDirection: "column",
   alignItems: "center",
   padding: "1rem",
-  marginY: "2rem",
   borderRadius: "0.5rem",
   backgroundColor: "$sage1",
   boxShadow: `0 0 0.25rem 0.25rem rgba(0, 0, 0, 0.2)`,
@@ -39,7 +38,6 @@ const StyledProject = styled("section", {
     },
   },
 });
-
 
 interface ProjectProps {
   goal: string;
@@ -105,9 +103,13 @@ function Project({
           },
         ]}
       />
-      <Separator css={{
-        marginBottom: "1rem",
-      }} gradient orientation="horizontal" />
+      <Separator
+        css={{
+          marginBottom: "1rem",
+        }}
+        gradient
+        orientation="horizontal"
+      />
       {link && <LinkCom href={link} />}
     </StyledProject>
   );
