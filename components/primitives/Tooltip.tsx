@@ -29,7 +29,7 @@ const StyledTrigger = styled(TooltipPrimitive.Trigger, {
   cursor: "context-menu",
   backgroundColor: "transparent",
   border: "none",
-  padding: "1rem",
+  padding: ".2rem",
   variants: {
     showTooltip: {
       true: {

@@ -12,7 +12,7 @@ export default function Skills() {
       </Head>
       <Flex
         css={{
-          marginTop: "50px",
+          marginTop: "0px",
         }}
         direction="column"
         align="center"

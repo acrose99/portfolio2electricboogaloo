@@ -1,14 +1,11 @@
-import React, {  } from "react";
+import React from "react";
 import { keyframes } from "@stitches/react";
 import { styled } from "../../stitches.config";
 import { violet } from "@radix-ui/colors";
 import Popover from "./Popover";
 import ContextMenuPropItem from "./ContextMenu/ContextMenuItem";
-import {
-  CheckIcon,
-} from "@radix-ui/react-icons";
+import { CheckIcon } from "@radix-ui/react-icons";
 import * as Icons from "@radix-ui/react-icons";
-
 
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
 import {
@@ -75,7 +72,6 @@ const ContextMenuRadioItem = styled(ContextMenuPrimitive.RadioItem, {
   paddingLeft: 0,
   ...itemStyles,
 });
-
 
 const ContextMenuItemIndicator = styled(ContextMenuPrimitive.Label, {
   paddingLeft: 0,
@@ -186,7 +182,7 @@ function ContextMenu({
                 </ContextMenuPropItem>
               </div>
             ))}
-          {checkableFunctions &&  <ContextMenuSeparator />}
+          {checkableFunctions && <ContextMenuSeparator />}
           {checkableFunctions &&
             checkableFunctions.map((prop, index) => (
               <ContextMenuCheckboxItem

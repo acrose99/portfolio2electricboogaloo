@@ -3,15 +3,27 @@ import { Text } from "../Text";
 import { slides } from "./constants";
 import EditableText from "../editableComponents/EditableText";
 import { darkTheme } from "../../stitches.config";
+import Link from "next/link";
 interface BioStyledTextProps {
   length: number;
+}
+
+function BioIntroWorkLink() {
+  return (
+    <>
+      <EditableText>
+        <Link href="/work">Click here to see examples of my work</Link>.
+        <Link href="/skills">Click here to more about my skills</Link>.
+      </EditableText>
+    </>
+  );
 }
 
 function BioIntroStyledText() {
   return (
     <EditableText
       defaultFontFamily="$oleoSwash"
-      defaultFontSize="$5xl"
+      defaultFontSize="$3xl"
       defaultColor="$mint11"
       css={{
         textAlign: "center",
@@ -28,34 +40,47 @@ function BioIntroStyledText() {
 
 function BioBasicsText() {
   return (
-    <EditableText>
-      I&apos;m a Software Engineer making websites at{" "}
-      <a href="https://cccis.com/about/">CCC</a>.
-    </EditableText>
+    <>
+      <EditableText>
+        I&apos;m a Software Engineer at{" "}
+        <a href="https://cccis.com/about/">CCC</a>.
+        <br />
+        <br />
+        <Link href="/work">Click here to see examples of my work</Link>.
+        <br />
+        <br />
+        <Link href="/skills">Click here to more about my skills</Link>.
+      </EditableText>
+    </>
   );
 }
 function BioConciseText() {
   return (
-    <EditableText>
-      I went to Loyola University Chicago and studied Computer Science. I
-      graduated in 2021 with a B.S with a Minor in History.
-      I was also the Vice President of Loyola’s computer science club for a
-      while. Now, I&apos;m an Software Engineer at{" "}
-      <a href="https://cccis.com/about/">CCC</a> doing frontend development.
-      <br /> <br />
-      I&apos;m extremely passionate about using tech for good, and most of my
-      career and side projects have been focused on or are adjacent to this.
-    </EditableText>
+    <>
+      <EditableText>
+        I&apos;m an Software Engineer at{" "}
+        <a href="https://cccis.com/about/">CCC</a> making products. I went to
+        Loyola University Chicago and studied Computer Science. I graduated in
+        2021 with a B.S with a Minor in History. I was also the Vice President
+        of Loyola’s computer science club for a while.
+        <br /> <br />
+        I&apos;m extremely passionate about using tech for good, and most of my
+        career and side projects have been focused on or are adjacent to this.
+        Some of my favorite projects are on <Link href="/work">this page</Link>.
+        <br /> <br />
+        For more about my skills, check out{" "}
+        <Link href="/skills">this page</Link>.
+      </EditableText>
+    </>
   );
 }
 function BioComprehensionText() {
   return (
     <>
       <EditableText
-        defaultText="My goal is to make peoples lives better. Much of our lives now is spent on
-        the internet, the average screen time for an adult is 8.5 hours per day. 5
-        billion people use the internet every day. Thus, even very minimal improvements to an website can have a massive net
-        positive impact on other's lives"
+        defaultText="My long term goals after gathering more experience is to take more initiative in projects and make cool things.
+        I forsee myself either as a technical lead working on both design, architecture, and implementation, or as a product manager. My main goals right now are improving my skills on all fronts, especially non web development skills.
+      I also eventually want to go back to working on the intersection of tech and history, and how to use tech to educate people about history."
       />
     </>
   );

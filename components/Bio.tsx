@@ -10,7 +10,7 @@ import BioImage from "./bio/BioImage";
 import { mint, mintA, mintDark, mintDarkA } from "@radix-ui/colors";
 import { darkTheme } from "../stitches.config";
 function Bio() {
-  const [length, setLength] = useState(25);
+  const [length, setLength] = useState(0);
   return (
     <Flex
       css={{

@@ -7,7 +7,7 @@ function DesignIndex() {
     <>
       <Flex
         css={{
-          marginTop: "50px",
+          marginTop: "0px",
         }}
         justify="center"
         align="center"

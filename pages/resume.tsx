@@ -11,7 +11,7 @@ function Resume() {
     >
       <Flex
         css={{
-          marginY: "50px",
+          marginY: "0px",
         }}
         gap={5}
         direction="column"

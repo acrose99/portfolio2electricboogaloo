@@ -36,7 +36,7 @@ export default function Home() {
       </Head>
       <Flex
         css={{
-          marginTop: 50,
+          marginTop: 0,
         }}
         gap={6}
         direction="column"
@@ -61,9 +61,7 @@ export default function Home() {
           onOpenChange={setOpen}
           label="Command Menu"
         >
-          <Command.Input 
-            className="command-input"
-          />
+          <Command.Input className="command-input" />
           <Command.List>
             <Command.Empty>No results found.</Command.Empty>
 

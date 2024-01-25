@@ -1,13 +1,15 @@
 import Image from "next/image";
 import { useState } from "react";
-import { styled } from "../../stitches.config";
+import { darkTheme, styled } from "../../stitches.config";
 import EditableComponent from "../EditableComponent";
 import { Flex } from "../Flex";
+import { Text } from "../Text";
 import ToggleGroup from "../primitives/ToggleGroup";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
 import { keyframes } from "@stitches/react";
-import { blackA } from "@radix-ui/colors";
+import { blackA, mintA, mintDarkA } from "@radix-ui/colors";
+import EditableText from "../editableComponents/EditableText";
 
 const contentShow = keyframes({
   "0%": { opacity: 0, transform: "translate(-50%, -48%) scale(.96)" },
@@ -62,7 +64,6 @@ interface BioImageProps {}
 let StyledBioImage = styled(Image, {
   cursor: "zoom-in",
   borderRadius: "50%",
-  boxShadow: "0 20px 25px -5px $mint7, 0 10px 10px -5px $mint7, 0 -8px 10px -5px $mint7",
   variants: {
     filter: {
       sepia: {
@@ -78,17 +79,18 @@ let StyledBioImage = styled(Image, {
   },
 });
 
-let StyledDiv = styled('div', {
-  '& span': {
-    overflow: 'visible !important',
+let StyledDiv = styled("div", {
+  "& span": {
+    overflow: "visible !important",
   },
 });
 
 function BioImage({}: BioImageProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [width, setWidth] = useState(400);
-  const [height, setHeight] = useState(400);
+  const [width, setWidth] = useState(350);
+  const [height, setHeight] = useState(350);
   const [filter, setFilter] = useState(null);
+  const [isHovered, setIsHovered] = useState(false);
   return (
     <EditableComponent
       source="/components/bio/BioImage.tsx"
@@ -126,8 +128,8 @@ function BioImage({}: BioImageProps) {
         {
           label: "Reset",
           onClick: () => {
-            setWidth(400);
-            setHeight(400);
+            setWidth(350);
+            setHeight(350);
             setFilter(null);
           },
           toastLabel: "Reset image size",
@@ -139,24 +141,62 @@ function BioImage({}: BioImageProps) {
       <Flex direction={"column"}>
         <Dialog open={isOpen} onOpenChange={(open) => setIsOpen(open)}>
           <DialogTrigger asChild>
-            <StyledDiv>
+            <StyledDiv
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
               <StyledBioImage
-                src="/plantyboi.png"
-                alt="Plants with a computer"
+                css={{
+                  transition: "all 0.5s ease-in-out",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                  },
+                }}
+                src="/cajas.jpg"
+                alt="Alex at Cajas National Park in Ecuador"
                 priority={true}
                 width={width}
+                layout={"fixed"}
                 height={height}
                 quality={100}
                 filter={filter}
                 objectFit="cover"
               />
+              <StyledDiv
+                css={{
+                  position: "absolute",
+                  padding: "2px 2px", // Padding inside the caption
+                  borderRadius: "15px",
+                  transform: "translate(20%,  -85%)",
+                  width: "240px",
+                  display: "flex",
+                  justifyContent: "center",
+                  backgroundColor: isHovered ? "$mint6" : "$mint5",
+                  transition: "all 0.5s ease-in-out",
+                }}
+              >
+                <Text
+                  css={{
+                    textAlign: "center",
+                    color: "$mint11",
+                    fontSize: "xs",
+                    filter: `drop-shadow(0px 5px 10px ${mintA.mintA10})`,
+                    [`.${darkTheme} &`]: {
+                      filter: `drop-shadow(0px 5px 10px ${mintDarkA.mintA8})`,
+                    },
+                  }}
+                  fontSize={"xs"}
+                >
+                  Alex at Cajas National Park in Ecuador
+                </Text>
+              </StyledDiv>
             </StyledDiv>
           </DialogTrigger>
           <Content>
             <DialogClose asChild>
               <Image
-                src="/plantyboi.png"
-                alt="Plants with a computer"
+                src="/cajas.jpg"
+                alt="Alex at Cajas National Park in Ecuador"
                 layout={"fill"}
                 objectFit={"contain"}
                 quality={100}

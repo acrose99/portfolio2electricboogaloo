@@ -1,5 +1,5 @@
 import Head from "next/head";
-import {Flex} from "../components/Flex";
+import { Flex } from "../components/Flex";
 import InlideCode from "../components/InlineCode";
 import Navigation from "../components/Navigation";
 import { Text } from "../components/Text";
@@ -21,7 +21,7 @@ function Credits() {
       </Head>
       <Flex
         css={{
-          marginTop: "50px",
+          marginTop: "0px",
         }}
         justify="center"
         align="center"
