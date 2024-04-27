@@ -152,7 +152,7 @@ function BioImage({}: BioImageProps) {
                     transform: "scale(1.05)",
                   },
                 }}
-                src="/cajas.jpg"
+                src="/cuenca.jpeg"
                 alt="Alex at Cajas National Park in Ecuador"
                 priority={true}
                 width={width}
@@ -162,7 +162,7 @@ function BioImage({}: BioImageProps) {
                 filter={filter}
                 objectFit="cover"
               />
-              <StyledDiv
+              {/* <StyledDiv
                 css={{
                   position: "absolute",
                   padding: "2px 2px", // Padding inside the caption
@@ -189,7 +189,7 @@ function BioImage({}: BioImageProps) {
                 >
                   Alex at Cajas National Park in Ecuador
                 </Text>
-              </StyledDiv>
+              </StyledDiv> */}
             </StyledDiv>
           </DialogTrigger>
           <Content>
