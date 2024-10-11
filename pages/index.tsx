@@ -42,39 +42,6 @@ export default function Home() {
         direction="column"
         align="center"
       >
-        <Command.Dialog
-          style={{
-            backgroundColor: "white",
-            color: "black",
-            borderRadius: 6,
-            boxShadow:
-              "hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px",
-            position: "fixed",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: "90vw",
-            maxWidth: "450px",
-            maxHeight: "85vh",
-          }}
-          open={open}
-          onOpenChange={setOpen}
-          label="Command Menu"
-        >
-          <Command.Input className="command-input" />
-          <Command.List>
-            <Command.Empty>No results found.</Command.Empty>
-
-            <Command.Group heading="Letters">
-              <Command.Item>a</Command.Item>
-              <Command.Item>b</Command.Item>
-              <Command.Separator />
-              <Command.Item>c</Command.Item>
-            </Command.Group>
-
-            <Command.Item>Apple</Command.Item>
-          </Command.List>
-        </Command.Dialog>
         <Navigation defaultValue="Bio" />
         <Bio />
       </Flex>

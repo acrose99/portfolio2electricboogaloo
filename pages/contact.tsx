@@ -28,18 +28,7 @@ export default function Contact() {
             maxWidth: "60%",
             textAlign: "center",
           }}
-        >
-          <EditableText
-            defaultFontSize="16px"
-            defaultText="I am always open to new opportunities. Contact me if you think I may
-            be a good fit for your team. Additionally, if you are interested in
-            the digital humanities, I would really love to work with you on a
-            project. Please reach out!"
-          ></EditableText>
-          <EditableText defaultFontSize="16px">
-            <a href="mailto:acrosmail@gmail.com">Shoot me an email!</a>
-          </EditableText>
-        </section>
+        ></section>
       </Flex>
     </>
   );

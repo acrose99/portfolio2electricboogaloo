@@ -1,7 +1,7 @@
 import { styled } from "../../../stitches.config";
 import * as ContextMenuPrimitive from "@radix-ui/react-context-menu";
-import * as Icons from '@radix-ui/react-icons';
-import {Flex} from "../../Flex";
+import * as Icons from "@radix-ui/react-icons";
+import { Flex } from "../../Flex";
 const itemStyles = {
   all: "unset",
   fontSize: 13,
@@ -27,13 +27,11 @@ const itemStyles = {
   },
 };
 
-
 const LeftSlot = styled("div", {
   marginLeft: 5,
 });
 
 const ContextMenuItem = styled(ContextMenuPrimitive.Item, { ...itemStyles });
-
 
 interface IconProps {
   icon: string;
@@ -61,7 +59,11 @@ interface ContextMenuPropItemProps {
   icon?: string;
 }
 
-function ContextMenuPropItem({ icon, children, onClick}: ContextMenuPropItemProps) {
+function ContextMenuPropItem({
+  icon,
+  children,
+  onClick,
+}: ContextMenuPropItemProps) {
   return (
     <ContextMenuItem onClick={onClick}>
       <Flex align="center">

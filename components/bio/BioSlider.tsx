@@ -17,10 +17,10 @@ interface BioSliderProps {
 
 function BioSlider({ length, setLength }: BioSliderProps) {
   const [lengthLabel, setLengthLabel] = useState("Concise");
-  const [trackColor, setTrackColor] = useState("$sage12");
+  const [trackColor, setTrackColor] = useState("$mint12");
   const [thumbColor, setThumbColor] = useState("$mint5");
   const [activeThumbColor, setActiveThumbColor] = useState("$mint10");
-  const [rangeColor, setRangeColor] = useState("$mint5");
+  const [rangeColor, setRangeColor] = useState("$mint11");
   const [disabled, setDisabled] = useState(false);
   useEffect(() => {
     if (length < 25) {
@@ -103,7 +103,7 @@ function BioSlider({ length, setLength }: BioSliderProps) {
           <Label
             css={{
               "@media (max-width: 375px)": {
-                fontSize: 12
+                fontSize: 12,
               },
             }}
           >

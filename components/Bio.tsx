@@ -9,6 +9,7 @@ import { SettingContext } from "../pages/_app";
 import BioImage from "./bio/BioImage";
 import { mint, mintA, mintDark, mintDarkA } from "@radix-ui/colors";
 import { darkTheme } from "../stitches.config";
+import EditableText from "./editableComponents/EditableText";
 function Bio() {
   const [length, setLength] = useState(0);
   return (

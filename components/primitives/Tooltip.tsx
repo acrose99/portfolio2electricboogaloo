@@ -29,12 +29,11 @@ const StyledTrigger = styled(TooltipPrimitive.Trigger, {
   cursor: "context-menu",
   backgroundColor: "transparent",
   border: "none",
-  padding: ".2rem",
   variants: {
     showTooltip: {
       true: {
         "&:hover": {
-          backgroundColor: "$mint5",
+          backgroundColor: "$mintA3",
           transition: "background-color .2s ease-in-out",
         },
       },
@@ -48,7 +47,8 @@ const StyledContent = styled(TooltipPrimitive.Content, {
   fontSize: 12,
   lineHeight: 1,
   color: "$sage12",
-  backgroundColor: "$mint4",
+  fontWeight: 800,
+  backgroundColor: "$mint5",
   boxShadow:
     "hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px",
   "@media (prefers-reduced-motion: no-preference)": {

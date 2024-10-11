@@ -55,10 +55,8 @@ function Navigation({ defaultValue }: NavigationProps) {
               <StyledLabel>About Alex</StyledLabel>
               <StyledSeparator />
               <SelectItem value="Bio" />
-              <SelectItem value="Skills" label="Skills" />
               <SelectItem value="Work" label="Highlighted Work" />
               <SelectItem value="Resume" />
-              <SelectItem value="Contact" />
             </StyledGroup>
             <StyledGroup>
               <StyledLabel>About this Site</StyledLabel>

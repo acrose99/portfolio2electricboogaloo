@@ -13,7 +13,7 @@ interface EditableTextProps {
   defaultFontSize?: string;
   defaultFontWeight?: string;
   defaultLineHeight?: string;
-  css?: Stitches.CSS
+  css?: Stitches.CSS;
 }
 
 function EditableText({
@@ -56,19 +56,19 @@ function EditableText({
               icon: "ResetIcon",
               toastLabel: "Reset Props",
             },
-            {
-              icon: "ClipboardCopyIcon",
-              label: "Copy Text",
-              /* copies the text to the clipboard */
-              onClick: () => {
-                if (text) {
-                  navigator.clipboard.writeText(text);
-                } else {
-                  navigator.clipboard.writeText(children.toString());
-                }
-              },
-              toastLabel: "Copied to clipboard",
-            },
+            // {
+            //   icon: "ClipboardCopyIcon",
+            //   label: "Copy Text",
+            //   /* copies the text to the clipboard */
+            //   onClick: () => {
+            //     if (text) {
+            //       navigator.clipboard.writeText(text);
+            //     } else {
+            //       navigator.clipboard.writeText(children.toString());
+            //     }
+            //   },
+            //   toastLabel: "Copied to clipboard",
+            // },
           ]}
           changableProps={[
             !children && {
@@ -126,19 +126,21 @@ function EditableText({
                 {children}
               </Text>
             )}
-            <Text
-              css={{
-                lineHeight: lineHeight,
-                fontSize: fontSize,
-                fontFamily: fontFamily,
-                fontWeight: fontWeight,
-                fontStyle: fontStyle,
-                color: color,
-                ...css,
-              }}
-            >
-              {text}
-            </Text>
+            {!children && (
+              <Text
+                css={{
+                  lineHeight: lineHeight,
+                  fontSize: fontSize,
+                  fontFamily: fontFamily,
+                  fontWeight: fontWeight,
+                  fontStyle: fontStyle,
+                  color: color,
+                  ...css,
+                }}
+              >
+                {text}
+              </Text>
+            )}
           </>
         </EditableComponent>
       ) : (

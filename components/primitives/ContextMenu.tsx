@@ -91,7 +91,7 @@ const ContextMenuLabel = styled(ContextMenuPrimitive.Label, {
 
 const ContextMenuSeparator = styled(ContextMenuPrimitive.Separator, {
   height: 1,
-  backgroundColor: "$mintA6",
+  backgroundColor: "$mintA5",
   margin: 5,
 });
 
